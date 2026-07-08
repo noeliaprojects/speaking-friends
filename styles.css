@@ -1907,3 +1907,68 @@ button {
   color: #5263D9 !important;
 }
 
+/* Emoji illustrations for the new situations */
+.word-emoji-illustration {
+  display: grid;
+  place-items: center;
+  background:
+    radial-gradient(circle at top right, rgba(124, 140, 248, 0.14), transparent 48%),
+    linear-gradient(180deg, #FFFFFF, #F8F9FF);
+}
+
+.word-emoji-illustration span {
+  font-size: clamp(2.4rem, 8vw, 4.2rem);
+  line-height: 1;
+  filter: drop-shadow(0 8px 10px rgba(37, 42, 65, 0.12));
+}
+
+/* Navigation shortcut: logo and situations button */
+.brand-button {
+  border: 0;
+  background: transparent;
+  padding: 0;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.brand-button:hover .brand-title {
+  color: #5263D9;
+}
+
+.brand-button:focus-visible,
+.home-btn:focus-visible {
+  outline: 3px solid rgba(124, 140, 248, 0.35);
+  outline-offset: 4px;
+  border-radius: 18px;
+}
+
+.home-btn {
+  border: 1px solid var(--line);
+  background: white;
+  color: var(--text);
+  border-radius: 999px;
+  padding: 11px 16px;
+  font: inherit;
+  font-weight: 900;
+  cursor: pointer;
+  box-shadow: 0 8px 20px rgba(37, 42, 65, 0.06);
+}
+
+.home-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 12px 24px rgba(37, 42, 65, 0.1);
+}
+
+@media (max-width: 560px) {
+  .home-btn {
+    padding: 10px 13px;
+    font-size: 0.82rem;
+  }
+}
+
+/* The visible Situations button was removed; this keeps old cached versions hidden */
+.home-btn {
+  display: none !important;
+}
+

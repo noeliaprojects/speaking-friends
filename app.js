@@ -741,13 +741,13 @@ function renderShell(content) {
   app.innerHTML = `
     <main class="app-shell">
       <header class="topbar">
-        <div class="brand">
+        <button class="brand brand-button" onclick="goTo('/')" aria-label="Go to situations">
           <div class="logo">🎙️</div>
           <div>
             <h1 class="brand-title">Speaking Friends</h1>
             <p class="brand-subtitle">Listen, speak, and grow in English</p>
           </div>
-        </div>
+        </button>
 
         <button class="star-pet-pill" onclick="goTo('/pets')" aria-label="Open Pet Shop">
           <span id="starPill" class="star-pet-stars">⭐ ${availableStars()}</span>
@@ -2385,7 +2385,64 @@ function renderWordImage(key) {
     `
   };
 
-  return `<span class="word-illustration">${images[key] || images.help}</span>`;
+  const emojiImages = {
+    canteen: "🍽️",
+    menu: "📋",
+    sandwich: "🥪",
+    pasta: "🍝",
+    salad: "🥗",
+    juice: "🧃",
+    shop: "🛍️",
+    notebook: "📓",
+    pencil: "✏️",
+    bag: "🎒",
+    price: "🏷️",
+    money: "💰",
+    library: "📚",
+    park: "🌳",
+    school: "🏫",
+    straight: "⬆️",
+    left: "⬅️",
+    right: "➡️",
+    friend: "🤝",
+    football: "⚽",
+    cinema: "🎬",
+    saturday: "📅",
+    time: "🕓",
+    teacher: "👩‍🏫",
+    student: "🧒",
+    book: "📖",
+    page: "📄",
+    repeat: "🔁",
+    understand: "💡",
+    playground: "🛝",
+    slide: "🛝",
+    swing: "🌳",
+    turn: "🔁",
+    play: "▶️",
+    lost: "🔎",
+    pencilCase: "🖍️",
+    jacket: "🧥",
+    red: "🔴",
+    blue: "🔵",
+    classroom: "🏫",
+    weather: "🌦️",
+    sunny: "☀️",
+    rainy: "🌧️",
+    coat: "🧥",
+    umbrella: "☂️",
+    hat: "🧢",
+  };
+
+  if (images[key]) {
+    return `<span class="word-illustration">${images[key]}</span>`;
+  }
+
+  if (emojiImages[key]) {
+    return `<span class="word-illustration word-emoji-illustration"><span>${emojiImages[key]}</span></span>`;
+  }
+
+  return `<span class="word-illustration">${images.help}</span>`;
 }
 
 function render() {
