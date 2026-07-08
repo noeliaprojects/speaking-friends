@@ -1,5 +1,5 @@
 const STORAGE_KEY = "speakingFriendsProgressV11";
-const ACTIVITY_KEYS = ["word-bank", "conversation", "match", "missing", "role-play"];
+const ACTIVITY_KEYS = ["word-bank", "conversation", "match", "missing", "role-play", "reflection"];
 const PET_PAGE_SIZE = 24;
 
 const STARTER_PET = {
@@ -191,6 +191,14 @@ function loadProgress() {
 function normalizeProgress(data) {
   if (!data.completedActivities) {
     data.completedActivities = {};
+  }
+
+  if (!data.reflections) {
+    data.reflections = {};
+  }
+
+  if (!data.finalReflection) {
+    data.finalReflection = {};
   }
 
   if (!data.shop) {
@@ -784,6 +792,26 @@ function renderHome() {
     `;
   }).join("");
 
+  const finalUnlocked = isFinalReflectionUnlocked();
+  const finalSent = Boolean(progress.finalReflection?.sentAt);
+
+  const finalCard = `
+    <button class="situation-card final-reflection-card ${finalUnlocked ? "" : "locked-card"}" onclick="${finalUnlocked ? "goTo('/final-reflection')" : "showFinalLockedNotice()"}">
+      <div class="card-top">
+        <div class="card-icon">📝</div>
+        <div class="card-progress">${finalUnlocked ? (finalSent ? "✅ Sent" : "Unlocked") : "🔒 Locked"}</div>
+      </div>
+
+      <h3>Final Reflection</h3>
+      <p>Think about your favourite situations, your progress and what you can say now.</p>
+
+      <div class="card-action">
+        ${finalUnlocked ? "Open reflection" : "Complete all missions"}
+        <span>→</span>
+      </div>
+    </button>
+  `;
+
   renderShell(`
     <section class="screen">
       <div class="hero">
@@ -795,11 +823,11 @@ function renderHome() {
 
       <div class="situation-grid">
         ${cards}
+        ${finalCard}
       </div>
     </section>
   `);
 }
-
 
 function openPetActionModal(petId) {
   const owned = ownedPet(petId);
@@ -1198,6 +1226,403 @@ function renderSimonSays(petId) {
 }
 
 
+
+function isSituationFullyCompleted(situationId) {
+  return ACTIVITY_KEYS.every(key => isActivityCompleted(situationId, key));
+}
+
+function isFinalReflectionUnlocked() {
+  return situations.every(situation => isSituationFullyCompleted(situation.id));
+}
+
+function showFinalLockedNotice() {
+  document.querySelectorAll(".star-overlay").forEach(item => item.remove());
+
+  const overlay = document.createElement("div");
+  overlay.className = "star-overlay";
+
+  overlay.innerHTML = `
+    <div class="star-pop reflection-locked-pop">
+      <div class="big-star">🔒</div>
+      <h2>Final Reflection is locked</h2>
+      <p class="star-popup-main">Complete all situations and their reflections first.</p>
+      <div class="star-popup-actions">
+        <button class="primary-btn" data-action="close">Okay</button>
+      </div>
+    </div>
+  `;
+
+  document.body.appendChild(overlay);
+  overlay.querySelector('[data-action="close"]').addEventListener("click", () => overlay.remove());
+}
+
+function reflectionData(situationId) {
+  if (!progress.reflections) progress.reflections = {};
+
+  if (!progress.reflections[situationId]) {
+    progress.reflections[situationId] = {
+      understand: "",
+      speak: "",
+      easiest: "",
+      difficult: "",
+      word: "",
+      sentence: "",
+      comment: ""
+    };
+  }
+
+  return progress.reflections[situationId];
+}
+
+function updateReflectionField(situationId, field, value) {
+  const data = reflectionData(situationId);
+  data[field] = value;
+  saveProgress();
+}
+
+function reflectionRadio(name, situationId, field, value, label, currentValue) {
+  const checked = currentValue === value ? "checked" : "";
+
+  return `
+    <label class="reflection-choice">
+      <input type="radio" name="${name}" value="${escapeHtml(value)}" ${checked} onchange="updateReflectionField('${situationId}', '${field}', this.value)">
+      <span>${escapeHtml(label)}</span>
+    </label>
+  `;
+}
+
+function activityOptions(selectedValue) {
+  const options = [
+    ["", "Choose one"],
+    ["Word Bank", "Word Bank"],
+    ["Conversation", "Conversation"],
+    ["Match expressions", "Match expressions"],
+    ["Missing words", "Missing words"],
+    ["Role-play", "Role-play"]
+  ];
+
+  return options.map(([value, label]) => `
+    <option value="${escapeHtml(value)}" ${selectedValue === value ? "selected" : ""}>
+      ${escapeHtml(label)}
+    </option>
+  `).join("");
+}
+
+function renderReflection(situation) {
+  const data = reflectionData(situation.id);
+  const done = isActivityCompleted(situation.id, "reflection");
+
+  renderShell(`
+    <section class="screen">
+      ${renderPageHead(situation.title, "Reflection", `/${situation.id}/role-play`)}
+
+      <div class="panel reflection-panel">
+        <div class="reflection-hero">
+          <div>
+            <span class="reflection-kicker">Think about your learning</span>
+            <h3>How did this mission go?</h3>
+            <p>Answer these questions after practising the situation.</p>
+          </div>
+          <div class="reflection-emoji">${situation.emoji}</div>
+        </div>
+
+        <div class="reflection-form">
+          <div class="reflection-question">
+            <h4>I can understand the conversation.</h4>
+            <div class="reflection-choice-row">
+              ${reflectionRadio(`understand-${situation.id}`, situation.id, "understand", "Yes", "🙂 Yes", data.understand)}
+              ${reflectionRadio(`understand-${situation.id}`, situation.id, "understand", "A little", "😐 A little", data.understand)}
+              ${reflectionRadio(`understand-${situation.id}`, situation.id, "understand", "Not yet", "🙁 Not yet", data.understand)}
+            </div>
+          </div>
+
+          <div class="reflection-question">
+            <h4>I can say useful expressions from this situation.</h4>
+            <div class="reflection-choice-row">
+              ${reflectionRadio(`speak-${situation.id}`, situation.id, "speak", "Yes", "🙂 Yes", data.speak)}
+              ${reflectionRadio(`speak-${situation.id}`, situation.id, "speak", "A little", "😐 A little", data.speak)}
+              ${reflectionRadio(`speak-${situation.id}`, situation.id, "speak", "Not yet", "🙁 Not yet", data.speak)}
+            </div>
+          </div>
+
+          <div class="reflection-grid-2">
+            <label class="reflection-field">
+              <span>The easiest activity was...</span>
+              <select onchange="updateReflectionField('${situation.id}', 'easiest', this.value)">
+                ${activityOptions(data.easiest)}
+              </select>
+            </label>
+
+            <label class="reflection-field">
+              <span>The most difficult activity was...</span>
+              <select onchange="updateReflectionField('${situation.id}', 'difficult', this.value)">
+                ${activityOptions(data.difficult)}
+              </select>
+            </label>
+          </div>
+
+          <label class="reflection-field">
+            <span>One word I remember is...</span>
+            <input type="text" value="${escapeHtml(data.word)}" placeholder="Example: headache" oninput="updateReflectionField('${situation.id}', 'word', this.value)">
+          </label>
+
+          <label class="reflection-field">
+            <span>One sentence I can say is...</span>
+            <input type="text" value="${escapeHtml(data.sentence)}" placeholder="Example: Can I help you?" oninput="updateReflectionField('${situation.id}', 'sentence', this.value)">
+          </label>
+
+          <label class="reflection-field">
+            <span>Something I want to practise more...</span>
+            <textarea rows="3" placeholder="Write a short comment" oninput="updateReflectionField('${situation.id}', 'comment', this.value)">${escapeHtml(data.comment)}</textarea>
+          </label>
+        </div>
+
+        <div class="actions">
+          <button class="secondary-btn" onclick="goTo('/${situation.id}/menu')">Back to activities</button>
+          <button class="primary-btn" onclick="finishReflection('${situation.id}')">
+            ${done ? "Save reflection" : "Finish reflection"}
+          </button>
+        </div>
+      </div>
+    </section>
+  `);
+}
+
+function finishReflection(situationId) {
+  const situation = situations.find(item => item.id === situationId);
+  if (!situation) return;
+
+  saveProgress();
+  finishActivity(situationId, "reflection", "/", `/${situationId}/reflection`);
+}
+
+function finalReflectionData() {
+  if (!progress.finalReflection) progress.finalReflection = {};
+
+  const defaults = {
+    studentName: "",
+    studentGroup: "",
+    favouriteSituation: "",
+    easiestSituation: "",
+    mostDifficultSituation: "",
+    favouriteActivity: "",
+    wordsRemember: "",
+    sentenceCanSay: "",
+    opinion: "",
+    helped: "",
+    sentAt: ""
+  };
+
+  progress.finalReflection = {
+    ...defaults,
+    ...progress.finalReflection
+  };
+
+  return progress.finalReflection;
+}
+
+function updateFinalReflectionField(field, value) {
+  const data = finalReflectionData();
+  data[field] = value;
+  saveProgress();
+}
+
+function situationOptions(selectedValue) {
+  const options = [
+    `<option value="" ${selectedValue ? "" : "selected"}>Choose one</option>`,
+    ...situations.map(situation => `
+      <option value="${escapeHtml(situation.title)}" ${selectedValue === situation.title ? "selected" : ""}>
+        ${escapeHtml(situation.title)}
+      </option>
+    `)
+  ];
+
+  return options.join("");
+}
+
+function finalReflectionBody() {
+  const data = finalReflectionData();
+
+  const situationBlocks = situations.map(situation => {
+    const reflection = reflectionData(situation.id);
+
+    return `
+${situation.title}
+- I can understand the conversation: ${reflection.understand || "-"}
+- I can say useful expressions: ${reflection.speak || "-"}
+- Easiest activity: ${reflection.easiest || "-"}
+- Most difficult activity: ${reflection.difficult || "-"}
+- One word I remember: ${reflection.word || "-"}
+- One sentence I can say: ${reflection.sentence || "-"}
+- I want to practise: ${reflection.comment || "-"}
+    `.trim();
+  }).join("\n\n");
+
+  return `
+Hello,
+
+Here is my Speaking Friends final reflection.
+
+Student: ${data.studentName || "Student"}
+Class / group: ${data.studentGroup || "Class"}
+
+FINAL REFLECTION
+Favourite situation: ${data.favouriteSituation || "-"}
+Easiest situation: ${data.easiestSituation || "-"}
+Most difficult situation: ${data.mostDifficultSituation || "-"}
+Favourite activity: ${data.favouriteActivity || "-"}
+Words I remember: ${data.wordsRemember || "-"}
+One sentence I can say now: ${data.sentenceCanSay || "-"}
+My opinion: ${data.opinion || "-"}
+How the app helped me: ${data.helped || "-"}
+
+SITUATION REFLECTIONS
+
+${situationBlocks}
+
+Thank you.
+  `.trim();
+}
+
+function openFinalReflectionGmailDraft() {
+  const data = finalReflectionData();
+
+  const subject = `Speaking Friends final reflection - ${data.studentName || "Student"} - ${data.studentGroup || "Class"}`;
+  const body = finalReflectionBody();
+
+  const gmailUrl =
+    `https://mail.google.com/mail/?view=cm&fs=1` +
+    `&su=${encodeURIComponent(subject)}` +
+    `&body=${encodeURIComponent(body)}`;
+
+  data.sentAt = new Date().toISOString();
+  saveProgress();
+
+  window.open(gmailUrl, "_blank");
+  renderFinalReflection();
+}
+
+function renderFinalReflection() {
+  const unlocked = isFinalReflectionUnlocked();
+  const data = finalReflectionData();
+
+  if (!unlocked) {
+    renderShell(`
+      <section class="screen">
+        ${renderPageHead("Final Reflection", "Locked", "/")}
+
+        <div class="panel reflection-panel">
+          <div class="reflection-hero">
+            <div>
+              <span class="reflection-kicker">Locked</span>
+              <h3>Complete all situations first.</h3>
+              <p>The final reflection will unlock when all speaking missions and reflections are complete.</p>
+            </div>
+            <div class="reflection-emoji">🔒</div>
+          </div>
+
+          <div class="actions">
+            <button class="primary-btn" onclick="goTo('/')">Back to situations</button>
+          </div>
+        </div>
+      </section>
+    `);
+    return;
+  }
+
+  renderShell(`
+    <section class="screen">
+      ${renderPageHead("Final Reflection", "Send your learning reflection", "/")}
+
+      <div class="panel reflection-panel final-reflection-panel">
+        <div class="reflection-hero">
+          <div>
+            <span class="reflection-kicker">Final task</span>
+            <h3>What did you learn with Speaking Friends?</h3>
+            <p>Your answers will be prepared as a Gmail draft. Add your teacher's email before sending.</p>
+          </div>
+          <div class="reflection-emoji">📝</div>
+        </div>
+
+        ${data.sentAt ? `<p class="reflection-sent-note">✅ Gmail draft opened. You can open it again if you need to.</p>` : ""}
+
+        <div class="reflection-form">
+          <div class="reflection-grid-2">
+            <label class="reflection-field">
+              <span>Your name</span>
+              <input type="text" value="${escapeHtml(data.studentName)}" placeholder="Student name" oninput="updateFinalReflectionField('studentName', this.value)">
+            </label>
+
+            <label class="reflection-field">
+              <span>Class / group</span>
+              <input type="text" value="${escapeHtml(data.studentGroup)}" placeholder="Class or group" oninput="updateFinalReflectionField('studentGroup', this.value)">
+            </label>
+          </div>
+
+          <div class="reflection-grid-2">
+            <label class="reflection-field">
+              <span>My favourite situation was...</span>
+              <select onchange="updateFinalReflectionField('favouriteSituation', this.value)">
+                ${situationOptions(data.favouriteSituation)}
+              </select>
+            </label>
+
+            <label class="reflection-field">
+              <span>The easiest situation was...</span>
+              <select onchange="updateFinalReflectionField('easiestSituation', this.value)">
+                ${situationOptions(data.easiestSituation)}
+              </select>
+            </label>
+          </div>
+
+          <label class="reflection-field">
+            <span>The most difficult situation was...</span>
+            <select onchange="updateFinalReflectionField('mostDifficultSituation', this.value)">
+              ${situationOptions(data.mostDifficultSituation)}
+            </select>
+          </label>
+
+          <label class="reflection-field">
+            <span>My favourite activity was...</span>
+            <select onchange="updateFinalReflectionField('favouriteActivity', this.value)">
+              ${activityOptions(data.favouriteActivity)}
+            </select>
+          </label>
+
+          <label class="reflection-field">
+            <span>Words I remember...</span>
+            <textarea rows="3" placeholder="Write some words you remember" oninput="updateFinalReflectionField('wordsRemember', this.value)">${escapeHtml(data.wordsRemember)}</textarea>
+          </label>
+
+          <label class="reflection-field">
+            <span>One sentence I can say now...</span>
+            <input type="text" value="${escapeHtml(data.sentenceCanSay)}" placeholder="Example: Can I have a sandwich, please?" oninput="updateFinalReflectionField('sentenceCanSay', this.value)">
+          </label>
+
+          <label class="reflection-field">
+            <span>My opinion about the app...</span>
+            <textarea rows="3" placeholder="What did you like? What would you change?" oninput="updateFinalReflectionField('opinion', this.value)">${escapeHtml(data.opinion)}</textarea>
+          </label>
+
+          <label class="reflection-field">
+            <span>How did the app help you practise English?</span>
+            <textarea rows="3" placeholder="Write your answer" oninput="updateFinalReflectionField('helped', this.value)">${escapeHtml(data.helped)}</textarea>
+          </label>
+        </div>
+
+        <div class="actions">
+          <button class="secondary-btn" onclick="goTo('/')">Back to situations</button>
+          <button class="primary-btn" onclick="openFinalReflectionGmailDraft()">Open Gmail draft</button>
+        </div>
+
+        <p class="small-note">
+          Gmail will open with the reflection text. The student only needs to add the teacher's email and send it.
+        </p>
+      </div>
+    </section>
+  `);
+}
+
 function renderPetShop() {
   const sortedCatalog = [...PET_CATALOG].sort((a, b) => {
     const aActive = progress.shop.activePetId === a.id ? 1 : 0;
@@ -1312,7 +1737,8 @@ function renderActivityMenu(situation) {
     { key: "conversation", title: "Conversation", icon: "💬" },
     { key: "match", title: "Match expressions", icon: "🧩" },
     { key: "missing", title: "Missing words", icon: "✏️" },
-    { key: "role-play", title: "Role-play", icon: "🎭" }
+    { key: "role-play", title: "Role-play", icon: "🎭" },
+    { key: "reflection", title: "Reflection", icon: "📝" }
   ];
 
   const cards = items.map(item => {
@@ -2009,7 +2435,7 @@ function renderRolePlay(situation) {
           ${state.message ? `<p class="small-note">${escapeHtml(state.message)}</p>` : ""}
 
           <div class="actions">
-            <button class="primary-btn" onclick="finishActivity('${situation.id}', 'role-play', '/', '/${situation.id}/role-play')" ${hasAudio ? "" : "disabled"}>
+            <button class="primary-btn" onclick="finishActivity('${situation.id}', 'role-play', '/${situation.id}/reflection', '/${situation.id}/role-play')" ${hasAudio ? "" : "disabled"}>
               Finish role-play
             </button>
           </div>
@@ -2473,6 +2899,11 @@ function render() {
     return;
   }
 
+  if (route === "/final-reflection") {
+    renderFinalReflection();
+    return;
+  }
+
   if (route.startsWith("/simon/")) {
     const petId = route.split("/").filter(Boolean)[1];
 
@@ -2521,6 +2952,11 @@ function render() {
 
   if (page === "role-play") {
     renderRolePlay(situation);
+    return;
+  }
+
+  if (page === "reflection") {
+    renderReflection(situation);
     return;
   }
 
