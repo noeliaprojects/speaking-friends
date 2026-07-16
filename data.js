@@ -4,10 +4,10 @@ const situations = [
     "title": "At the doctor",
     "emoji": "🩺",
     "level": "Listening & Speaking",
-    "description": "Practise asking for help and talking about a simple health problem.",
+    "description": "Talk about health problems and advice.",
     "voiceProfiles": {
       "doctor": {
-        "pitch": 0.82,
+        "pitch": 0.86,
         "rate": 0.82
       },
       "patient": {
@@ -17,402 +17,619 @@ const situations = [
     },
     "wordBank": [
       {
+        "id": "flu",
+        "word": "flu",
+        "imageKey": "flu"
+      },
+      {
         "id": "headache",
         "word": "headache",
         "imageKey": "headache"
       },
       {
-        "id": "doctor",
-        "word": "doctor",
-        "imageKey": "doctor"
+        "id": "sore-throat",
+        "word": "sore throat",
+        "imageKey": "soreThroat"
       },
       {
-        "id": "patient",
-        "word": "patient",
-        "imageKey": "patient"
+        "id": "dizzy",
+        "word": "dizzy",
+        "imageKey": "dizzy"
       },
       {
-        "id": "water",
-        "word": "water",
-        "imageKey": "water"
+        "id": "temperature",
+        "word": "temperature",
+        "imageKey": "temperature"
       },
       {
-        "id": "rest",
-        "word": "rest",
-        "imageKey": "rest"
+        "id": "sick",
+        "word": "sick",
+        "imageKey": "sick"
       },
       {
-        "id": "help",
-        "word": "help",
-        "imageKey": "help"
+        "id": "stomach-ache",
+        "word": "stomach ache",
+        "imageKey": "stomachAche"
+      },
+      {
+        "id": "cold",
+        "word": "cold",
+        "imageKey": "cold"
+      },
+      {
+        "id": "earache",
+        "word": "earache",
+        "imageKey": "earache"
+      },
+      {
+        "id": "cough",
+        "word": "cough",
+        "imageKey": "cough"
+      },
+      {
+        "id": "cut",
+        "word": "cut",
+        "imageKey": "cut"
+      },
+      {
+        "id": "broken-arm",
+        "word": "broken arm",
+        "imageKey": "brokenArm"
       }
     ],
     "conversation": [
       {
         "speaker": "Doctor",
         "role": "doctor",
-        "text": "Hello. How can I help you?"
+        "text": "Hello. What's the matter with you today?"
       },
       {
         "speaker": "Patient",
         "role": "patient",
-        "text": "I have a headache."
+        "text": "I've got a stomach ache."
       },
       {
         "speaker": "Doctor",
         "role": "doctor",
-        "text": "How long have you had it?"
+        "text": "Where does it hurt?"
       },
       {
         "speaker": "Patient",
         "role": "patient",
-        "text": "Since yesterday."
+        "text": "Here. It hurts here."
       },
       {
         "speaker": "Doctor",
         "role": "doctor",
-        "text": "You should rest and drink water."
+        "text": "Do you feel sick?"
       },
       {
         "speaker": "Patient",
         "role": "patient",
-        "text": "Thank you, doctor."
+        "text": "No, not really, but I feel very tired."
       },
       {
         "speaker": "Doctor",
         "role": "doctor",
-        "text": "Do you need a note for school?"
+        "text": "Have you got a temperature?"
       },
       {
         "speaker": "Patient",
         "role": "patient",
-        "text": "Yes, please. That would help."
+        "text": "No, I haven't."
+      },
+      {
+        "speaker": "Doctor",
+        "role": "doctor",
+        "text": "Get plenty of rest and drink a lot of water."
+      },
+      {
+        "speaker": "Patient",
+        "role": "patient",
+        "text": "Can I go to school today?"
+      },
+      {
+        "speaker": "Doctor",
+        "role": "doctor",
+        "text": "No. You should stay at home today."
+      },
+      {
+        "speaker": "Patient",
+        "role": "patient",
+        "text": "OK. Thank you very much."
       }
+    ],
+    "conversationVariants": [
+      [
+        {
+          "speaker": "Doctor",
+          "role": "doctor",
+          "text": "Hello. What's the matter with you today?"
+        },
+        {
+          "speaker": "Patient",
+          "role": "patient",
+          "text": "I've got a stomach ache."
+        },
+        {
+          "speaker": "Doctor",
+          "role": "doctor",
+          "text": "Where does it hurt?"
+        },
+        {
+          "speaker": "Patient",
+          "role": "patient",
+          "text": "Here. It hurts here."
+        },
+        {
+          "speaker": "Doctor",
+          "role": "doctor",
+          "text": "Do you feel sick?"
+        },
+        {
+          "speaker": "Patient",
+          "role": "patient",
+          "text": "No, not really, but I feel very tired."
+        },
+        {
+          "speaker": "Doctor",
+          "role": "doctor",
+          "text": "Have you got a temperature?"
+        },
+        {
+          "speaker": "Patient",
+          "role": "patient",
+          "text": "No, I haven't."
+        },
+        {
+          "speaker": "Doctor",
+          "role": "doctor",
+          "text": "Get plenty of rest and drink a lot of water."
+        },
+        {
+          "speaker": "Patient",
+          "role": "patient",
+          "text": "Can I go to school today?"
+        },
+        {
+          "speaker": "Doctor",
+          "role": "doctor",
+          "text": "No. You should stay at home today."
+        },
+        {
+          "speaker": "Patient",
+          "role": "patient",
+          "text": "OK. Thank you very much."
+        }
+      ],
+      [
+        {
+          "speaker": "Doctor",
+          "role": "doctor",
+          "text": "Hello. What's the matter with you today?"
+        },
+        {
+          "speaker": "Patient",
+          "role": "patient",
+          "text": "I've got a sore throat and a cough."
+        },
+        {
+          "speaker": "Doctor",
+          "role": "doctor",
+          "text": "Have you got a temperature?"
+        },
+        {
+          "speaker": "Patient",
+          "role": "patient",
+          "text": "Yes, I think so."
+        },
+        {
+          "speaker": "Doctor",
+          "role": "doctor",
+          "text": "Do you feel dizzy?"
+        },
+        {
+          "speaker": "Patient",
+          "role": "patient",
+          "text": "A little. I don't feel very well."
+        },
+        {
+          "speaker": "Doctor",
+          "role": "doctor",
+          "text": "It may be the flu."
+        },
+        {
+          "speaker": "Patient",
+          "role": "patient",
+          "text": "What should I do?"
+        },
+        {
+          "speaker": "Doctor",
+          "role": "doctor",
+          "text": "You should stay in bed and drink water."
+        },
+        {
+          "speaker": "Patient",
+          "role": "patient",
+          "text": "Should I take any medicine?"
+        },
+        {
+          "speaker": "Doctor",
+          "role": "doctor",
+          "text": "Ask your family first and rest today."
+        },
+        {
+          "speaker": "Patient",
+          "role": "patient",
+          "text": "OK. Thank you, doctor."
+        }
+      ],
+      [
+        {
+          "speaker": "Doctor",
+          "role": "doctor",
+          "text": "Hello. What's the matter with you today?"
+        },
+        {
+          "speaker": "Patient",
+          "role": "patient",
+          "text": "I've got a headache and an earache."
+        },
+        {
+          "speaker": "Doctor",
+          "role": "doctor",
+          "text": "Where does it hurt most?"
+        },
+        {
+          "speaker": "Patient",
+          "role": "patient",
+          "text": "My head hurts most."
+        },
+        {
+          "speaker": "Doctor",
+          "role": "doctor",
+          "text": "Do you feel sick?"
+        },
+        {
+          "speaker": "Patient",
+          "role": "patient",
+          "text": "No, but I feel tired."
+        },
+        {
+          "speaker": "Doctor",
+          "role": "doctor",
+          "text": "Have you got a cold?"
+        },
+        {
+          "speaker": "Patient",
+          "role": "patient",
+          "text": "Yes, I have."
+        },
+        {
+          "speaker": "Doctor",
+          "role": "doctor",
+          "text": "You should rest and drink warm water."
+        },
+        {
+          "speaker": "Patient",
+          "role": "patient",
+          "text": "Can I play football later?"
+        },
+        {
+          "speaker": "Doctor",
+          "role": "doctor",
+          "text": "No. You shouldn't play today."
+        },
+        {
+          "speaker": "Patient",
+          "role": "patient",
+          "text": "All right. Thank you very much."
+        }
+      ]
     ],
     "fixedExpressions": [
       {
-        "id": "hello-help",
-        "left": "Hello. How",
-        "right": "can I help you?"
+        "id": "matter-today",
+        "left": "What's the matter",
+        "right": "with you today?"
       },
       {
-        "id": "have-headache",
-        "left": "I have",
-        "right": "a headache."
+        "id": "ive-got",
+        "left": "I've got",
+        "right": "a stomach ache."
       },
       {
-        "id": "how-long",
-        "left": "How long have",
-        "right": "you had it?"
+        "id": "where-hurt",
+        "left": "Where does",
+        "right": "it hurt?"
       },
       {
-        "id": "since-yesterday",
-        "left": "Since",
-        "right": "yesterday."
+        "id": "feel-sick",
+        "left": "Do you",
+        "right": "feel sick?"
       },
       {
-        "id": "should-rest",
-        "left": "You should rest",
-        "right": "and drink water."
+        "id": "not-really",
+        "left": "No, not",
+        "right": "really."
       },
       {
-        "id": "thank-doctor",
-        "left": "Thank you,",
-        "right": "doctor."
+        "id": "temperature",
+        "left": "Have you got",
+        "right": "a temperature?"
       },
       {
-        "id": "feel-well",
-        "left": "I don't",
-        "right": "feel well."
-      },
-      {
-        "id": "need-help",
-        "left": "I need",
-        "right": "some help."
+        "id": "plenty-rest",
+        "left": "Get plenty",
+        "right": "of rest."
       },
       {
         "id": "drink-water",
-        "left": "You should",
-        "right": "drink water."
+        "left": "Drink a lot",
+        "right": "of water."
       },
       {
-        "id": "go-home",
-        "left": "You should",
-        "right": "go home and rest."
+        "id": "stay-home",
+        "left": "You should stay",
+        "right": "at home."
       },
       {
-        "id": "note-school",
-        "left": "Do you need",
-        "right": "a note for school?"
+        "id": "thank-doctor",
+        "left": "Thank you",
+        "right": "very much."
       },
       {
-        "id": "that-help",
-        "left": "That would",
-        "right": "help."
+        "id": "should-do",
+        "left": "What should",
+        "right": "I do?"
+      },
+      {
+        "id": "shouldnt-play",
+        "left": "You shouldn't",
+        "right": "play today."
       }
     ],
     "missingScenarios": [
       {
-        "id": "headache-yesterday",
+        "id": "stomach-ache",
         "conversation": [
           {
             "speaker": "Doctor",
             "role": "doctor",
-            "text": "Hello. How can I help you?"
+            "text": "Hello. What's the matter with you today?"
           },
           {
             "speaker": "Patient",
             "role": "patient",
-            "text": "I have a headache."
+            "text": "I've got a stomach ache."
           },
           {
             "speaker": "Doctor",
             "role": "doctor",
-            "text": "How long have you had it?"
+            "text": "Where does it hurt?"
           },
           {
             "speaker": "Patient",
             "role": "patient",
-            "text": "Since yesterday."
+            "text": "Here. It hurts here."
           },
           {
             "speaker": "Doctor",
             "role": "doctor",
-            "text": "You should rest and drink water."
+            "text": "Do you feel sick?"
           },
           {
             "speaker": "Patient",
             "role": "patient",
-            "text": "Thank you, doctor."
+            "text": "No, not really, but I feel very tired."
           },
           {
             "speaker": "Doctor",
             "role": "doctor",
-            "text": "Do you need a note for school?"
+            "text": "Have you got a temperature?"
           },
           {
             "speaker": "Patient",
             "role": "patient",
-            "text": "Yes, please. That would help."
+            "text": "No, I haven't."
+          },
+          {
+            "speaker": "Doctor",
+            "role": "doctor",
+            "text": "Get plenty of rest and drink a lot of water."
+          },
+          {
+            "speaker": "Patient",
+            "role": "patient",
+            "text": "Can I go to school today?"
+          },
+          {
+            "speaker": "Doctor",
+            "role": "doctor",
+            "text": "No. You should stay at home today."
+          },
+          {
+            "speaker": "Patient",
+            "role": "patient",
+            "text": "OK. Thank you very much."
           }
         ],
         "gaps": [
           {
-            "id": "help",
+            "id": "matter",
             "lineIndex": 0,
-            "before": "Hello. How can I",
-            "answer": "help",
-            "after": "you?"
+            "before": "Hello. What's the",
+            "answer": "matter",
+            "after": "with you today?"
           },
           {
-            "id": "headache",
+            "id": "stomach",
             "lineIndex": 1,
-            "before": "I have a",
-            "answer": "headache",
-            "after": "."
-          },
-          {
-            "id": "long",
-            "lineIndex": 2,
-            "before": "How",
-            "answer": "long",
-            "after": "have you had it?"
-          },
-          {
-            "id": "yesterday",
-            "lineIndex": 3,
-            "before": "Since",
-            "answer": "yesterday",
-            "after": "."
-          },
-          {
-            "id": "rest",
-            "lineIndex": 4,
-            "before": "You should",
-            "answer": "rest",
-            "after": "and drink water."
-          },
-          {
-            "id": "doctor",
-            "lineIndex": 5,
-            "before": "Thank you,",
-            "answer": "doctor",
-            "after": "."
-          }
-        ]
-      },
-      {
-        "id": "fever-last-night",
-        "conversation": [
-          {
-            "speaker": "Doctor",
-            "role": "doctor",
-            "text": "Hello. How can I help you?"
-          },
-          {
-            "speaker": "Patient",
-            "role": "patient",
-            "text": "I have a fever."
-          },
-          {
-            "speaker": "Doctor",
-            "role": "doctor",
-            "text": "How long have you had it?"
-          },
-          {
-            "speaker": "Patient",
-            "role": "patient",
-            "text": "Since last night."
-          },
-          {
-            "speaker": "Doctor",
-            "role": "doctor",
-            "text": "You should rest and drink water."
-          },
-          {
-            "speaker": "Patient",
-            "role": "patient",
-            "text": "Thank you, doctor."
-          },
-          {
-            "speaker": "Doctor",
-            "role": "doctor",
-            "text": "Do you need a note for school?"
-          },
-          {
-            "speaker": "Patient",
-            "role": "patient",
-            "text": "Yes, please. That would help."
-          }
-        ],
-        "gaps": [
-          {
-            "id": "help",
-            "lineIndex": 0,
-            "before": "Hello. How can I",
-            "answer": "help",
-            "after": "you?"
-          },
-          {
-            "id": "fever",
-            "lineIndex": 1,
-            "before": "I have a",
-            "answer": "fever",
-            "after": "."
-          },
-          {
-            "id": "long",
-            "lineIndex": 2,
-            "before": "How",
-            "answer": "long",
-            "after": "have you had it?"
-          },
-          {
-            "id": "last-night",
-            "lineIndex": 3,
-            "before": "Since",
-            "answer": "last night",
-            "after": "."
-          },
-          {
-            "id": "water",
-            "lineIndex": 4,
-            "before": "You should rest and drink",
-            "answer": "water",
-            "after": "."
-          },
-          {
-            "id": "doctor",
-            "lineIndex": 5,
-            "before": "Thank you,",
-            "answer": "doctor",
-            "after": "."
-          }
-        ]
-      },
-      {
-        "id": "stomach-this-morning",
-        "conversation": [
-          {
-            "speaker": "Doctor",
-            "role": "doctor",
-            "text": "Hello. How can I help you?"
-          },
-          {
-            "speaker": "Patient",
-            "role": "patient",
-            "text": "I have a stomach ache."
-          },
-          {
-            "speaker": "Doctor",
-            "role": "doctor",
-            "text": "How long have you had it?"
-          },
-          {
-            "speaker": "Patient",
-            "role": "patient",
-            "text": "Since this morning."
-          },
-          {
-            "speaker": "Doctor",
-            "role": "doctor",
-            "text": "You should eat light food and rest."
-          },
-          {
-            "speaker": "Patient",
-            "role": "patient",
-            "text": "Thank you, doctor."
-          },
-          {
-            "speaker": "Doctor",
-            "role": "doctor",
-            "text": "Do you need a note for school?"
-          },
-          {
-            "speaker": "Patient",
-            "role": "patient",
-            "text": "Yes, please. That would help."
-          }
-        ],
-        "gaps": [
-          {
-            "id": "help",
-            "lineIndex": 0,
-            "before": "Hello. How can I",
-            "answer": "help",
-            "after": "you?"
-          },
-          {
-            "id": "stomach-ache",
-            "lineIndex": 1,
-            "before": "I have a",
+            "before": "I've got a",
             "answer": "stomach ache",
             "after": "."
           },
           {
-            "id": "long",
+            "id": "hurt",
             "lineIndex": 2,
-            "before": "How",
-            "answer": "long",
-            "after": "have you had it?"
+            "before": "Where does it",
+            "answer": "hurt",
+            "after": "?"
           },
           {
-            "id": "this-morning",
-            "lineIndex": 3,
-            "before": "Since",
-            "answer": "this morning",
+            "id": "sick",
+            "lineIndex": 4,
+            "before": "Do you feel",
+            "answer": "sick",
+            "after": "?"
+          },
+          {
+            "id": "temperature",
+            "lineIndex": 6,
+            "before": "Have you got a",
+            "answer": "temperature",
+            "after": "?"
+          },
+          {
+            "id": "rest",
+            "lineIndex": 8,
+            "before": "Get plenty of",
+            "answer": "rest",
+            "after": "and drink a lot of water."
+          },
+          {
+            "id": "school",
+            "lineIndex": 9,
+            "before": "Can I go to",
+            "answer": "school",
+            "after": "today?"
+          },
+          {
+            "id": "home",
+            "lineIndex": 10,
+            "before": "You should stay at",
+            "answer": "home",
+            "after": "today."
+          }
+        ]
+      },
+      {
+        "id": "sore-throat",
+        "conversation": [
+          {
+            "speaker": "Doctor",
+            "role": "doctor",
+            "text": "Hello. What's the matter with you today?"
+          },
+          {
+            "speaker": "Patient",
+            "role": "patient",
+            "text": "I've got a sore throat and a cough."
+          },
+          {
+            "speaker": "Doctor",
+            "role": "doctor",
+            "text": "Have you got a temperature?"
+          },
+          {
+            "speaker": "Patient",
+            "role": "patient",
+            "text": "Yes, I think so."
+          },
+          {
+            "speaker": "Doctor",
+            "role": "doctor",
+            "text": "Do you feel dizzy?"
+          },
+          {
+            "speaker": "Patient",
+            "role": "patient",
+            "text": "A little. I don't feel very well."
+          },
+          {
+            "speaker": "Doctor",
+            "role": "doctor",
+            "text": "It may be the flu."
+          },
+          {
+            "speaker": "Patient",
+            "role": "patient",
+            "text": "What should I do?"
+          },
+          {
+            "speaker": "Doctor",
+            "role": "doctor",
+            "text": "You should stay in bed and drink water."
+          },
+          {
+            "speaker": "Patient",
+            "role": "patient",
+            "text": "Should I take any medicine?"
+          },
+          {
+            "speaker": "Doctor",
+            "role": "doctor",
+            "text": "Ask your family first and rest today."
+          },
+          {
+            "speaker": "Patient",
+            "role": "patient",
+            "text": "OK. Thank you, doctor."
+          }
+        ],
+        "gaps": [
+          {
+            "id": "sore-throat",
+            "lineIndex": 1,
+            "before": "I've got a",
+            "answer": "sore throat",
+            "after": "and a cough."
+          },
+          {
+            "id": "cough",
+            "lineIndex": 1,
+            "before": "I've got a sore throat and a",
+            "answer": "cough",
             "after": "."
           },
           {
-            "id": "light-food",
+            "id": "temperature",
+            "lineIndex": 2,
+            "before": "Have you got a",
+            "answer": "temperature",
+            "after": "?"
+          },
+          {
+            "id": "dizzy",
             "lineIndex": 4,
-            "before": "You should eat",
-            "answer": "light food",
-            "after": "and rest."
+            "before": "Do you feel",
+            "answer": "dizzy",
+            "after": "?"
+          },
+          {
+            "id": "flu",
+            "lineIndex": 6,
+            "before": "It may be the",
+            "answer": "flu",
+            "after": "."
+          },
+          {
+            "id": "water",
+            "lineIndex": 8,
+            "before": "You should stay in bed and drink",
+            "answer": "water",
+            "after": "."
+          },
+          {
+            "id": "medicine",
+            "lineIndex": 9,
+            "before": "Should I take any",
+            "answer": "medicine",
+            "after": "?"
           },
           {
             "id": "doctor",
-            "lineIndex": 5,
+            "lineIndex": 11,
             "before": "Thank you,",
             "answer": "doctor",
             "after": "."
@@ -420,90 +637,124 @@ const situations = [
         ]
       },
       {
-        "id": "sore-throat-monday",
+        "id": "headache-earache",
         "conversation": [
           {
             "speaker": "Doctor",
             "role": "doctor",
-            "text": "Hello. How can I help you?"
+            "text": "Hello. What's the matter with you today?"
           },
           {
             "speaker": "Patient",
             "role": "patient",
-            "text": "I have a sore throat."
+            "text": "I've got a headache and an earache."
           },
           {
             "speaker": "Doctor",
             "role": "doctor",
-            "text": "How long have you had it?"
+            "text": "Where does it hurt most?"
           },
           {
             "speaker": "Patient",
             "role": "patient",
-            "text": "Since Monday."
+            "text": "My head hurts most."
           },
           {
             "speaker": "Doctor",
             "role": "doctor",
-            "text": "You should drink warm water and rest."
+            "text": "Do you feel sick?"
           },
           {
             "speaker": "Patient",
             "role": "patient",
-            "text": "Thank you, doctor."
+            "text": "No, but I feel tired."
           },
           {
             "speaker": "Doctor",
             "role": "doctor",
-            "text": "Do you need a note for school?"
+            "text": "Have you got a cold?"
           },
           {
             "speaker": "Patient",
             "role": "patient",
-            "text": "Yes, please. That would help."
+            "text": "Yes, I have."
+          },
+          {
+            "speaker": "Doctor",
+            "role": "doctor",
+            "text": "You should rest and drink warm water."
+          },
+          {
+            "speaker": "Patient",
+            "role": "patient",
+            "text": "Can I play football later?"
+          },
+          {
+            "speaker": "Doctor",
+            "role": "doctor",
+            "text": "No. You shouldn't play today."
+          },
+          {
+            "speaker": "Patient",
+            "role": "patient",
+            "text": "All right. Thank you very much."
           }
         ],
         "gaps": [
           {
-            "id": "help",
-            "lineIndex": 0,
-            "before": "Hello. How can I",
-            "answer": "help",
-            "after": "you?"
-          },
-          {
-            "id": "sore-throat",
+            "id": "headache",
             "lineIndex": 1,
-            "before": "I have a",
-            "answer": "sore throat",
+            "before": "I've got a",
+            "answer": "headache",
+            "after": "and an earache."
+          },
+          {
+            "id": "earache",
+            "lineIndex": 1,
+            "before": "I've got a headache and an",
+            "answer": "earache",
             "after": "."
           },
           {
-            "id": "long",
-            "lineIndex": 2,
-            "before": "How",
-            "answer": "long",
-            "after": "have you had it?"
-          },
-          {
-            "id": "monday",
+            "id": "head",
             "lineIndex": 3,
-            "before": "Since",
-            "answer": "Monday",
-            "after": "."
+            "before": "My",
+            "answer": "head",
+            "after": "hurts most."
+          },
+          {
+            "id": "cold",
+            "lineIndex": 6,
+            "before": "Have you got a",
+            "answer": "cold",
+            "after": "?"
           },
           {
             "id": "warm-water",
-            "lineIndex": 4,
-            "before": "You should drink",
+            "lineIndex": 8,
+            "before": "You should rest and drink",
             "answer": "warm water",
-            "after": "and rest."
+            "after": "."
           },
           {
-            "id": "doctor",
-            "lineIndex": 5,
-            "before": "Thank you,",
-            "answer": "doctor",
+            "id": "football",
+            "lineIndex": 9,
+            "before": "Can I play",
+            "answer": "football",
+            "after": "later?"
+          },
+          {
+            "id": "shouldnt",
+            "lineIndex": 10,
+            "before": "You",
+            "answer": "shouldn't",
+            "after": "play today."
+          },
+          {
+            "id": "thank",
+            "lineIndex": 11,
+            "before": "Thank you",
+            "answer": "very much",
             "after": "."
           }
         ]
@@ -515,32 +766,32 @@ const situations = [
     "title": "At the school canteen",
     "emoji": "🍽️",
     "level": "Listening & Speaking",
-    "description": "Practise ordering food and drinks politely.",
+    "description": "Order food and drinks politely at school.",
     "voiceProfiles": {
       "assistant": {
-        "pitch": 0.95,
+        "pitch": 0.94,
         "rate": 0.84
       },
       "student": {
-        "pitch": 1.18,
+        "pitch": 1.17,
         "rate": 0.88
       }
     },
     "wordBank": [
       {
-        "id": "canteen",
-        "word": "canteen",
-        "imageKey": "canteen"
+        "id": "pancakes",
+        "word": "pancakes",
+        "imageKey": "pancakes"
       },
       {
-        "id": "menu",
-        "word": "menu",
-        "imageKey": "menu"
+        "id": "tuna",
+        "word": "tuna",
+        "imageKey": "tuna"
       },
       {
-        "id": "sandwich",
-        "word": "sandwich",
-        "imageKey": "sandwich"
+        "id": "strawberries",
+        "word": "strawberries",
+        "imageKey": "strawberries"
       },
       {
         "id": "pasta",
@@ -548,14 +799,44 @@ const situations = [
         "imageKey": "pasta"
       },
       {
+        "id": "rice",
+        "word": "rice",
+        "imageKey": "rice"
+      },
+      {
+        "id": "mushrooms",
+        "word": "mushrooms",
+        "imageKey": "mushrooms"
+      },
+      {
+        "id": "tomato-sauce",
+        "word": "tomato sauce",
+        "imageKey": "tomatoSauce"
+      },
+      {
+        "id": "chocolate",
+        "word": "chocolate",
+        "imageKey": "chocolate"
+      },
+      {
         "id": "salad",
         "word": "salad",
         "imageKey": "salad"
       },
       {
-        "id": "water",
-        "word": "water",
-        "imageKey": "water"
+        "id": "cheese",
+        "word": "cheese",
+        "imageKey": "cheese"
+      },
+      {
+        "id": "sandwiches",
+        "word": "sandwiches",
+        "imageKey": "sandwiches"
+      },
+      {
+        "id": "bread",
+        "word": "bread",
+        "imageKey": "bread"
       }
     ],
     "conversation": [
@@ -567,22 +848,47 @@ const situations = [
       {
         "speaker": "Student",
         "role": "student",
-        "text": "Can I have a cheese sandwich, please?"
+        "text": "Could I have pasta with tomato sauce, please?"
       },
       {
         "speaker": "Canteen assistant",
         "role": "assistant",
-        "text": "Of course. Would you like some water?"
+        "text": "Sure. Here you are."
+      },
+      {
+        "speaker": "Canteen assistant",
+        "role": "assistant",
+        "text": "Would you like some cheese on it?"
       },
       {
         "speaker": "Student",
         "role": "student",
-        "text": "Yes, please."
+        "text": "Yes, please. I like cheese."
       },
       {
         "speaker": "Canteen assistant",
         "role": "assistant",
-        "text": "Here you are."
+        "text": "What would you like to drink?"
+      },
+      {
+        "speaker": "Student",
+        "role": "student",
+        "text": "I'd like some water, please."
+      },
+      {
+        "speaker": "Canteen assistant",
+        "role": "assistant",
+        "text": "Here you are. Anything else?"
+      },
+      {
+        "speaker": "Student",
+        "role": "student",
+        "text": "Can I have some strawberries, please?"
+      },
+      {
+        "speaker": "Canteen assistant",
+        "role": "assistant",
+        "text": "Yes, of course."
       },
       {
         "speaker": "Student",
@@ -592,13 +898,196 @@ const situations = [
       {
         "speaker": "Canteen assistant",
         "role": "assistant",
-        "text": "Would you like anything else?"
-      },
-      {
-        "speaker": "Student",
-        "role": "student",
-        "text": "No, thank you. That's all."
+        "text": "You're welcome. Enjoy your lunch."
       }
+    ],
+    "conversationVariants": [
+      [
+        {
+          "speaker": "Canteen assistant",
+          "role": "assistant",
+          "text": "Hello. What would you like?"
+        },
+        {
+          "speaker": "Student",
+          "role": "student",
+          "text": "Could I have pasta with tomato sauce, please?"
+        },
+        {
+          "speaker": "Canteen assistant",
+          "role": "assistant",
+          "text": "Sure. Here you are."
+        },
+        {
+          "speaker": "Canteen assistant",
+          "role": "assistant",
+          "text": "Would you like some cheese on it?"
+        },
+        {
+          "speaker": "Student",
+          "role": "student",
+          "text": "Yes, please. I like cheese."
+        },
+        {
+          "speaker": "Canteen assistant",
+          "role": "assistant",
+          "text": "What would you like to drink?"
+        },
+        {
+          "speaker": "Student",
+          "role": "student",
+          "text": "I'd like some water, please."
+        },
+        {
+          "speaker": "Canteen assistant",
+          "role": "assistant",
+          "text": "Here you are. Anything else?"
+        },
+        {
+          "speaker": "Student",
+          "role": "student",
+          "text": "Can I have some strawberries, please?"
+        },
+        {
+          "speaker": "Canteen assistant",
+          "role": "assistant",
+          "text": "Yes, of course."
+        },
+        {
+          "speaker": "Student",
+          "role": "student",
+          "text": "Thank you very much."
+        },
+        {
+          "speaker": "Canteen assistant",
+          "role": "assistant",
+          "text": "You're welcome. Enjoy your lunch."
+        }
+      ],
+      [
+        {
+          "speaker": "Canteen assistant",
+          "role": "assistant",
+          "text": "Hello. What would you like?"
+        },
+        {
+          "speaker": "Student",
+          "role": "student",
+          "text": "Could I have a tuna sandwich, please?"
+        },
+        {
+          "speaker": "Canteen assistant",
+          "role": "assistant",
+          "text": "Of course. Would you like salad in it?"
+        },
+        {
+          "speaker": "Student",
+          "role": "student",
+          "text": "Yes, please, but no mushrooms."
+        },
+        {
+          "speaker": "Canteen assistant",
+          "role": "assistant",
+          "text": "No problem. Here you are."
+        },
+        {
+          "speaker": "Student",
+          "role": "student",
+          "text": "Can I have some rice too?"
+        },
+        {
+          "speaker": "Canteen assistant",
+          "role": "assistant",
+          "text": "Yes, here you are."
+        },
+        {
+          "speaker": "Student",
+          "role": "student",
+          "text": "How much is it?"
+        },
+        {
+          "speaker": "Canteen assistant",
+          "role": "assistant",
+          "text": "It is two pounds."
+        },
+        {
+          "speaker": "Student",
+          "role": "student",
+          "text": "Here you are."
+        },
+        {
+          "speaker": "Canteen assistant",
+          "role": "assistant",
+          "text": "Thank you. Enjoy your food."
+        },
+        {
+          "speaker": "Student",
+          "role": "student",
+          "text": "Thank you very much."
+        }
+      ],
+      [
+        {
+          "speaker": "Canteen assistant",
+          "role": "assistant",
+          "text": "Hello. What would you like today?"
+        },
+        {
+          "speaker": "Student",
+          "role": "student",
+          "text": "I'd like pancakes, please."
+        },
+        {
+          "speaker": "Canteen assistant",
+          "role": "assistant",
+          "text": "Would you like some chocolate on them?"
+        },
+        {
+          "speaker": "Student",
+          "role": "student",
+          "text": "Yes, please. Just a little."
+        },
+        {
+          "speaker": "Canteen assistant",
+          "role": "assistant",
+          "text": "Would you like some bread too?"
+        },
+        {
+          "speaker": "Student",
+          "role": "student",
+          "text": "No, thank you. I'm not very hungry."
+        },
+        {
+          "speaker": "Canteen assistant",
+          "role": "assistant",
+          "text": "Would you like strawberries?"
+        },
+        {
+          "speaker": "Student",
+          "role": "student",
+          "text": "Yes, please. I love strawberries."
+        },
+        {
+          "speaker": "Canteen assistant",
+          "role": "assistant",
+          "text": "Here you are."
+        },
+        {
+          "speaker": "Student",
+          "role": "student",
+          "text": "Can I sit near my friends?"
+        },
+        {
+          "speaker": "Canteen assistant",
+          "role": "assistant",
+          "text": "Yes, but walk carefully."
+        },
+        {
+          "speaker": "Student",
+          "role": "student",
+          "text": "OK. Thank you."
+        }
+      ]
     ],
     "fixedExpressions": [
       {
@@ -607,24 +1096,9 @@ const situations = [
         "right": "you like?"
       },
       {
-        "id": "can-have",
-        "left": "Can I have",
-        "right": "a cheese sandwich, please?"
-      },
-      {
-        "id": "of-course",
-        "left": "Of",
-        "right": "course."
-      },
-      {
-        "id": "would-water",
-        "left": "Would you like",
-        "right": "some water?"
-      },
-      {
-        "id": "yes-please",
-        "left": "Yes,",
-        "right": "please."
+        "id": "could-have",
+        "left": "Could I have",
+        "right": "pasta, please?"
       },
       {
         "id": "here-you-are",
@@ -632,401 +1106,9 @@ const situations = [
         "right": "you are."
       },
       {
-        "id": "thank-much",
-        "left": "Thank you",
-        "right": "very much."
-      },
-      {
-        "id": "no-thanks",
-        "left": "No,",
-        "right": "thank you."
-      },
-      {
-        "id": "anything-else",
-        "left": "Anything",
-        "right": "else?"
-      },
-      {
-        "id": "i-would-like",
-        "left": "I would like",
-        "right": "some pasta, please."
-      },
-      {
-        "id": "would-anything-else",
+        "id": "would-cheese",
         "left": "Would you like",
-        "right": "anything else?"
-      },
-      {
-        "id": "thats-all",
-        "left": "That's",
-        "right": "all."
-      }
-    ],
-    "missingScenarios": [
-      {
-        "id": "sandwich-water",
-        "conversation": [
-          {
-            "speaker": "Canteen assistant",
-            "role": "assistant",
-            "text": "Hello. What would you like?"
-          },
-          {
-            "speaker": "Student",
-            "role": "student",
-            "text": "Can I have a cheese sandwich, please?"
-          },
-          {
-            "speaker": "Canteen assistant",
-            "role": "assistant",
-            "text": "Of course. Would you like some water?"
-          },
-          {
-            "speaker": "Student",
-            "role": "student",
-            "text": "Yes, please."
-          },
-          {
-            "speaker": "Canteen assistant",
-            "role": "assistant",
-            "text": "Here you are."
-          },
-          {
-            "speaker": "Student",
-            "role": "student",
-            "text": "Thank you very much."
-          },
-          {
-            "speaker": "Canteen assistant",
-            "role": "assistant",
-            "text": "Would you like anything else?"
-          },
-          {
-            "speaker": "Student",
-            "role": "student",
-            "text": "No, thank you. That's all."
-          }
-        ],
-        "gaps": [
-          {
-            "id": "like",
-            "lineIndex": 0,
-            "before": "Hello. What would you",
-            "answer": "like",
-            "after": "?"
-          },
-          {
-            "id": "sandwich",
-            "lineIndex": 1,
-            "before": "Can I have a cheese",
-            "answer": "sandwich",
-            "after": ", please?"
-          },
-          {
-            "id": "water",
-            "lineIndex": 2,
-            "before": "Would you like some",
-            "answer": "water",
-            "after": "?"
-          },
-          {
-            "id": "yes",
-            "lineIndex": 3,
-            "before": "",
-            "answer": "Yes",
-            "after": ", please."
-          },
-          {
-            "id": "here",
-            "lineIndex": 4,
-            "before": "",
-            "answer": "Here",
-            "after": "you are."
-          },
-          {
-            "id": "thank",
-            "lineIndex": 5,
-            "before": "",
-            "answer": "Thank you",
-            "after": "very much."
-          }
-        ]
-      },
-      {
-        "id": "pasta-juice",
-        "conversation": [
-          {
-            "speaker": "Canteen assistant",
-            "role": "assistant",
-            "text": "Hello. What would you like?"
-          },
-          {
-            "speaker": "Student",
-            "role": "student",
-            "text": "Can I have some pasta, please?"
-          },
-          {
-            "speaker": "Canteen assistant",
-            "role": "assistant",
-            "text": "Of course. Would you like some juice?"
-          },
-          {
-            "speaker": "Student",
-            "role": "student",
-            "text": "No, thank you."
-          },
-          {
-            "speaker": "Canteen assistant",
-            "role": "assistant",
-            "text": "Here you are."
-          },
-          {
-            "speaker": "Student",
-            "role": "student",
-            "text": "Thank you very much."
-          },
-          {
-            "speaker": "Canteen assistant",
-            "role": "assistant",
-            "text": "Would you like anything else?"
-          },
-          {
-            "speaker": "Student",
-            "role": "student",
-            "text": "No, thank you. That's all."
-          }
-        ],
-        "gaps": [
-          {
-            "id": "hello",
-            "lineIndex": 0,
-            "before": "",
-            "answer": "Hello",
-            "after": ". What would you like?"
-          },
-          {
-            "id": "pasta",
-            "lineIndex": 1,
-            "before": "Can I have some",
-            "answer": "pasta",
-            "after": ", please?"
-          },
-          {
-            "id": "juice",
-            "lineIndex": 2,
-            "before": "Would you like some",
-            "answer": "juice",
-            "after": "?"
-          },
-          {
-            "id": "no",
-            "lineIndex": 3,
-            "before": "",
-            "answer": "No",
-            "after": ", thank you."
-          },
-          {
-            "id": "you-are",
-            "lineIndex": 4,
-            "before": "Here",
-            "answer": "you are",
-            "after": "."
-          },
-          {
-            "id": "very-much",
-            "lineIndex": 5,
-            "before": "Thank you",
-            "answer": "very much",
-            "after": "."
-          }
-        ]
-      },
-      {
-        "id": "salad-water",
-        "conversation": [
-          {
-            "speaker": "Canteen assistant",
-            "role": "assistant",
-            "text": "Hello. What would you like?"
-          },
-          {
-            "speaker": "Student",
-            "role": "student",
-            "text": "I would like a salad, please."
-          },
-          {
-            "speaker": "Canteen assistant",
-            "role": "assistant",
-            "text": "Of course. Would you like some water?"
-          },
-          {
-            "speaker": "Student",
-            "role": "student",
-            "text": "Yes, please."
-          },
-          {
-            "speaker": "Canteen assistant",
-            "role": "assistant",
-            "text": "Anything else?"
-          },
-          {
-            "speaker": "Student",
-            "role": "student",
-            "text": "No, thank you."
-          },
-          {
-            "speaker": "Canteen assistant",
-            "role": "assistant",
-            "text": "Would you like anything else?"
-          },
-          {
-            "speaker": "Student",
-            "role": "student",
-            "text": "No, thank you. That's all."
-          }
-        ],
-        "gaps": [
-          {
-            "id": "would-like",
-            "lineIndex": 1,
-            "before": "I would",
-            "answer": "like",
-            "after": "a salad, please."
-          },
-          {
-            "id": "salad",
-            "lineIndex": 1,
-            "before": "I would like a",
-            "answer": "salad",
-            "after": ", please."
-          },
-          {
-            "id": "course",
-            "lineIndex": 2,
-            "before": "Of",
-            "answer": "course",
-            "after": ". Would you like some water?"
-          },
-          {
-            "id": "yes",
-            "lineIndex": 3,
-            "before": "",
-            "answer": "Yes",
-            "after": ", please."
-          },
-          {
-            "id": "anything",
-            "lineIndex": 4,
-            "before": "",
-            "answer": "Anything",
-            "after": "else?"
-          },
-          {
-            "id": "thank-you",
-            "lineIndex": 5,
-            "before": "No,",
-            "answer": "thank you",
-            "after": "."
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": "shop",
-    "title": "At the shop",
-    "emoji": "🛍️",
-    "level": "Listening & Speaking",
-    "description": "Practise buying school objects and asking for prices.",
-    "voiceProfiles": {
-      "shopkeeper": {
-        "pitch": 0.9,
-        "rate": 0.84
-      },
-      "customer": {
-        "pitch": 1.14,
-        "rate": 0.88
-      }
-    },
-    "wordBank": [
-      {
-        "id": "shop",
-        "word": "shop",
-        "imageKey": "shop"
-      },
-      {
-        "id": "notebook",
-        "word": "notebook",
-        "imageKey": "notebook"
-      },
-      {
-        "id": "pencil",
-        "word": "pencil",
-        "imageKey": "pencil"
-      },
-      {
-        "id": "bag",
-        "word": "bag",
-        "imageKey": "bag"
-      },
-      {
-        "id": "price",
-        "word": "price",
-        "imageKey": "price"
-      },
-      {
-        "id": "money",
-        "word": "money",
-        "imageKey": "money"
-      }
-    ],
-    "conversation": [
-      {
-        "speaker": "Shop assistant",
-        "role": "shopkeeper",
-        "text": "Hello. Can I help you?"
-      },
-      {
-        "speaker": "Customer",
-        "role": "customer",
-        "text": "Yes, please. I am looking for a notebook."
-      },
-      {
-        "speaker": "Shop assistant",
-        "role": "shopkeeper",
-        "text": "Here you are."
-      },
-      {
-        "speaker": "Customer",
-        "role": "customer",
-        "text": "How much is it?"
-      },
-      {
-        "speaker": "Shop assistant",
-        "role": "shopkeeper",
-        "text": "It is two pounds."
-      },
-      {
-        "speaker": "Customer",
-        "role": "customer",
-        "text": "Great. I will take it."
-      },
-      {
-        "speaker": "Shop assistant",
-        "role": "shopkeeper",
-        "text": "Would you like a bag?"
-      },
-      {
-        "speaker": "Customer",
-        "role": "customer",
-        "text": "Yes, please. Thank you."
-      }
-    ],
-    "fixedExpressions": [
-      {
-        "id": "can-help",
-        "left": "Can I",
-        "right": "help you?"
+        "right": "some cheese?"
       },
       {
         "id": "yes-please",
@@ -1034,29 +1116,9 @@ const situations = [
         "right": "please."
       },
       {
-        "id": "looking-for",
-        "left": "I am looking for",
-        "right": "a notebook."
-      },
-      {
-        "id": "here-are",
-        "left": "Here",
-        "right": "you are."
-      },
-      {
-        "id": "how-much",
-        "left": "How much",
-        "right": "is it?"
-      },
-      {
-        "id": "two-pounds",
-        "left": "It is",
-        "right": "two pounds."
-      },
-      {
-        "id": "take-it",
-        "left": "I will",
-        "right": "take it."
+        "id": "id-like",
+        "left": "I'd like",
+        "right": "some water, please."
       },
       {
         "id": "anything-else",
@@ -1064,291 +1126,2714 @@ const situations = [
         "right": "else?"
       },
       {
-        "id": "no-thanks",
-        "left": "No,",
-        "right": "thank you."
+        "id": "of-course",
+        "left": "Yes, of",
+        "right": "course."
       },
       {
-        "id": "too-expensive",
-        "left": "That is",
-        "right": "too expensive."
+        "id": "no-problem",
+        "left": "No",
+        "right": "problem."
       },
       {
-        "id": "would-bag",
-        "left": "Would you like",
-        "right": "a bag?"
+        "id": "enjoy-lunch",
+        "left": "Enjoy your",
+        "right": "lunch."
       },
       {
-        "id": "yes-thank",
-        "left": "Yes, please.",
-        "right": "Thank you."
+        "id": "how-much",
+        "left": "How much",
+        "right": "is it?"
+      },
+      {
+        "id": "not-hungry",
+        "left": "I'm not very",
+        "right": "hungry."
       }
     ],
     "missingScenarios": [
       {
-        "id": "notebook",
+        "id": "pasta",
         "conversation": [
           {
-            "speaker": "Shop assistant",
-            "role": "shopkeeper",
-            "text": "Hello. Can I help you?"
+            "speaker": "Canteen assistant",
+            "role": "assistant",
+            "text": "Hello. What would you like?"
           },
           {
-            "speaker": "Customer",
-            "role": "customer",
-            "text": "Yes, please. I am looking for a notebook."
+            "speaker": "Student",
+            "role": "student",
+            "text": "Could I have pasta with tomato sauce, please?"
           },
           {
-            "speaker": "Shop assistant",
-            "role": "shopkeeper",
-            "text": "Here you are."
+            "speaker": "Canteen assistant",
+            "role": "assistant",
+            "text": "Sure. Here you are."
           },
           {
-            "speaker": "Customer",
-            "role": "customer",
-            "text": "How much is it?"
+            "speaker": "Canteen assistant",
+            "role": "assistant",
+            "text": "Would you like some cheese on it?"
           },
           {
-            "speaker": "Shop assistant",
-            "role": "shopkeeper",
-            "text": "It is two pounds."
+            "speaker": "Student",
+            "role": "student",
+            "text": "Yes, please. I like cheese."
           },
           {
-            "speaker": "Customer",
-            "role": "customer",
-            "text": "Great. I will take it."
+            "speaker": "Canteen assistant",
+            "role": "assistant",
+            "text": "What would you like to drink?"
           },
           {
-            "speaker": "Shop assistant",
-            "role": "shopkeeper",
-            "text": "Would you like a bag?"
+            "speaker": "Student",
+            "role": "student",
+            "text": "I'd like some water, please."
           },
           {
-            "speaker": "Customer",
-            "role": "customer",
-            "text": "Yes, please. Thank you."
+            "speaker": "Canteen assistant",
+            "role": "assistant",
+            "text": "Here you are. Anything else?"
+          },
+          {
+            "speaker": "Student",
+            "role": "student",
+            "text": "Can I have some strawberries, please?"
+          },
+          {
+            "speaker": "Canteen assistant",
+            "role": "assistant",
+            "text": "Yes, of course."
+          },
+          {
+            "speaker": "Student",
+            "role": "student",
+            "text": "Thank you very much."
+          },
+          {
+            "speaker": "Canteen assistant",
+            "role": "assistant",
+            "text": "You're welcome. Enjoy your lunch."
           }
         ],
         "gaps": [
           {
-            "id": "help",
+            "id": "like",
             "lineIndex": 0,
-            "before": "Can I",
-            "answer": "help",
-            "after": "you?"
+            "before": "What would you",
+            "answer": "like",
+            "after": "?"
           },
           {
-            "id": "looking",
+            "id": "pasta",
             "lineIndex": 1,
-            "before": "I am",
-            "answer": "looking for",
-            "after": "a notebook."
+            "before": "Could I have",
+            "answer": "pasta",
+            "after": "with tomato sauce, please?"
           },
           {
-            "id": "notebook",
+            "id": "tomato",
             "lineIndex": 1,
-            "before": "I am looking for a",
-            "answer": "notebook",
+            "before": "Could I have pasta with",
+            "answer": "tomato sauce",
+            "after": ", please?"
+          },
+          {
+            "id": "cheese",
+            "lineIndex": 3,
+            "before": "Would you like some",
+            "answer": "cheese",
+            "after": "on it?"
+          },
+          {
+            "id": "water",
+            "lineIndex": 6,
+            "before": "I'd like some",
+            "answer": "water",
+            "after": ", please."
+          },
+          {
+            "id": "strawberries",
+            "lineIndex": 8,
+            "before": "Can I have some",
+            "answer": "strawberries",
+            "after": ", please?"
+          },
+          {
+            "id": "course",
+            "lineIndex": 9,
+            "before": "Yes, of",
+            "answer": "course",
             "after": "."
           },
           {
-            "id": "much",
+            "id": "lunch",
+            "lineIndex": 11,
+            "before": "Enjoy your",
+            "answer": "lunch",
+            "after": "."
+          }
+        ]
+      },
+      {
+        "id": "tuna-sandwich",
+        "conversation": [
+          {
+            "speaker": "Canteen assistant",
+            "role": "assistant",
+            "text": "Hello. What would you like?"
+          },
+          {
+            "speaker": "Student",
+            "role": "student",
+            "text": "Could I have a tuna sandwich, please?"
+          },
+          {
+            "speaker": "Canteen assistant",
+            "role": "assistant",
+            "text": "Of course. Would you like salad in it?"
+          },
+          {
+            "speaker": "Student",
+            "role": "student",
+            "text": "Yes, please, but no mushrooms."
+          },
+          {
+            "speaker": "Canteen assistant",
+            "role": "assistant",
+            "text": "No problem. Here you are."
+          },
+          {
+            "speaker": "Student",
+            "role": "student",
+            "text": "Can I have some rice too?"
+          },
+          {
+            "speaker": "Canteen assistant",
+            "role": "assistant",
+            "text": "Yes, here you are."
+          },
+          {
+            "speaker": "Student",
+            "role": "student",
+            "text": "How much is it?"
+          },
+          {
+            "speaker": "Canteen assistant",
+            "role": "assistant",
+            "text": "It is two pounds."
+          },
+          {
+            "speaker": "Student",
+            "role": "student",
+            "text": "Here you are."
+          },
+          {
+            "speaker": "Canteen assistant",
+            "role": "assistant",
+            "text": "Thank you. Enjoy your food."
+          },
+          {
+            "speaker": "Student",
+            "role": "student",
+            "text": "Thank you very much."
+          }
+        ],
+        "gaps": [
+          {
+            "id": "tuna",
+            "lineIndex": 1,
+            "before": "Could I have a",
+            "answer": "tuna",
+            "after": "sandwich, please?"
+          },
+          {
+            "id": "sandwich",
+            "lineIndex": 1,
+            "before": "Could I have a tuna",
+            "answer": "sandwich",
+            "after": ", please?"
+          },
+          {
+            "id": "salad",
+            "lineIndex": 2,
+            "before": "Would you like",
+            "answer": "salad",
+            "after": "in it?"
+          },
+          {
+            "id": "mushrooms",
             "lineIndex": 3,
-            "before": "How",
-            "answer": "much",
-            "after": "is it?"
+            "before": "No",
+            "answer": "mushrooms",
+            "after": "."
+          },
+          {
+            "id": "rice",
+            "lineIndex": 5,
+            "before": "Can I have some",
+            "answer": "rice",
+            "after": "too?"
+          },
+          {
+            "id": "much",
+            "lineIndex": 7,
+            "before": "How much",
+            "answer": "is it",
+            "after": "?"
           },
           {
             "id": "pounds",
-            "lineIndex": 4,
+            "lineIndex": 8,
             "before": "It is two",
             "answer": "pounds",
             "after": "."
           },
           {
-            "id": "take",
-            "lineIndex": 5,
-            "before": "Great. I will",
-            "answer": "take it",
+            "id": "food",
+            "lineIndex": 10,
+            "before": "Enjoy your",
+            "answer": "food",
             "after": "."
           }
         ]
       },
       {
-        "id": "pencil",
+        "id": "pancakes",
         "conversation": [
           {
-            "speaker": "Shop assistant",
-            "role": "shopkeeper",
-            "text": "Hello. Can I help you?"
+            "speaker": "Canteen assistant",
+            "role": "assistant",
+            "text": "Hello. What would you like today?"
           },
           {
-            "speaker": "Customer",
-            "role": "customer",
-            "text": "Yes, please. I am looking for a pencil."
+            "speaker": "Student",
+            "role": "student",
+            "text": "I'd like pancakes, please."
           },
           {
-            "speaker": "Shop assistant",
-            "role": "shopkeeper",
+            "speaker": "Canteen assistant",
+            "role": "assistant",
+            "text": "Would you like some chocolate on them?"
+          },
+          {
+            "speaker": "Student",
+            "role": "student",
+            "text": "Yes, please. Just a little."
+          },
+          {
+            "speaker": "Canteen assistant",
+            "role": "assistant",
+            "text": "Would you like some bread too?"
+          },
+          {
+            "speaker": "Student",
+            "role": "student",
+            "text": "No, thank you. I'm not very hungry."
+          },
+          {
+            "speaker": "Canteen assistant",
+            "role": "assistant",
+            "text": "Would you like strawberries?"
+          },
+          {
+            "speaker": "Student",
+            "role": "student",
+            "text": "Yes, please. I love strawberries."
+          },
+          {
+            "speaker": "Canteen assistant",
+            "role": "assistant",
             "text": "Here you are."
           },
           {
-            "speaker": "Customer",
-            "role": "customer",
-            "text": "How much is it?"
+            "speaker": "Student",
+            "role": "student",
+            "text": "Can I sit near my friends?"
           },
           {
-            "speaker": "Shop assistant",
-            "role": "shopkeeper",
-            "text": "It is one pound."
+            "speaker": "Canteen assistant",
+            "role": "assistant",
+            "text": "Yes, but walk carefully."
           },
           {
-            "speaker": "Customer",
-            "role": "customer",
-            "text": "Great. I will take it."
-          },
-          {
-            "speaker": "Shop assistant",
-            "role": "shopkeeper",
-            "text": "Would you like a bag?"
-          },
-          {
-            "speaker": "Customer",
-            "role": "customer",
-            "text": "Yes, please. Thank you."
+            "speaker": "Student",
+            "role": "student",
+            "text": "OK. Thank you."
           }
         ],
         "gaps": [
           {
-            "id": "can",
-            "lineIndex": 0,
-            "before": "Hello.",
-            "answer": "Can",
-            "after": "I help you?"
-          },
-          {
-            "id": "pencil",
+            "id": "pancakes",
             "lineIndex": 1,
-            "before": "I am looking for a",
-            "answer": "pencil",
-            "after": "."
+            "before": "I'd like",
+            "answer": "pancakes",
+            "after": ", please."
           },
           {
-            "id": "here",
+            "id": "chocolate",
             "lineIndex": 2,
-            "before": "",
-            "answer": "Here",
-            "after": "you are."
+            "before": "Would you like some",
+            "answer": "chocolate",
+            "after": "on them?"
           },
           {
-            "id": "how",
+            "id": "little",
             "lineIndex": 3,
-            "before": "",
-            "answer": "How",
-            "after": "much is it?"
-          },
-          {
-            "id": "one-pound",
-            "lineIndex": 4,
-            "before": "It is",
-            "answer": "one pound",
+            "before": "Just a",
+            "answer": "little",
             "after": "."
           },
           {
-            "id": "great",
+            "id": "bread",
+            "lineIndex": 4,
+            "before": "Would you like some",
+            "answer": "bread",
+            "after": "too?"
+          },
+          {
+            "id": "hungry",
             "lineIndex": 5,
-            "before": "",
-            "answer": "Great",
-            "after": ". I will take it."
+            "before": "I'm not very",
+            "answer": "hungry",
+            "after": "."
+          },
+          {
+            "id": "strawberries",
+            "lineIndex": 7,
+            "before": "I love",
+            "answer": "strawberries",
+            "after": "."
+          },
+          {
+            "id": "friends",
+            "lineIndex": 9,
+            "before": "Can I sit near my",
+            "answer": "friends",
+            "after": "?"
+          },
+          {
+            "id": "carefully",
+            "lineIndex": 10,
+            "before": "Walk",
+            "answer": "carefully",
+            "after": "."
           }
         ]
+      }
+    ]
+  },
+  {
+    "id": "table",
+    "title": "At the table",
+    "emoji": "🍞",
+    "level": "Listening & Speaking",
+    "description": "Ask for things politely during a meal.",
+    "voiceProfiles": {
+      "person_a": {
+        "pitch": 0.92,
+        "rate": 0.84
+      },
+      "person_b": {
+        "pitch": 1.18,
+        "rate": 0.88
+      }
+    },
+    "wordBank": [
+      {
+        "id": "toast",
+        "word": "toast",
+        "imageKey": "toast"
       },
       {
-        "id": "bag",
+        "id": "jam",
+        "word": "jam",
+        "imageKey": "jam"
+      },
+      {
+        "id": "apple-juice",
+        "word": "apple juice",
+        "imageKey": "appleJuice"
+      },
+      {
+        "id": "cereal",
+        "word": "cereal",
+        "imageKey": "cereal"
+      },
+      {
+        "id": "milk",
+        "word": "milk",
+        "imageKey": "milk"
+      },
+      {
+        "id": "rice",
+        "word": "rice",
+        "imageKey": "rice"
+      },
+      {
+        "id": "water",
+        "word": "water",
+        "imageKey": "water"
+      },
+      {
+        "id": "plate",
+        "word": "plate",
+        "imageKey": "plate"
+      },
+      {
+        "id": "glass",
+        "word": "glass",
+        "imageKey": "glass"
+      },
+      {
+        "id": "pass",
+        "word": "pass",
+        "imageKey": "pass"
+      },
+      {
+        "id": "full",
+        "word": "full",
+        "imageKey": "full"
+      },
+      {
+        "id": "enough",
+        "word": "enough",
+        "imageKey": "enough"
+      }
+    ],
+    "conversation": [
+      {
+        "speaker": "Person A",
+        "role": "person_a",
+        "text": "Would you like some more toast?"
+      },
+      {
+        "speaker": "Person B",
+        "role": "person_b",
+        "text": "Yes, please."
+      },
+      {
+        "speaker": "Person A",
+        "role": "person_a",
+        "text": "Here you are."
+      },
+      {
+        "speaker": "Person B",
+        "role": "person_b",
+        "text": "Thank you. Can you pass the jam, please?"
+      },
+      {
+        "speaker": "Person A",
+        "role": "person_a",
+        "text": "Yes, here you are."
+      },
+      {
+        "speaker": "Person B",
+        "role": "person_b",
+        "text": "Can I have some more apple juice, please?"
+      },
+      {
+        "speaker": "Person A",
+        "role": "person_a",
+        "text": "Yes, of course."
+      },
+      {
+        "speaker": "Person B",
+        "role": "person_b",
+        "text": "Would you like some cereal?"
+      },
+      {
+        "speaker": "Person A",
+        "role": "person_a",
+        "text": "No, thank you. I've had enough."
+      },
+      {
+        "speaker": "Person B",
+        "role": "person_b",
+        "text": "Are you full?"
+      },
+      {
+        "speaker": "Person A",
+        "role": "person_a",
+        "text": "Yes, I'm full now."
+      },
+      {
+        "speaker": "Person B",
+        "role": "person_b",
+        "text": "OK. Let's clear the table."
+      }
+    ],
+    "conversationVariants": [
+      [
+        {
+          "speaker": "Person A",
+          "role": "person_a",
+          "text": "Would you like some more toast?"
+        },
+        {
+          "speaker": "Person B",
+          "role": "person_b",
+          "text": "Yes, please."
+        },
+        {
+          "speaker": "Person A",
+          "role": "person_a",
+          "text": "Here you are."
+        },
+        {
+          "speaker": "Person B",
+          "role": "person_b",
+          "text": "Thank you. Can you pass the jam, please?"
+        },
+        {
+          "speaker": "Person A",
+          "role": "person_a",
+          "text": "Yes, here you are."
+        },
+        {
+          "speaker": "Person B",
+          "role": "person_b",
+          "text": "Can I have some more apple juice, please?"
+        },
+        {
+          "speaker": "Person A",
+          "role": "person_a",
+          "text": "Yes, of course."
+        },
+        {
+          "speaker": "Person B",
+          "role": "person_b",
+          "text": "Would you like some cereal?"
+        },
+        {
+          "speaker": "Person A",
+          "role": "person_a",
+          "text": "No, thank you. I've had enough."
+        },
+        {
+          "speaker": "Person B",
+          "role": "person_b",
+          "text": "Are you full?"
+        },
+        {
+          "speaker": "Person A",
+          "role": "person_a",
+          "text": "Yes, I'm full now."
+        },
+        {
+          "speaker": "Person B",
+          "role": "person_b",
+          "text": "OK. Let's clear the table."
+        }
+      ],
+      [
+        {
+          "speaker": "Person A",
+          "role": "person_a",
+          "text": "Can you pass the rice, please?"
+        },
+        {
+          "speaker": "Person B",
+          "role": "person_b",
+          "text": "Yes, here you are."
+        },
+        {
+          "speaker": "Person A",
+          "role": "person_a",
+          "text": "Thank you. Would you like some more rice?"
+        },
+        {
+          "speaker": "Person B",
+          "role": "person_b",
+          "text": "No, thank you. I'm full."
+        },
+        {
+          "speaker": "Person A",
+          "role": "person_a",
+          "text": "Can I have some water, please?"
+        },
+        {
+          "speaker": "Person B",
+          "role": "person_b",
+          "text": "Yes, of course."
+        },
+        {
+          "speaker": "Person A",
+          "role": "person_a",
+          "text": "Where is my glass?"
+        },
+        {
+          "speaker": "Person B",
+          "role": "person_b",
+          "text": "It's next to your plate."
+        },
+        {
+          "speaker": "Person A",
+          "role": "person_a",
+          "text": "Oh, yes. I can see it."
+        },
+        {
+          "speaker": "Person B",
+          "role": "person_b",
+          "text": "Would you like some milk?"
+        },
+        {
+          "speaker": "Person A",
+          "role": "person_a",
+          "text": "No, thank you. I've had enough."
+        },
+        {
+          "speaker": "Person B",
+          "role": "person_b",
+          "text": "OK. Good job eating politely."
+        }
+      ],
+      [
+        {
+          "speaker": "Person A",
+          "role": "person_a",
+          "text": "Would you like some more cereal?"
+        },
+        {
+          "speaker": "Person B",
+          "role": "person_b",
+          "text": "Yes, please. Just a little."
+        },
+        {
+          "speaker": "Person A",
+          "role": "person_a",
+          "text": "Can you pass the milk, please?"
+        },
+        {
+          "speaker": "Person B",
+          "role": "person_b",
+          "text": "Yes, here you are."
+        },
+        {
+          "speaker": "Person A",
+          "role": "person_a",
+          "text": "Thank you very much."
+        },
+        {
+          "speaker": "Person B",
+          "role": "person_b",
+          "text": "Can I have some toast, please?"
+        },
+        {
+          "speaker": "Person A",
+          "role": "person_a",
+          "text": "Yes, of course."
+        },
+        {
+          "speaker": "Person B",
+          "role": "person_b",
+          "text": "Would you like jam on it?"
+        },
+        {
+          "speaker": "Person A",
+          "role": "person_a",
+          "text": "No, thank you. I don't like jam."
+        },
+        {
+          "speaker": "Person B",
+          "role": "person_b",
+          "text": "Do you want some apple juice?"
+        },
+        {
+          "speaker": "Person A",
+          "role": "person_a",
+          "text": "No, thanks. I'm full."
+        },
+        {
+          "speaker": "Person B",
+          "role": "person_b",
+          "text": "OK. I've had enough too."
+        }
+      ]
+    ],
+    "fixedExpressions": [
+      {
+        "id": "more-toast",
+        "left": "Would you like",
+        "right": "some more toast?"
+      },
+      {
+        "id": "yes-please",
+        "left": "Yes,",
+        "right": "please."
+      },
+      {
+        "id": "pass-jam",
+        "left": "Can you pass",
+        "right": "the jam, please?"
+      },
+      {
+        "id": "more-juice",
+        "left": "Can I have",
+        "right": "some more apple juice?"
+      },
+      {
+        "id": "of-course",
+        "left": "Yes, of",
+        "right": "course."
+      },
+      {
+        "id": "no-thank",
+        "left": "No,",
+        "right": "thank you."
+      },
+      {
+        "id": "had-enough",
+        "left": "I've had",
+        "right": "enough."
+      },
+      {
+        "id": "im-full",
+        "left": "I'm",
+        "right": "full."
+      },
+      {
+        "id": "here-you",
+        "left": "Here",
+        "right": "you are."
+      },
+      {
+        "id": "clear-table",
+        "left": "Let's clear",
+        "right": "the table."
+      },
+      {
+        "id": "next-plate",
+        "left": "It's next to",
+        "right": "your plate."
+      },
+      {
+        "id": "just-little",
+        "left": "Just a",
+        "right": "little."
+      }
+    ],
+    "missingScenarios": [
+      {
+        "id": "toast-jam",
         "conversation": [
           {
-            "speaker": "Shop assistant",
-            "role": "shopkeeper",
-            "text": "Hello. Can I help you?"
+            "speaker": "Person A",
+            "role": "person_a",
+            "text": "Would you like some more toast?"
           },
           {
-            "speaker": "Customer",
-            "role": "customer",
-            "text": "Yes, please. I am looking for a bag."
+            "speaker": "Person B",
+            "role": "person_b",
+            "text": "Yes, please."
           },
           {
-            "speaker": "Shop assistant",
-            "role": "shopkeeper",
-            "text": "This blue bag is nice."
+            "speaker": "Person A",
+            "role": "person_a",
+            "text": "Here you are."
           },
           {
-            "speaker": "Customer",
-            "role": "customer",
-            "text": "How much is it?"
+            "speaker": "Person B",
+            "role": "person_b",
+            "text": "Thank you. Can you pass the jam, please?"
           },
           {
-            "speaker": "Shop assistant",
-            "role": "shopkeeper",
-            "text": "It is five pounds."
+            "speaker": "Person A",
+            "role": "person_a",
+            "text": "Yes, here you are."
           },
           {
-            "speaker": "Customer",
-            "role": "customer",
-            "text": "Great. I will take it."
+            "speaker": "Person B",
+            "role": "person_b",
+            "text": "Can I have some more apple juice, please?"
           },
           {
-            "speaker": "Shop assistant",
-            "role": "shopkeeper",
-            "text": "Would you like a bag?"
+            "speaker": "Person A",
+            "role": "person_a",
+            "text": "Yes, of course."
           },
           {
-            "speaker": "Customer",
-            "role": "customer",
-            "text": "Yes, please. Thank you."
+            "speaker": "Person B",
+            "role": "person_b",
+            "text": "Would you like some cereal?"
+          },
+          {
+            "speaker": "Person A",
+            "role": "person_a",
+            "text": "No, thank you. I've had enough."
+          },
+          {
+            "speaker": "Person B",
+            "role": "person_b",
+            "text": "Are you full?"
+          },
+          {
+            "speaker": "Person A",
+            "role": "person_a",
+            "text": "Yes, I'm full now."
+          },
+          {
+            "speaker": "Person B",
+            "role": "person_b",
+            "text": "OK. Let's clear the table."
           }
         ],
         "gaps": [
+          {
+            "id": "toast",
+            "lineIndex": 0,
+            "before": "Would you like some more",
+            "answer": "toast",
+            "after": "?"
+          },
           {
             "id": "yes",
             "lineIndex": 1,
             "before": "",
             "answer": "Yes",
-            "after": ", please. I am looking for a bag."
+            "after": ", please."
           },
           {
-            "id": "bag",
-            "lineIndex": 1,
-            "before": "I am looking for a",
-            "answer": "bag",
-            "after": "."
-          },
-          {
-            "id": "blue",
-            "lineIndex": 2,
-            "before": "This",
-            "answer": "blue",
-            "after": "bag is nice."
-          },
-          {
-            "id": "much",
+            "id": "jam",
             "lineIndex": 3,
-            "before": "How",
-            "answer": "much",
-            "after": "is it?"
+            "before": "Can you pass the",
+            "answer": "jam",
+            "after": ", please?"
           },
           {
-            "id": "five",
-            "lineIndex": 4,
-            "before": "It is",
-            "answer": "five pounds",
+            "id": "apple-juice",
+            "lineIndex": 5,
+            "before": "Can I have some more",
+            "answer": "apple juice",
+            "after": ", please?"
+          },
+          {
+            "id": "course",
+            "lineIndex": 6,
+            "before": "Yes, of",
+            "answer": "course",
             "after": "."
           },
           {
-            "id": "will",
+            "id": "cereal",
+            "lineIndex": 7,
+            "before": "Would you like some",
+            "answer": "cereal",
+            "after": "?"
+          },
+          {
+            "id": "enough",
+            "lineIndex": 8,
+            "before": "I've had",
+            "answer": "enough",
+            "after": "."
+          },
+          {
+            "id": "full",
+            "lineIndex": 10,
+            "before": "Yes, I'm",
+            "answer": "full",
+            "after": "now."
+          }
+        ]
+      },
+      {
+        "id": "rice-water",
+        "conversation": [
+          {
+            "speaker": "Person A",
+            "role": "person_a",
+            "text": "Can you pass the rice, please?"
+          },
+          {
+            "speaker": "Person B",
+            "role": "person_b",
+            "text": "Yes, here you are."
+          },
+          {
+            "speaker": "Person A",
+            "role": "person_a",
+            "text": "Thank you. Would you like some more rice?"
+          },
+          {
+            "speaker": "Person B",
+            "role": "person_b",
+            "text": "No, thank you. I'm full."
+          },
+          {
+            "speaker": "Person A",
+            "role": "person_a",
+            "text": "Can I have some water, please?"
+          },
+          {
+            "speaker": "Person B",
+            "role": "person_b",
+            "text": "Yes, of course."
+          },
+          {
+            "speaker": "Person A",
+            "role": "person_a",
+            "text": "Where is my glass?"
+          },
+          {
+            "speaker": "Person B",
+            "role": "person_b",
+            "text": "It's next to your plate."
+          },
+          {
+            "speaker": "Person A",
+            "role": "person_a",
+            "text": "Oh, yes. I can see it."
+          },
+          {
+            "speaker": "Person B",
+            "role": "person_b",
+            "text": "Would you like some milk?"
+          },
+          {
+            "speaker": "Person A",
+            "role": "person_a",
+            "text": "No, thank you. I've had enough."
+          },
+          {
+            "speaker": "Person B",
+            "role": "person_b",
+            "text": "OK. Good job eating politely."
+          }
+        ],
+        "gaps": [
+          {
+            "id": "rice",
+            "lineIndex": 0,
+            "before": "Can you pass the",
+            "answer": "rice",
+            "after": ", please?"
+          },
+          {
+            "id": "full",
+            "lineIndex": 3,
+            "before": "I'm",
+            "answer": "full",
+            "after": "."
+          },
+          {
+            "id": "water",
+            "lineIndex": 4,
+            "before": "Can I have some",
+            "answer": "water",
+            "after": ", please?"
+          },
+          {
+            "id": "glass",
+            "lineIndex": 6,
+            "before": "Where is my",
+            "answer": "glass",
+            "after": "?"
+          },
+          {
+            "id": "plate",
+            "lineIndex": 7,
+            "before": "It's next to your",
+            "answer": "plate",
+            "after": "."
+          },
+          {
+            "id": "milk",
+            "lineIndex": 9,
+            "before": "Would you like some",
+            "answer": "milk",
+            "after": "?"
+          },
+          {
+            "id": "enough",
+            "lineIndex": 10,
+            "before": "I've had",
+            "answer": "enough",
+            "after": "."
+          },
+          {
+            "id": "politely",
+            "lineIndex": 11,
+            "before": "Good job eating",
+            "answer": "politely",
+            "after": "."
+          }
+        ]
+      },
+      {
+        "id": "cereal-milk",
+        "conversation": [
+          {
+            "speaker": "Person A",
+            "role": "person_a",
+            "text": "Would you like some more cereal?"
+          },
+          {
+            "speaker": "Person B",
+            "role": "person_b",
+            "text": "Yes, please. Just a little."
+          },
+          {
+            "speaker": "Person A",
+            "role": "person_a",
+            "text": "Can you pass the milk, please?"
+          },
+          {
+            "speaker": "Person B",
+            "role": "person_b",
+            "text": "Yes, here you are."
+          },
+          {
+            "speaker": "Person A",
+            "role": "person_a",
+            "text": "Thank you very much."
+          },
+          {
+            "speaker": "Person B",
+            "role": "person_b",
+            "text": "Can I have some toast, please?"
+          },
+          {
+            "speaker": "Person A",
+            "role": "person_a",
+            "text": "Yes, of course."
+          },
+          {
+            "speaker": "Person B",
+            "role": "person_b",
+            "text": "Would you like jam on it?"
+          },
+          {
+            "speaker": "Person A",
+            "role": "person_a",
+            "text": "No, thank you. I don't like jam."
+          },
+          {
+            "speaker": "Person B",
+            "role": "person_b",
+            "text": "Do you want some apple juice?"
+          },
+          {
+            "speaker": "Person A",
+            "role": "person_a",
+            "text": "No, thanks. I'm full."
+          },
+          {
+            "speaker": "Person B",
+            "role": "person_b",
+            "text": "OK. I've had enough too."
+          }
+        ],
+        "gaps": [
+          {
+            "id": "cereal",
+            "lineIndex": 0,
+            "before": "Would you like some more",
+            "answer": "cereal",
+            "after": "?"
+          },
+          {
+            "id": "little",
+            "lineIndex": 1,
+            "before": "Just a",
+            "answer": "little",
+            "after": "."
+          },
+          {
+            "id": "milk",
+            "lineIndex": 2,
+            "before": "Can you pass the",
+            "answer": "milk",
+            "after": ", please?"
+          },
+          {
+            "id": "toast",
             "lineIndex": 5,
-            "before": "Great. I",
-            "answer": "will",
-            "after": "take it."
+            "before": "Can I have some",
+            "answer": "toast",
+            "after": ", please?"
+          },
+          {
+            "id": "jam",
+            "lineIndex": 7,
+            "before": "Would you like",
+            "answer": "jam",
+            "after": "on it?"
+          },
+          {
+            "id": "apple-juice",
+            "lineIndex": 9,
+            "before": "Do you want some",
+            "answer": "apple juice",
+            "after": "?"
+          },
+          {
+            "id": "full",
+            "lineIndex": 10,
+            "before": "I'm",
+            "answer": "full",
+            "after": "."
+          },
+          {
+            "id": "enough",
+            "lineIndex": 11,
+            "before": "I've had",
+            "answer": "enough",
+            "after": "too."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "cooking",
+    "title": "Cooking together",
+    "emoji": "🥣",
+    "level": "Listening & Speaking",
+    "description": "Follow instructions and talk about cooking actions.",
+    "voiceProfiles": {
+      "teacher": {
+        "pitch": 0.9,
+        "rate": 0.82
+      },
+      "student": {
+        "pitch": 1.18,
+        "rate": 0.88
+      }
+    },
+    "wordBank": [
+      {
+        "id": "add",
+        "word": "add",
+        "imageKey": "add"
+      },
+      {
+        "id": "mix",
+        "word": "mix",
+        "imageKey": "mix"
+      },
+      {
+        "id": "boil",
+        "word": "boil",
+        "imageKey": "boil"
+      },
+      {
+        "id": "weigh",
+        "word": "weigh",
+        "imageKey": "weigh"
+      },
+      {
+        "id": "taste",
+        "word": "taste",
+        "imageKey": "taste"
+      },
+      {
+        "id": "fry",
+        "word": "fry",
+        "imageKey": "fry"
+      },
+      {
+        "id": "peel",
+        "word": "peel",
+        "imageKey": "peel"
+      },
+      {
+        "id": "chop",
+        "word": "chop",
+        "imageKey": "chop"
+      },
+      {
+        "id": "burn",
+        "word": "burn",
+        "imageKey": "burn"
+      },
+      {
+        "id": "stir",
+        "word": "stir",
+        "imageKey": "stir"
+      },
+      {
+        "id": "pour",
+        "word": "pour",
+        "imageKey": "pour"
+      },
+      {
+        "id": "roll-out",
+        "word": "roll out",
+        "imageKey": "rollOut"
+      }
+    ],
+    "conversation": [
+      {
+        "speaker": "Teacher",
+        "role": "teacher",
+        "text": "Today we are making vegetable soup."
+      },
+      {
+        "speaker": "Student",
+        "role": "student",
+        "text": "Great. What do we do first?"
+      },
+      {
+        "speaker": "Teacher",
+        "role": "teacher",
+        "text": "First, weigh the carrots and the onions."
+      },
+      {
+        "speaker": "Student",
+        "role": "student",
+        "text": "OK. Then what?"
+      },
+      {
+        "speaker": "Teacher",
+        "role": "teacher",
+        "text": "Peel and chop them carefully."
+      },
+      {
+        "speaker": "Student",
+        "role": "student",
+        "text": "Can I add some water now?"
+      },
+      {
+        "speaker": "Teacher",
+        "role": "teacher",
+        "text": "Yes. Add some water and stir the soup."
+      },
+      {
+        "speaker": "Student",
+        "role": "student",
+        "text": "Should I boil it?"
+      },
+      {
+        "speaker": "Teacher",
+        "role": "teacher",
+        "text": "Yes, boil it, but don't let it burn."
+      },
+      {
+        "speaker": "Student",
+        "role": "student",
+        "text": "Can I taste it now?"
+      },
+      {
+        "speaker": "Teacher",
+        "role": "teacher",
+        "text": "Yes, taste it carefully."
+      },
+      {
+        "speaker": "Student",
+        "role": "student",
+        "text": "It tastes good!"
+      }
+    ],
+    "conversationVariants": [
+      [
+        {
+          "speaker": "Teacher",
+          "role": "teacher",
+          "text": "Today we are making vegetable soup."
+        },
+        {
+          "speaker": "Student",
+          "role": "student",
+          "text": "Great. What do we do first?"
+        },
+        {
+          "speaker": "Teacher",
+          "role": "teacher",
+          "text": "First, weigh the carrots and the onions."
+        },
+        {
+          "speaker": "Student",
+          "role": "student",
+          "text": "OK. Then what?"
+        },
+        {
+          "speaker": "Teacher",
+          "role": "teacher",
+          "text": "Peel and chop them carefully."
+        },
+        {
+          "speaker": "Student",
+          "role": "student",
+          "text": "Can I add some water now?"
+        },
+        {
+          "speaker": "Teacher",
+          "role": "teacher",
+          "text": "Yes. Add some water and stir the soup."
+        },
+        {
+          "speaker": "Student",
+          "role": "student",
+          "text": "Should I boil it?"
+        },
+        {
+          "speaker": "Teacher",
+          "role": "teacher",
+          "text": "Yes, boil it, but don't let it burn."
+        },
+        {
+          "speaker": "Student",
+          "role": "student",
+          "text": "Can I taste it now?"
+        },
+        {
+          "speaker": "Teacher",
+          "role": "teacher",
+          "text": "Yes, taste it carefully."
+        },
+        {
+          "speaker": "Student",
+          "role": "student",
+          "text": "It tastes good!"
+        }
+      ],
+      [
+        {
+          "speaker": "Teacher",
+          "role": "teacher",
+          "text": "Today we are making pancakes."
+        },
+        {
+          "speaker": "Student",
+          "role": "student",
+          "text": "Great. What do we need?"
+        },
+        {
+          "speaker": "Teacher",
+          "role": "teacher",
+          "text": "We need flour, milk and eggs."
+        },
+        {
+          "speaker": "Student",
+          "role": "student",
+          "text": "Should I mix them?"
+        },
+        {
+          "speaker": "Teacher",
+          "role": "teacher",
+          "text": "Yes. Mix them in the bowl."
+        },
+        {
+          "speaker": "Student",
+          "role": "student",
+          "text": "Can I pour the milk?"
+        },
+        {
+          "speaker": "Teacher",
+          "role": "teacher",
+          "text": "Yes, pour it slowly."
+        },
+        {
+          "speaker": "Student",
+          "role": "student",
+          "text": "Should I fry the pancakes now?"
+        },
+        {
+          "speaker": "Teacher",
+          "role": "teacher",
+          "text": "Yes, but be careful. Don't let them burn."
+        },
+        {
+          "speaker": "Student",
+          "role": "student",
+          "text": "They smell lovely."
+        },
+        {
+          "speaker": "Teacher",
+          "role": "teacher",
+          "text": "Now taste one carefully."
+        },
+        {
+          "speaker": "Student",
+          "role": "student",
+          "text": "It tastes delicious!"
+        }
+      ],
+      [
+        {
+          "speaker": "Teacher",
+          "role": "teacher",
+          "text": "Today we are making pizza."
+        },
+        {
+          "speaker": "Student",
+          "role": "student",
+          "text": "Nice. What do we do first?"
+        },
+        {
+          "speaker": "Teacher",
+          "role": "teacher",
+          "text": "First, roll out the dough."
+        },
+        {
+          "speaker": "Student",
+          "role": "student",
+          "text": "Like this?"
+        },
+        {
+          "speaker": "Teacher",
+          "role": "teacher",
+          "text": "Yes. Now add the tomato sauce."
+        },
+        {
+          "speaker": "Student",
+          "role": "student",
+          "text": "Can I add some cheese too?"
+        },
+        {
+          "speaker": "Teacher",
+          "role": "teacher",
+          "text": "Yes, add some cheese and mushrooms."
+        },
+        {
+          "speaker": "Student",
+          "role": "student",
+          "text": "Should I stir the sauce first?"
+        },
+        {
+          "speaker": "Teacher",
+          "role": "teacher",
+          "text": "Yes, stir it carefully."
+        },
+        {
+          "speaker": "Student",
+          "role": "student",
+          "text": "Can I taste the sauce?"
+        },
+        {
+          "speaker": "Teacher",
+          "role": "teacher",
+          "text": "Yes, but don't eat too much."
+        },
+        {
+          "speaker": "Student",
+          "role": "student",
+          "text": "OK. It tastes good."
+        }
+      ]
+    ],
+    "fixedExpressions": [
+      {
+        "id": "what-first",
+        "left": "What do we do",
+        "right": "first?"
+      },
+      {
+        "id": "then-what",
+        "left": "Then",
+        "right": "what?"
+      },
+      {
+        "id": "weigh-carrots",
+        "left": "Weigh the carrots",
+        "right": "and the onions."
+      },
+      {
+        "id": "peel-chop",
+        "left": "Peel and chop",
+        "right": "them carefully."
+      },
+      {
+        "id": "add-water",
+        "left": "Add some",
+        "right": "water."
+      },
+      {
+        "id": "stir-soup",
+        "left": "Stir the",
+        "right": "soup."
+      },
+      {
+        "id": "dont-burn",
+        "left": "Don't let",
+        "right": "it burn."
+      },
+      {
+        "id": "taste-carefully",
+        "left": "Taste it",
+        "right": "carefully."
+      },
+      {
+        "id": "mix-bowl",
+        "left": "Mix them",
+        "right": "in the bowl."
+      },
+      {
+        "id": "pour-slowly",
+        "left": "Pour it",
+        "right": "slowly."
+      },
+      {
+        "id": "roll-out",
+        "left": "Roll out",
+        "right": "the dough."
+      },
+      {
+        "id": "tastes-good",
+        "left": "It tastes",
+        "right": "good."
+      }
+    ],
+    "missingScenarios": [
+      {
+        "id": "soup",
+        "conversation": [
+          {
+            "speaker": "Teacher",
+            "role": "teacher",
+            "text": "Today we are making vegetable soup."
+          },
+          {
+            "speaker": "Student",
+            "role": "student",
+            "text": "Great. What do we do first?"
+          },
+          {
+            "speaker": "Teacher",
+            "role": "teacher",
+            "text": "First, weigh the carrots and the onions."
+          },
+          {
+            "speaker": "Student",
+            "role": "student",
+            "text": "OK. Then what?"
+          },
+          {
+            "speaker": "Teacher",
+            "role": "teacher",
+            "text": "Peel and chop them carefully."
+          },
+          {
+            "speaker": "Student",
+            "role": "student",
+            "text": "Can I add some water now?"
+          },
+          {
+            "speaker": "Teacher",
+            "role": "teacher",
+            "text": "Yes. Add some water and stir the soup."
+          },
+          {
+            "speaker": "Student",
+            "role": "student",
+            "text": "Should I boil it?"
+          },
+          {
+            "speaker": "Teacher",
+            "role": "teacher",
+            "text": "Yes, boil it, but don't let it burn."
+          },
+          {
+            "speaker": "Student",
+            "role": "student",
+            "text": "Can I taste it now?"
+          },
+          {
+            "speaker": "Teacher",
+            "role": "teacher",
+            "text": "Yes, taste it carefully."
+          },
+          {
+            "speaker": "Student",
+            "role": "student",
+            "text": "It tastes good!"
+          }
+        ],
+        "gaps": [
+          {
+            "id": "soup",
+            "lineIndex": 0,
+            "before": "Today we are making vegetable",
+            "answer": "soup",
+            "after": "."
+          },
+          {
+            "id": "first",
+            "lineIndex": 1,
+            "before": "What do we do",
+            "answer": "first",
+            "after": "?"
+          },
+          {
+            "id": "weigh",
+            "lineIndex": 2,
+            "before": "First,",
+            "answer": "weigh",
+            "after": "the carrots and the onions."
+          },
+          {
+            "id": "peel",
+            "lineIndex": 4,
+            "before": "",
+            "answer": "Peel",
+            "after": "and chop them carefully."
+          },
+          {
+            "id": "chop",
+            "lineIndex": 4,
+            "before": "Peel and",
+            "answer": "chop",
+            "after": "them carefully."
+          },
+          {
+            "id": "add",
+            "lineIndex": 6,
+            "before": "",
+            "answer": "Add",
+            "after": "some water and stir the soup."
+          },
+          {
+            "id": "boil",
+            "lineIndex": 8,
+            "before": "Yes,",
+            "answer": "boil",
+            "after": "it, but don't let it burn."
+          },
+          {
+            "id": "taste",
+            "lineIndex": 10,
+            "before": "Yes,",
+            "answer": "taste",
+            "after": "it carefully."
+          }
+        ]
+      },
+      {
+        "id": "pancakes",
+        "conversation": [
+          {
+            "speaker": "Teacher",
+            "role": "teacher",
+            "text": "Today we are making pancakes."
+          },
+          {
+            "speaker": "Student",
+            "role": "student",
+            "text": "Great. What do we need?"
+          },
+          {
+            "speaker": "Teacher",
+            "role": "teacher",
+            "text": "We need flour, milk and eggs."
+          },
+          {
+            "speaker": "Student",
+            "role": "student",
+            "text": "Should I mix them?"
+          },
+          {
+            "speaker": "Teacher",
+            "role": "teacher",
+            "text": "Yes. Mix them in the bowl."
+          },
+          {
+            "speaker": "Student",
+            "role": "student",
+            "text": "Can I pour the milk?"
+          },
+          {
+            "speaker": "Teacher",
+            "role": "teacher",
+            "text": "Yes, pour it slowly."
+          },
+          {
+            "speaker": "Student",
+            "role": "student",
+            "text": "Should I fry the pancakes now?"
+          },
+          {
+            "speaker": "Teacher",
+            "role": "teacher",
+            "text": "Yes, but be careful. Don't let them burn."
+          },
+          {
+            "speaker": "Student",
+            "role": "student",
+            "text": "They smell lovely."
+          },
+          {
+            "speaker": "Teacher",
+            "role": "teacher",
+            "text": "Now taste one carefully."
+          },
+          {
+            "speaker": "Student",
+            "role": "student",
+            "text": "It tastes delicious!"
+          }
+        ],
+        "gaps": [
+          {
+            "id": "pancakes",
+            "lineIndex": 0,
+            "before": "Today we are making",
+            "answer": "pancakes",
+            "after": "."
+          },
+          {
+            "id": "mix",
+            "lineIndex": 3,
+            "before": "Should I",
+            "answer": "mix",
+            "after": "them?"
+          },
+          {
+            "id": "bowl",
+            "lineIndex": 4,
+            "before": "Mix them in the",
+            "answer": "bowl",
+            "after": "."
+          },
+          {
+            "id": "pour",
+            "lineIndex": 5,
+            "before": "Can I",
+            "answer": "pour",
+            "after": "the milk?"
+          },
+          {
+            "id": "fry",
+            "lineIndex": 7,
+            "before": "Should I",
+            "answer": "fry",
+            "after": "the pancakes now?"
+          },
+          {
+            "id": "burn",
+            "lineIndex": 8,
+            "before": "Don't let them",
+            "answer": "burn",
+            "after": "."
+          },
+          {
+            "id": "taste",
+            "lineIndex": 10,
+            "before": "Now",
+            "answer": "taste",
+            "after": "one carefully."
+          },
+          {
+            "id": "delicious",
+            "lineIndex": 11,
+            "before": "It tastes",
+            "answer": "delicious",
+            "after": "!"
+          }
+        ]
+      },
+      {
+        "id": "pizza",
+        "conversation": [
+          {
+            "speaker": "Teacher",
+            "role": "teacher",
+            "text": "Today we are making pizza."
+          },
+          {
+            "speaker": "Student",
+            "role": "student",
+            "text": "Nice. What do we do first?"
+          },
+          {
+            "speaker": "Teacher",
+            "role": "teacher",
+            "text": "First, roll out the dough."
+          },
+          {
+            "speaker": "Student",
+            "role": "student",
+            "text": "Like this?"
+          },
+          {
+            "speaker": "Teacher",
+            "role": "teacher",
+            "text": "Yes. Now add the tomato sauce."
+          },
+          {
+            "speaker": "Student",
+            "role": "student",
+            "text": "Can I add some cheese too?"
+          },
+          {
+            "speaker": "Teacher",
+            "role": "teacher",
+            "text": "Yes, add some cheese and mushrooms."
+          },
+          {
+            "speaker": "Student",
+            "role": "student",
+            "text": "Should I stir the sauce first?"
+          },
+          {
+            "speaker": "Teacher",
+            "role": "teacher",
+            "text": "Yes, stir it carefully."
+          },
+          {
+            "speaker": "Student",
+            "role": "student",
+            "text": "Can I taste the sauce?"
+          },
+          {
+            "speaker": "Teacher",
+            "role": "teacher",
+            "text": "Yes, but don't eat too much."
+          },
+          {
+            "speaker": "Student",
+            "role": "student",
+            "text": "OK. It tastes good."
+          }
+        ],
+        "gaps": [
+          {
+            "id": "pizza",
+            "lineIndex": 0,
+            "before": "Today we are making",
+            "answer": "pizza",
+            "after": "."
+          },
+          {
+            "id": "roll-out",
+            "lineIndex": 2,
+            "before": "First,",
+            "answer": "roll out",
+            "after": "the dough."
+          },
+          {
+            "id": "add",
+            "lineIndex": 4,
+            "before": "Now",
+            "answer": "add",
+            "after": "the tomato sauce."
+          },
+          {
+            "id": "cheese",
+            "lineIndex": 5,
+            "before": "Can I add some",
+            "answer": "cheese",
+            "after": "too?"
+          },
+          {
+            "id": "mushrooms",
+            "lineIndex": 6,
+            "before": "Add some cheese and",
+            "answer": "mushrooms",
+            "after": "."
+          },
+          {
+            "id": "stir",
+            "lineIndex": 8,
+            "before": "Yes,",
+            "answer": "stir",
+            "after": "it carefully."
+          },
+          {
+            "id": "taste",
+            "lineIndex": 9,
+            "before": "Can I",
+            "answer": "taste",
+            "after": "the sauce?"
+          },
+          {
+            "id": "good",
+            "lineIndex": 11,
+            "before": "It tastes",
+            "answer": "good",
+            "after": "."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "animals",
+    "title": "Talking about animals",
+    "emoji": "🐼",
+    "level": "Listening & Speaking",
+    "description": "Give opinions and talk about animals.",
+    "voiceProfiles": {
+      "friend_a": {
+        "pitch": 1.12,
+        "rate": 0.87
+      },
+      "friend_b": {
+        "pitch": 1.24,
+        "rate": 0.89
+      }
+    },
+    "wordBank": [
+      {
+        "id": "hippo",
+        "word": "hippo",
+        "imageKey": "hippo"
+      },
+      {
+        "id": "whale",
+        "word": "whale",
+        "imageKey": "whale"
+      },
+      {
+        "id": "kangaroo",
+        "word": "kangaroo",
+        "imageKey": "kangaroo"
+      },
+      {
+        "id": "parrot",
+        "word": "parrot",
+        "imageKey": "parrot"
+      },
+      {
+        "id": "lion",
+        "word": "lion",
+        "imageKey": "lion"
+      },
+      {
+        "id": "dolphin",
+        "word": "dolphin",
+        "imageKey": "dolphin"
+      },
+      {
+        "id": "shark",
+        "word": "shark",
+        "imageKey": "shark"
+      },
+      {
+        "id": "jellyfish",
+        "word": "jellyfish",
+        "imageKey": "jellyfish"
+      },
+      {
+        "id": "tiger",
+        "word": "tiger",
+        "imageKey": "tiger"
+      },
+      {
+        "id": "panda",
+        "word": "panda",
+        "imageKey": "panda"
+      },
+      {
+        "id": "polar-bear",
+        "word": "polar bear",
+        "imageKey": "polarBear"
+      },
+      {
+        "id": "penguin",
+        "word": "penguin",
+        "imageKey": "penguin"
+      },
+      {
+        "id": "dangerous",
+        "word": "dangerous",
+        "imageKey": "dangerous"
+      },
+      {
+        "id": "colourful",
+        "word": "colourful",
+        "imageKey": "colourful"
+      },
+      {
+        "id": "intelligent",
+        "word": "intelligent",
+        "imageKey": "intelligent"
+      },
+      {
+        "id": "frightening",
+        "word": "frightening",
+        "imageKey": "frightening"
+      },
+      {
+        "id": "pretty",
+        "word": "pretty",
+        "imageKey": "pretty"
+      },
+      {
+        "id": "ugly",
+        "word": "ugly",
+        "imageKey": "ugly"
+      }
+    ],
+    "conversation": [
+      {
+        "speaker": "Friend A",
+        "role": "friend_a",
+        "text": "I love penguins."
+      },
+      {
+        "speaker": "Friend B",
+        "role": "friend_b",
+        "text": "Why?"
+      },
+      {
+        "speaker": "Friend A",
+        "role": "friend_a",
+        "text": "Because they are funny and pretty."
+      },
+      {
+        "speaker": "Friend B",
+        "role": "friend_b",
+        "text": "Are they bigger than lions?"
+      },
+      {
+        "speaker": "Friend A",
+        "role": "friend_a",
+        "text": "No, they aren't. Lions are bigger."
+      },
+      {
+        "speaker": "Friend B",
+        "role": "friend_b",
+        "text": "Do penguins live in hot places?"
+      },
+      {
+        "speaker": "Friend A",
+        "role": "friend_a",
+        "text": "No, they live in cold places."
+      },
+      {
+        "speaker": "Friend B",
+        "role": "friend_b",
+        "text": "Did you know they are birds?"
+      },
+      {
+        "speaker": "Friend A",
+        "role": "friend_a",
+        "text": "Really? That's cool."
+      },
+      {
+        "speaker": "Friend B",
+        "role": "friend_b",
+        "text": "Yes. I want to see penguins one day."
+      },
+      {
+        "speaker": "Friend A",
+        "role": "friend_a",
+        "text": "Me too. Let's read about them."
+      },
+      {
+        "speaker": "Friend B",
+        "role": "friend_b",
+        "text": "Good idea."
+      }
+    ],
+    "conversationVariants": [
+      [
+        {
+          "speaker": "Friend A",
+          "role": "friend_a",
+          "text": "I love penguins."
+        },
+        {
+          "speaker": "Friend B",
+          "role": "friend_b",
+          "text": "Why?"
+        },
+        {
+          "speaker": "Friend A",
+          "role": "friend_a",
+          "text": "Because they are funny and pretty."
+        },
+        {
+          "speaker": "Friend B",
+          "role": "friend_b",
+          "text": "Are they bigger than lions?"
+        },
+        {
+          "speaker": "Friend A",
+          "role": "friend_a",
+          "text": "No, they aren't. Lions are bigger."
+        },
+        {
+          "speaker": "Friend B",
+          "role": "friend_b",
+          "text": "Do penguins live in hot places?"
+        },
+        {
+          "speaker": "Friend A",
+          "role": "friend_a",
+          "text": "No, they live in cold places."
+        },
+        {
+          "speaker": "Friend B",
+          "role": "friend_b",
+          "text": "Did you know they are birds?"
+        },
+        {
+          "speaker": "Friend A",
+          "role": "friend_a",
+          "text": "Really? That's cool."
+        },
+        {
+          "speaker": "Friend B",
+          "role": "friend_b",
+          "text": "Yes. I want to see penguins one day."
+        },
+        {
+          "speaker": "Friend A",
+          "role": "friend_a",
+          "text": "Me too. Let's read about them."
+        },
+        {
+          "speaker": "Friend B",
+          "role": "friend_b",
+          "text": "Good idea."
+        }
+      ],
+      [
+        {
+          "speaker": "Friend A",
+          "role": "friend_a",
+          "text": "I like dolphins."
+        },
+        {
+          "speaker": "Friend B",
+          "role": "friend_b",
+          "text": "Why?"
+        },
+        {
+          "speaker": "Friend A",
+          "role": "friend_a",
+          "text": "Because they are intelligent and beautiful."
+        },
+        {
+          "speaker": "Friend B",
+          "role": "friend_b",
+          "text": "Are dolphins more dangerous than sharks?"
+        },
+        {
+          "speaker": "Friend A",
+          "role": "friend_a",
+          "text": "No, sharks are more dangerous."
+        },
+        {
+          "speaker": "Friend B",
+          "role": "friend_b",
+          "text": "Are whales bigger than dolphins?"
+        },
+        {
+          "speaker": "Friend A",
+          "role": "friend_a",
+          "text": "Yes, they are much bigger."
+        },
+        {
+          "speaker": "Friend B",
+          "role": "friend_b",
+          "text": "Do dolphins live in the water?"
+        },
+        {
+          "speaker": "Friend A",
+          "role": "friend_a",
+          "text": "Yes, of course."
+        },
+        {
+          "speaker": "Friend B",
+          "role": "friend_b",
+          "text": "Cool. I want to learn more."
+        },
+        {
+          "speaker": "Friend A",
+          "role": "friend_a",
+          "text": "Let's find a book about dolphins."
+        },
+        {
+          "speaker": "Friend B",
+          "role": "friend_b",
+          "text": "Great idea."
+        }
+      ],
+      [
+        {
+          "speaker": "Friend A",
+          "role": "friend_a",
+          "text": "I love pandas."
+        },
+        {
+          "speaker": "Friend B",
+          "role": "friend_b",
+          "text": "Why?"
+        },
+        {
+          "speaker": "Friend A",
+          "role": "friend_a",
+          "text": "Because they are pretty and calm."
+        },
+        {
+          "speaker": "Friend B",
+          "role": "friend_b",
+          "text": "Are pandas more colourful than parrots?"
+        },
+        {
+          "speaker": "Friend A",
+          "role": "friend_a",
+          "text": "No, parrots are more colourful."
+        },
+        {
+          "speaker": "Friend B",
+          "role": "friend_b",
+          "text": "Are tigers frightening?"
+        },
+        {
+          "speaker": "Friend A",
+          "role": "friend_a",
+          "text": "Yes, they can be frightening."
+        },
+        {
+          "speaker": "Friend B",
+          "role": "friend_b",
+          "text": "What about kangaroos?"
+        },
+        {
+          "speaker": "Friend A",
+          "role": "friend_a",
+          "text": "Kangaroos are strong and fast."
+        },
+        {
+          "speaker": "Friend B",
+          "role": "friend_b",
+          "text": "Did you know hippos are dangerous?"
+        },
+        {
+          "speaker": "Friend A",
+          "role": "friend_a",
+          "text": "Really? I didn't know that."
+        },
+        {
+          "speaker": "Friend B",
+          "role": "friend_b",
+          "text": "Yes. Animals are amazing."
+        }
+      ]
+    ],
+    "fixedExpressions": [
+      {
+        "id": "i-love",
+        "left": "I love",
+        "right": "penguins."
+      },
+      {
+        "id": "why",
+        "left": "Why",
+        "right": "?"
+      },
+      {
+        "id": "because",
+        "left": "Because they are",
+        "right": "funny and pretty."
+      },
+      {
+        "id": "bigger-than",
+        "left": "Are they bigger",
+        "right": "than lions?"
+      },
+      {
+        "id": "no-arent",
+        "left": "No, they",
+        "right": "aren't."
+      },
+      {
+        "id": "live-cold",
+        "left": "They live in",
+        "right": "cold places."
+      },
+      {
+        "id": "did-know",
+        "left": "Did you know",
+        "right": "they are birds?"
+      },
+      {
+        "id": "really-cool",
+        "left": "Really? That's",
+        "right": "cool."
+      },
+      {
+        "id": "more-dangerous",
+        "left": "Sharks are more",
+        "right": "dangerous."
+      },
+      {
+        "id": "more-colourful",
+        "left": "Parrots are more",
+        "right": "colourful."
+      },
+      {
+        "id": "what-about",
+        "left": "What about",
+        "right": "kangaroos?"
+      },
+      {
+        "id": "amazing",
+        "left": "Animals are",
+        "right": "amazing."
+      }
+    ],
+    "missingScenarios": [
+      {
+        "id": "penguins",
+        "conversation": [
+          {
+            "speaker": "Friend A",
+            "role": "friend_a",
+            "text": "I love penguins."
+          },
+          {
+            "speaker": "Friend B",
+            "role": "friend_b",
+            "text": "Why?"
+          },
+          {
+            "speaker": "Friend A",
+            "role": "friend_a",
+            "text": "Because they are funny and pretty."
+          },
+          {
+            "speaker": "Friend B",
+            "role": "friend_b",
+            "text": "Are they bigger than lions?"
+          },
+          {
+            "speaker": "Friend A",
+            "role": "friend_a",
+            "text": "No, they aren't. Lions are bigger."
+          },
+          {
+            "speaker": "Friend B",
+            "role": "friend_b",
+            "text": "Do penguins live in hot places?"
+          },
+          {
+            "speaker": "Friend A",
+            "role": "friend_a",
+            "text": "No, they live in cold places."
+          },
+          {
+            "speaker": "Friend B",
+            "role": "friend_b",
+            "text": "Did you know they are birds?"
+          },
+          {
+            "speaker": "Friend A",
+            "role": "friend_a",
+            "text": "Really? That's cool."
+          },
+          {
+            "speaker": "Friend B",
+            "role": "friend_b",
+            "text": "Yes. I want to see penguins one day."
+          },
+          {
+            "speaker": "Friend A",
+            "role": "friend_a",
+            "text": "Me too. Let's read about them."
+          },
+          {
+            "speaker": "Friend B",
+            "role": "friend_b",
+            "text": "Good idea."
+          }
+        ],
+        "gaps": [
+          {
+            "id": "penguins",
+            "lineIndex": 0,
+            "before": "I love",
+            "answer": "penguins",
+            "after": "."
+          },
+          {
+            "id": "why",
+            "lineIndex": 1,
+            "before": "",
+            "answer": "Why",
+            "after": "?"
+          },
+          {
+            "id": "pretty",
+            "lineIndex": 2,
+            "before": "They are funny and",
+            "answer": "pretty",
+            "after": "."
+          },
+          {
+            "id": "lions",
+            "lineIndex": 3,
+            "before": "Are they bigger than",
+            "answer": "lions",
+            "after": "?"
+          },
+          {
+            "id": "bigger",
+            "lineIndex": 4,
+            "before": "Lions are",
+            "answer": "bigger",
+            "after": "."
+          },
+          {
+            "id": "cold",
+            "lineIndex": 6,
+            "before": "They live in",
+            "answer": "cold",
+            "after": "places."
+          },
+          {
+            "id": "birds",
+            "lineIndex": 7,
+            "before": "Did you know they are",
+            "answer": "birds",
+            "after": "?"
+          },
+          {
+            "id": "cool",
+            "lineIndex": 8,
+            "before": "That's",
+            "answer": "cool",
+            "after": "."
+          }
+        ]
+      },
+      {
+        "id": "dolphins",
+        "conversation": [
+          {
+            "speaker": "Friend A",
+            "role": "friend_a",
+            "text": "I like dolphins."
+          },
+          {
+            "speaker": "Friend B",
+            "role": "friend_b",
+            "text": "Why?"
+          },
+          {
+            "speaker": "Friend A",
+            "role": "friend_a",
+            "text": "Because they are intelligent and beautiful."
+          },
+          {
+            "speaker": "Friend B",
+            "role": "friend_b",
+            "text": "Are dolphins more dangerous than sharks?"
+          },
+          {
+            "speaker": "Friend A",
+            "role": "friend_a",
+            "text": "No, sharks are more dangerous."
+          },
+          {
+            "speaker": "Friend B",
+            "role": "friend_b",
+            "text": "Are whales bigger than dolphins?"
+          },
+          {
+            "speaker": "Friend A",
+            "role": "friend_a",
+            "text": "Yes, they are much bigger."
+          },
+          {
+            "speaker": "Friend B",
+            "role": "friend_b",
+            "text": "Do dolphins live in the water?"
+          },
+          {
+            "speaker": "Friend A",
+            "role": "friend_a",
+            "text": "Yes, of course."
+          },
+          {
+            "speaker": "Friend B",
+            "role": "friend_b",
+            "text": "Cool. I want to learn more."
+          },
+          {
+            "speaker": "Friend A",
+            "role": "friend_a",
+            "text": "Let's find a book about dolphins."
+          },
+          {
+            "speaker": "Friend B",
+            "role": "friend_b",
+            "text": "Great idea."
+          }
+        ],
+        "gaps": [
+          {
+            "id": "dolphins",
+            "lineIndex": 0,
+            "before": "I like",
+            "answer": "dolphins",
+            "after": "."
+          },
+          {
+            "id": "intelligent",
+            "lineIndex": 2,
+            "before": "They are",
+            "answer": "intelligent",
+            "after": "and beautiful."
+          },
+          {
+            "id": "dangerous",
+            "lineIndex": 3,
+            "before": "Are dolphins more",
+            "answer": "dangerous",
+            "after": "than sharks?"
+          },
+          {
+            "id": "sharks",
+            "lineIndex": 4,
+            "before": "",
+            "answer": "Sharks",
+            "after": "are more dangerous."
+          },
+          {
+            "id": "whales",
+            "lineIndex": 5,
+            "before": "Are",
+            "answer": "whales",
+            "after": "bigger than dolphins?"
+          },
+          {
+            "id": "water",
+            "lineIndex": 7,
+            "before": "Do dolphins live in the",
+            "answer": "water",
+            "after": "?"
+          },
+          {
+            "id": "learn",
+            "lineIndex": 9,
+            "before": "I want to",
+            "answer": "learn",
+            "after": "more."
+          },
+          {
+            "id": "book",
+            "lineIndex": 10,
+            "before": "Let's find a",
+            "answer": "book",
+            "after": "about dolphins."
+          }
+        ]
+      },
+      {
+        "id": "pandas",
+        "conversation": [
+          {
+            "speaker": "Friend A",
+            "role": "friend_a",
+            "text": "I love pandas."
+          },
+          {
+            "speaker": "Friend B",
+            "role": "friend_b",
+            "text": "Why?"
+          },
+          {
+            "speaker": "Friend A",
+            "role": "friend_a",
+            "text": "Because they are pretty and calm."
+          },
+          {
+            "speaker": "Friend B",
+            "role": "friend_b",
+            "text": "Are pandas more colourful than parrots?"
+          },
+          {
+            "speaker": "Friend A",
+            "role": "friend_a",
+            "text": "No, parrots are more colourful."
+          },
+          {
+            "speaker": "Friend B",
+            "role": "friend_b",
+            "text": "Are tigers frightening?"
+          },
+          {
+            "speaker": "Friend A",
+            "role": "friend_a",
+            "text": "Yes, they can be frightening."
+          },
+          {
+            "speaker": "Friend B",
+            "role": "friend_b",
+            "text": "What about kangaroos?"
+          },
+          {
+            "speaker": "Friend A",
+            "role": "friend_a",
+            "text": "Kangaroos are strong and fast."
+          },
+          {
+            "speaker": "Friend B",
+            "role": "friend_b",
+            "text": "Did you know hippos are dangerous?"
+          },
+          {
+            "speaker": "Friend A",
+            "role": "friend_a",
+            "text": "Really? I didn't know that."
+          },
+          {
+            "speaker": "Friend B",
+            "role": "friend_b",
+            "text": "Yes. Animals are amazing."
+          }
+        ],
+        "gaps": [
+          {
+            "id": "pandas",
+            "lineIndex": 0,
+            "before": "I love",
+            "answer": "pandas",
+            "after": "."
+          },
+          {
+            "id": "colourful",
+            "lineIndex": 3,
+            "before": "Are pandas more",
+            "answer": "colourful",
+            "after": "than parrots?"
+          },
+          {
+            "id": "parrots",
+            "lineIndex": 4,
+            "before": "",
+            "answer": "Parrots",
+            "after": "are more colourful."
+          },
+          {
+            "id": "tigers",
+            "lineIndex": 5,
+            "before": "Are",
+            "answer": "tigers",
+            "after": "frightening?"
+          },
+          {
+            "id": "frightening",
+            "lineIndex": 6,
+            "before": "They can be",
+            "answer": "frightening",
+            "after": "."
+          },
+          {
+            "id": "kangaroos",
+            "lineIndex": 7,
+            "before": "What about",
+            "answer": "kangaroos",
+            "after": "?"
+          },
+          {
+            "id": "hippos",
+            "lineIndex": 9,
+            "before": "Did you know",
+            "answer": "hippos",
+            "after": "are dangerous?"
+          },
+          {
+            "id": "amazing",
+            "lineIndex": 11,
+            "before": "Animals are",
+            "answer": "amazing",
+            "after": "."
           }
         ]
       }
@@ -1359,7 +3844,7 @@ const situations = [
     "title": "Asking for directions",
     "emoji": "🧭",
     "level": "Listening & Speaking",
-    "description": "Practise asking where places are and following simple directions.",
+    "description": "Ask where places are and follow directions.",
     "voiceProfiles": {
       "visitor": {
         "pitch": 1.12,
@@ -1372,77 +3857,325 @@ const situations = [
     },
     "wordBank": [
       {
-        "id": "library",
-        "word": "library",
-        "imageKey": "library"
+        "id": "lighthouse",
+        "word": "lighthouse",
+        "imageKey": "lighthouse"
       },
       {
-        "id": "park",
-        "word": "park",
-        "imageKey": "park"
+        "id": "road",
+        "word": "road",
+        "imageKey": "road"
       },
       {
-        "id": "school",
-        "word": "school",
-        "imageKey": "school"
+        "id": "bridge",
+        "word": "bridge",
+        "imageKey": "bridge"
       },
       {
-        "id": "straight",
-        "word": "straight on",
-        "imageKey": "straight"
+        "id": "village",
+        "word": "village",
+        "imageKey": "village"
       },
       {
-        "id": "left",
-        "word": "turn left",
-        "imageKey": "left"
+        "id": "cave",
+        "word": "cave",
+        "imageKey": "cave"
       },
       {
-        "id": "right",
-        "word": "turn right",
-        "imageKey": "right"
+        "id": "cliffs",
+        "word": "cliffs",
+        "imageKey": "cliffs"
+      },
+      {
+        "id": "harbour",
+        "word": "harbour",
+        "imageKey": "harbour"
+      },
+      {
+        "id": "building",
+        "word": "building",
+        "imageKey": "building"
+      },
+      {
+        "id": "farm",
+        "word": "farm",
+        "imageKey": "farm"
+      },
+      {
+        "id": "field",
+        "word": "field",
+        "imageKey": "field"
+      },
+      {
+        "id": "hospital",
+        "word": "hospital",
+        "imageKey": "hospital"
+      },
+      {
+        "id": "cafe",
+        "word": "café",
+        "imageKey": "cafe"
+      },
+      {
+        "id": "cinema",
+        "word": "cinema",
+        "imageKey": "cinema"
+      },
+      {
+        "id": "supermarket",
+        "word": "supermarket",
+        "imageKey": "supermarket"
       }
     ],
     "conversation": [
       {
         "speaker": "Visitor",
         "role": "visitor",
-        "text": "Excuse me. Where is the library?"
+        "text": "Excuse me. Where's the café?"
       },
       {
         "speaker": "Helper",
         "role": "helper",
-        "text": "Go straight on and turn left."
+        "text": "It's near the hospital."
       },
       {
         "speaker": "Visitor",
         "role": "visitor",
-        "text": "Is it near the park?"
+        "text": "How do I get there?"
       },
       {
         "speaker": "Helper",
         "role": "helper",
-        "text": "Yes, it is next to the park."
+        "text": "Go straight on, then turn right."
       },
       {
         "speaker": "Visitor",
         "role": "visitor",
-        "text": "Thank you for your help."
+        "text": "OK. Straight on, then turn right."
       },
       {
         "speaker": "Helper",
         "role": "helper",
-        "text": "You are welcome."
-      },
-      {
-        "speaker": "Helper",
-        "role": "helper",
-        "text": "Walk for two minutes."
+        "text": "Go past the cinema, then turn left."
       },
       {
         "speaker": "Visitor",
         "role": "visitor",
-        "text": "Great. I can see it now."
+        "text": "Is it next to the school?"
+      },
+      {
+        "speaker": "Helper",
+        "role": "helper",
+        "text": "Yes, it is next to the school."
+      },
+      {
+        "speaker": "Visitor",
+        "role": "visitor",
+        "text": "Is it far away?"
+      },
+      {
+        "speaker": "Helper",
+        "role": "helper",
+        "text": "No. It's only two minutes from here."
+      },
+      {
+        "speaker": "Visitor",
+        "role": "visitor",
+        "text": "Thank you very much."
+      },
+      {
+        "speaker": "Helper",
+        "role": "helper",
+        "text": "You're welcome."
       }
+    ],
+    "conversationVariants": [
+      [
+        {
+          "speaker": "Visitor",
+          "role": "visitor",
+          "text": "Excuse me. Where's the café?"
+        },
+        {
+          "speaker": "Helper",
+          "role": "helper",
+          "text": "It's near the hospital."
+        },
+        {
+          "speaker": "Visitor",
+          "role": "visitor",
+          "text": "How do I get there?"
+        },
+        {
+          "speaker": "Helper",
+          "role": "helper",
+          "text": "Go straight on, then turn right."
+        },
+        {
+          "speaker": "Visitor",
+          "role": "visitor",
+          "text": "OK. Straight on, then turn right."
+        },
+        {
+          "speaker": "Helper",
+          "role": "helper",
+          "text": "Go past the cinema, then turn left."
+        },
+        {
+          "speaker": "Visitor",
+          "role": "visitor",
+          "text": "Is it next to the school?"
+        },
+        {
+          "speaker": "Helper",
+          "role": "helper",
+          "text": "Yes, it is next to the school."
+        },
+        {
+          "speaker": "Visitor",
+          "role": "visitor",
+          "text": "Is it far away?"
+        },
+        {
+          "speaker": "Helper",
+          "role": "helper",
+          "text": "No. It's only two minutes from here."
+        },
+        {
+          "speaker": "Visitor",
+          "role": "visitor",
+          "text": "Thank you very much."
+        },
+        {
+          "speaker": "Helper",
+          "role": "helper",
+          "text": "You're welcome."
+        }
+      ],
+      [
+        {
+          "speaker": "Visitor",
+          "role": "visitor",
+          "text": "Excuse me. Where's the supermarket?"
+        },
+        {
+          "speaker": "Helper",
+          "role": "helper",
+          "text": "It's in the village."
+        },
+        {
+          "speaker": "Visitor",
+          "role": "visitor",
+          "text": "How do I get there?"
+        },
+        {
+          "speaker": "Helper",
+          "role": "helper",
+          "text": "Go straight on and cross the bridge."
+        },
+        {
+          "speaker": "Visitor",
+          "role": "visitor",
+          "text": "Do I turn left after the bridge?"
+        },
+        {
+          "speaker": "Helper",
+          "role": "helper",
+          "text": "No. Turn right after the bridge."
+        },
+        {
+          "speaker": "Visitor",
+          "role": "visitor",
+          "text": "Is it near the road?"
+        },
+        {
+          "speaker": "Helper",
+          "role": "helper",
+          "text": "Yes. It's on the main road."
+        },
+        {
+          "speaker": "Visitor",
+          "role": "visitor",
+          "text": "Can I see the lighthouse from there?"
+        },
+        {
+          "speaker": "Helper",
+          "role": "helper",
+          "text": "Yes, you can see it from the road."
+        },
+        {
+          "speaker": "Visitor",
+          "role": "visitor",
+          "text": "Thank you for your help."
+        },
+        {
+          "speaker": "Helper",
+          "role": "helper",
+          "text": "You're welcome."
+        }
+      ],
+      [
+        {
+          "speaker": "Visitor",
+          "role": "visitor",
+          "text": "Excuse me. Where's the farm?"
+        },
+        {
+          "speaker": "Helper",
+          "role": "helper",
+          "text": "It's near the field."
+        },
+        {
+          "speaker": "Visitor",
+          "role": "visitor",
+          "text": "Is it far from the harbour?"
+        },
+        {
+          "speaker": "Helper",
+          "role": "helper",
+          "text": "Yes, it is a little far."
+        },
+        {
+          "speaker": "Visitor",
+          "role": "visitor",
+          "text": "How do I get there?"
+        },
+        {
+          "speaker": "Helper",
+          "role": "helper",
+          "text": "Go past the building and turn left."
+        },
+        {
+          "speaker": "Visitor",
+          "role": "visitor",
+          "text": "Do I go over the bridge?"
+        },
+        {
+          "speaker": "Helper",
+          "role": "helper",
+          "text": "No. Go along the road by the cliffs."
+        },
+        {
+          "speaker": "Visitor",
+          "role": "visitor",
+          "text": "Is the cave near the farm?"
+        },
+        {
+          "speaker": "Helper",
+          "role": "helper",
+          "text": "Yes, the cave is behind the farm."
+        },
+        {
+          "speaker": "Visitor",
+          "role": "visitor",
+          "text": "Great. Thank you very much."
+        },
+        {
+          "speaker": "Helper",
+          "role": "helper",
+          "text": "You're welcome."
+        }
+      ]
     ],
     "fixedExpressions": [
       {
@@ -1451,19 +4184,19 @@ const situations = [
         "right": "me."
       },
       {
-        "id": "where-library",
-        "left": "Where is",
-        "right": "the library?"
+        "id": "wheres-cafe",
+        "left": "Where's",
+        "right": "the café?"
       },
       {
-        "id": "go-straight",
+        "id": "get-there",
+        "left": "How do I",
+        "right": "get there?"
+      },
+      {
+        "id": "straight-on",
         "left": "Go straight",
         "right": "on."
-      },
-      {
-        "id": "turn-left",
-        "left": "Turn",
-        "right": "left."
       },
       {
         "id": "turn-right",
@@ -1471,24 +4204,19 @@ const situations = [
         "right": "right."
       },
       {
-        "id": "near-park",
-        "left": "Is it near",
-        "right": "the park?"
+        "id": "turn-left",
+        "left": "Turn",
+        "right": "left."
       },
       {
-        "id": "next-to",
-        "left": "It is next to",
-        "right": "the park."
+        "id": "go-past",
+        "left": "Go past",
+        "right": "the cinema."
       },
       {
-        "id": "thank-help",
-        "left": "Thank you for",
-        "right": "your help."
-      },
-      {
-        "id": "welcome",
-        "left": "You are",
-        "right": "welcome."
+        "id": "next-school",
+        "left": "It's next to",
+        "right": "the school."
       },
       {
         "id": "far-away",
@@ -1496,207 +4224,64 @@ const situations = [
         "right": "far away?"
       },
       {
-        "id": "two-minutes",
-        "left": "Walk for",
-        "right": "two minutes."
+        "id": "welcome",
+        "left": "You're",
+        "right": "welcome."
       },
       {
-        "id": "see-now",
-        "left": "I can",
-        "right": "see it now."
+        "id": "cross-bridge",
+        "left": "Cross",
+        "right": "the bridge."
+      },
+      {
+        "id": "main-road",
+        "left": "It's on",
+        "right": "the main road."
       }
     ],
     "missingScenarios": [
       {
-        "id": "library-left",
+        "id": "cafe",
         "conversation": [
           {
             "speaker": "Visitor",
             "role": "visitor",
-            "text": "Excuse me. Where is the library?"
+            "text": "Excuse me. Where's the café?"
           },
           {
             "speaker": "Helper",
             "role": "helper",
-            "text": "Go straight on and turn left."
+            "text": "It's near the hospital."
           },
           {
             "speaker": "Visitor",
             "role": "visitor",
-            "text": "Is it near the park?"
+            "text": "How do I get there?"
           },
           {
             "speaker": "Helper",
             "role": "helper",
-            "text": "Yes, it is next to the park."
+            "text": "Go straight on, then turn right."
           },
           {
             "speaker": "Visitor",
             "role": "visitor",
-            "text": "Thank you for your help."
+            "text": "OK. Straight on, then turn right."
           },
           {
             "speaker": "Helper",
             "role": "helper",
-            "text": "You are welcome."
-          },
-          {
-            "speaker": "Helper",
-            "role": "helper",
-            "text": "Walk for two minutes."
+            "text": "Go past the cinema, then turn left."
           },
           {
             "speaker": "Visitor",
             "role": "visitor",
-            "text": "Great. I can see it now."
-          }
-        ],
-        "gaps": [
-          {
-            "id": "excuse",
-            "lineIndex": 0,
-            "before": "",
-            "answer": "Excuse me",
-            "after": ". Where is the library?"
-          },
-          {
-            "id": "library",
-            "lineIndex": 0,
-            "before": "Where is the",
-            "answer": "library",
-            "after": "?"
-          },
-          {
-            "id": "straight",
-            "lineIndex": 1,
-            "before": "Go",
-            "answer": "straight on",
-            "after": "and turn left."
-          },
-          {
-            "id": "left",
-            "lineIndex": 1,
-            "before": "Go straight on and turn",
-            "answer": "left",
-            "after": "."
-          },
-          {
-            "id": "park",
-            "lineIndex": 2,
-            "before": "Is it near the",
-            "answer": "park",
-            "after": "?"
-          },
-          {
-            "id": "welcome",
-            "lineIndex": 5,
-            "before": "You are",
-            "answer": "welcome",
-            "after": "."
-          }
-        ]
-      },
-      {
-        "id": "school-right",
-        "conversation": [
-          {
-            "speaker": "Visitor",
-            "role": "visitor",
-            "text": "Excuse me. Where is the school?"
+            "text": "Is it next to the school?"
           },
           {
             "speaker": "Helper",
             "role": "helper",
-            "text": "Go straight on and turn right."
-          },
-          {
-            "speaker": "Visitor",
-            "role": "visitor",
-            "text": "Is it near the library?"
-          },
-          {
-            "speaker": "Helper",
-            "role": "helper",
-            "text": "Yes, it is opposite the library."
-          },
-          {
-            "speaker": "Visitor",
-            "role": "visitor",
-            "text": "Thank you for your help."
-          },
-          {
-            "speaker": "Helper",
-            "role": "helper",
-            "text": "You are welcome."
-          },
-          {
-            "speaker": "Helper",
-            "role": "helper",
-            "text": "Walk for two minutes."
-          },
-          {
-            "speaker": "Visitor",
-            "role": "visitor",
-            "text": "Great. I can see it now."
-          }
-        ],
-        "gaps": [
-          {
-            "id": "where",
-            "lineIndex": 0,
-            "before": "Excuse me.",
-            "answer": "Where",
-            "after": "is the school?"
-          },
-          {
-            "id": "school",
-            "lineIndex": 0,
-            "before": "Where is the",
-            "answer": "school",
-            "after": "?"
-          },
-          {
-            "id": "right",
-            "lineIndex": 1,
-            "before": "Go straight on and turn",
-            "answer": "right",
-            "after": "."
-          },
-          {
-            "id": "near",
-            "lineIndex": 2,
-            "before": "Is it",
-            "answer": "near",
-            "after": "the library?"
-          },
-          {
-            "id": "opposite",
-            "lineIndex": 3,
-            "before": "Yes, it is",
-            "answer": "opposite",
-            "after": "the library."
-          },
-          {
-            "id": "help",
-            "lineIndex": 4,
-            "before": "Thank you for your",
-            "answer": "help",
-            "after": "."
-          }
-        ]
-      },
-      {
-        "id": "park-left",
-        "conversation": [
-          {
-            "speaker": "Visitor",
-            "role": "visitor",
-            "text": "Excuse me. Where is the park?"
-          },
-          {
-            "speaker": "Helper",
-            "role": "helper",
-            "text": "Go straight on and turn left."
+            "text": "Yes, it is next to the school."
           },
           {
             "speaker": "Visitor",
@@ -1706,7 +4291,130 @@ const situations = [
           {
             "speaker": "Helper",
             "role": "helper",
-            "text": "No, it is near the school."
+            "text": "No. It's only two minutes from here."
+          },
+          {
+            "speaker": "Visitor",
+            "role": "visitor",
+            "text": "Thank you very much."
+          },
+          {
+            "speaker": "Helper",
+            "role": "helper",
+            "text": "You're welcome."
+          }
+        ],
+        "gaps": [
+          {
+            "id": "cafe",
+            "lineIndex": 0,
+            "before": "Where's the",
+            "answer": "café",
+            "after": "?"
+          },
+          {
+            "id": "hospital",
+            "lineIndex": 1,
+            "before": "It's near the",
+            "answer": "hospital",
+            "after": "."
+          },
+          {
+            "id": "straight",
+            "lineIndex": 3,
+            "before": "Go",
+            "answer": "straight on",
+            "after": ", then turn right."
+          },
+          {
+            "id": "right",
+            "lineIndex": 3,
+            "before": "Go straight on, then turn",
+            "answer": "right",
+            "after": "."
+          },
+          {
+            "id": "cinema",
+            "lineIndex": 5,
+            "before": "Go past the",
+            "answer": "cinema",
+            "after": ", then turn left."
+          },
+          {
+            "id": "left",
+            "lineIndex": 5,
+            "before": "Go past the cinema, then turn",
+            "answer": "left",
+            "after": "."
+          },
+          {
+            "id": "school",
+            "lineIndex": 7,
+            "before": "It is next to the",
+            "answer": "school",
+            "after": "."
+          },
+          {
+            "id": "minutes",
+            "lineIndex": 9,
+            "before": "It's only two",
+            "answer": "minutes",
+            "after": "from here."
+          }
+        ]
+      },
+      {
+        "id": "supermarket",
+        "conversation": [
+          {
+            "speaker": "Visitor",
+            "role": "visitor",
+            "text": "Excuse me. Where's the supermarket?"
+          },
+          {
+            "speaker": "Helper",
+            "role": "helper",
+            "text": "It's in the village."
+          },
+          {
+            "speaker": "Visitor",
+            "role": "visitor",
+            "text": "How do I get there?"
+          },
+          {
+            "speaker": "Helper",
+            "role": "helper",
+            "text": "Go straight on and cross the bridge."
+          },
+          {
+            "speaker": "Visitor",
+            "role": "visitor",
+            "text": "Do I turn left after the bridge?"
+          },
+          {
+            "speaker": "Helper",
+            "role": "helper",
+            "text": "No. Turn right after the bridge."
+          },
+          {
+            "speaker": "Visitor",
+            "role": "visitor",
+            "text": "Is it near the road?"
+          },
+          {
+            "speaker": "Helper",
+            "role": "helper",
+            "text": "Yes. It's on the main road."
+          },
+          {
+            "speaker": "Visitor",
+            "role": "visitor",
+            "text": "Can I see the lighthouse from there?"
+          },
+          {
+            "speaker": "Helper",
+            "role": "helper",
+            "text": "Yes, you can see it from the road."
           },
           {
             "speaker": "Visitor",
@@ -1716,181 +4424,576 @@ const situations = [
           {
             "speaker": "Helper",
             "role": "helper",
-            "text": "You are welcome."
-          },
-          {
-            "speaker": "Helper",
-            "role": "helper",
-            "text": "Walk for two minutes."
-          },
-          {
-            "speaker": "Visitor",
-            "role": "visitor",
-            "text": "Great. I can see it now."
+            "text": "You're welcome."
           }
         ],
         "gaps": [
           {
-            "id": "park",
+            "id": "supermarket",
             "lineIndex": 0,
-            "before": "Where is the",
-            "answer": "park",
+            "before": "Where's the",
+            "answer": "supermarket",
             "after": "?"
           },
           {
-            "id": "go",
+            "id": "village",
             "lineIndex": 1,
-            "before": "",
-            "answer": "Go",
-            "after": "straight on and turn left."
-          },
-          {
-            "id": "left",
-            "lineIndex": 1,
-            "before": "Go straight on and turn",
-            "answer": "left",
+            "before": "It's in the",
+            "answer": "village",
             "after": "."
           },
           {
-            "id": "far-away",
-            "lineIndex": 2,
-            "before": "Is it",
-            "answer": "far away",
-            "after": "?"
+            "id": "bridge",
+            "lineIndex": 3,
+            "before": "Go straight on and cross the",
+            "answer": "bridge",
+            "after": "."
           },
           {
-            "id": "near",
-            "lineIndex": 3,
-            "before": "No, it is",
-            "answer": "near",
-            "after": "the school."
+            "id": "right",
+            "lineIndex": 5,
+            "before": "Turn",
+            "answer": "right",
+            "after": "after the bridge."
+          },
+          {
+            "id": "road",
+            "lineIndex": 7,
+            "before": "It's on the main",
+            "answer": "road",
+            "after": "."
+          },
+          {
+            "id": "lighthouse",
+            "lineIndex": 8,
+            "before": "Can I see the",
+            "answer": "lighthouse",
+            "after": "from there?"
+          },
+          {
+            "id": "help",
+            "lineIndex": 10,
+            "before": "Thank you for your",
+            "answer": "help",
+            "after": "."
           },
           {
             "id": "welcome",
-            "lineIndex": 5,
-            "before": "You are",
+            "lineIndex": 11,
+            "before": "You're",
             "answer": "welcome",
             "after": "."
+          }
+        ]
+      },
+      {
+        "id": "farm",
+        "conversation": [
+          {
+            "speaker": "Visitor",
+            "role": "visitor",
+            "text": "Excuse me. Where's the farm?"
+          },
+          {
+            "speaker": "Helper",
+            "role": "helper",
+            "text": "It's near the field."
+          },
+          {
+            "speaker": "Visitor",
+            "role": "visitor",
+            "text": "Is it far from the harbour?"
+          },
+          {
+            "speaker": "Helper",
+            "role": "helper",
+            "text": "Yes, it is a little far."
+          },
+          {
+            "speaker": "Visitor",
+            "role": "visitor",
+            "text": "How do I get there?"
+          },
+          {
+            "speaker": "Helper",
+            "role": "helper",
+            "text": "Go past the building and turn left."
+          },
+          {
+            "speaker": "Visitor",
+            "role": "visitor",
+            "text": "Do I go over the bridge?"
+          },
+          {
+            "speaker": "Helper",
+            "role": "helper",
+            "text": "No. Go along the road by the cliffs."
+          },
+          {
+            "speaker": "Visitor",
+            "role": "visitor",
+            "text": "Is the cave near the farm?"
+          },
+          {
+            "speaker": "Helper",
+            "role": "helper",
+            "text": "Yes, the cave is behind the farm."
+          },
+          {
+            "speaker": "Visitor",
+            "role": "visitor",
+            "text": "Great. Thank you very much."
+          },
+          {
+            "speaker": "Helper",
+            "role": "helper",
+            "text": "You're welcome."
+          }
+        ],
+        "gaps": [
+          {
+            "id": "farm",
+            "lineIndex": 0,
+            "before": "Where's the",
+            "answer": "farm",
+            "after": "?"
+          },
+          {
+            "id": "field",
+            "lineIndex": 1,
+            "before": "It's near the",
+            "answer": "field",
+            "after": "."
+          },
+          {
+            "id": "harbour",
+            "lineIndex": 2,
+            "before": "Is it far from the",
+            "answer": "harbour",
+            "after": "?"
+          },
+          {
+            "id": "building",
+            "lineIndex": 5,
+            "before": "Go past the",
+            "answer": "building",
+            "after": "and turn left."
+          },
+          {
+            "id": "bridge",
+            "lineIndex": 6,
+            "before": "Do I go over the",
+            "answer": "bridge",
+            "after": "?"
+          },
+          {
+            "id": "cliffs",
+            "lineIndex": 7,
+            "before": "Go along the road by the",
+            "answer": "cliffs",
+            "after": "."
+          },
+          {
+            "id": "cave",
+            "lineIndex": 8,
+            "before": "Is the",
+            "answer": "cave",
+            "after": "near the farm?"
+          },
+          {
+            "id": "behind",
+            "lineIndex": 9,
+            "before": "The cave is",
+            "answer": "behind",
+            "after": "the farm."
           }
         ]
       }
     ]
   },
   {
-    "id": "plans",
-    "title": "Making plans",
-    "emoji": "📅",
+    "id": "holiday",
+    "title": "Going on holiday",
+    "emoji": "🏖️",
     "level": "Listening & Speaking",
-    "description": "Practise making plans with a friend.",
+    "description": "Discuss plans and things you need for a holiday.",
     "voiceProfiles": {
       "friend_a": {
         "pitch": 1.12,
         "rate": 0.87
       },
       "friend_b": {
-        "pitch": 1.25,
+        "pitch": 1.24,
         "rate": 0.89
       }
     },
     "wordBank": [
       {
-        "id": "friend",
-        "word": "friend",
-        "imageKey": "friend"
+        "id": "tourist-information",
+        "word": "tourist information",
+        "imageKey": "touristInformation"
       },
       {
-        "id": "park",
-        "word": "park",
-        "imageKey": "park"
+        "id": "water-park",
+        "word": "go to a water park",
+        "imageKey": "waterPark"
       },
       {
-        "id": "football",
-        "word": "football",
-        "imageKey": "football"
+        "id": "funfair",
+        "word": "go to a funfair",
+        "imageKey": "funfair"
       },
       {
-        "id": "cinema",
-        "word": "cinema",
-        "imageKey": "cinema"
+        "id": "museum",
+        "word": "go to a museum",
+        "imageKey": "museum"
       },
       {
-        "id": "saturday",
-        "word": "Saturday",
-        "imageKey": "saturday"
+        "id": "hotel",
+        "word": "stay in a hotel",
+        "imageKey": "hotel"
       },
       {
-        "id": "time",
-        "word": "time",
-        "imageKey": "time"
+        "id": "surf",
+        "word": "learn to surf",
+        "imageKey": "surf"
+      },
+      {
+        "id": "bowling",
+        "word": "go bowling",
+        "imageKey": "bowling"
+      },
+      {
+        "id": "crazy-golf",
+        "word": "play crazy golf",
+        "imageKey": "crazyGolf"
+      },
+      {
+        "id": "safari-park",
+        "word": "visit a safari park",
+        "imageKey": "safariPark"
+      },
+      {
+        "id": "aquarium",
+        "word": "go to an aquarium",
+        "imageKey": "aquarium"
+      },
+      {
+        "id": "castle",
+        "word": "visit a castle",
+        "imageKey": "castle"
+      },
+      {
+        "id": "barbecue",
+        "word": "have a barbecue",
+        "imageKey": "barbecue"
+      },
+      {
+        "id": "flip-flops",
+        "word": "flip flops",
+        "imageKey": "flipFlops"
+      },
+      {
+        "id": "suitcase",
+        "word": "suitcase",
+        "imageKey": "suitcase"
+      },
+      {
+        "id": "towel",
+        "word": "towel",
+        "imageKey": "towel"
+      },
+      {
+        "id": "swimsuit",
+        "word": "swimsuit",
+        "imageKey": "swimsuit"
+      },
+      {
+        "id": "sun-hat",
+        "word": "sun hat",
+        "imageKey": "sunHat"
+      },
+      {
+        "id": "wetsuit",
+        "word": "wetsuit",
+        "imageKey": "wetsuit"
       }
     ],
     "conversation": [
       {
         "speaker": "Friend A",
         "role": "friend_a",
-        "text": "Are you free on Saturday?"
+        "text": "We're going to a water park this weekend."
       },
       {
         "speaker": "Friend B",
         "role": "friend_b",
-        "text": "Yes, I am. What do you want to do?"
+        "text": "Do we need swimsuits?"
       },
       {
         "speaker": "Friend A",
         "role": "friend_a",
-        "text": "Let's go to the park and play football."
+        "text": "Yes, we do. And we need towels."
       },
       {
         "speaker": "Friend B",
         "role": "friend_b",
-        "text": "Good idea. What time shall we meet?"
+        "text": "How about flip flops?"
       },
       {
         "speaker": "Friend A",
         "role": "friend_a",
-        "text": "Let's meet at four o'clock."
+        "text": "Good idea. Put them in the suitcase."
       },
       {
         "speaker": "Friend B",
         "role": "friend_b",
-        "text": "Great. See you then."
+        "text": "Do we need a sun hat?"
       },
       {
         "speaker": "Friend A",
         "role": "friend_a",
-        "text": "Do you want to bring a snack?"
+        "text": "Yes, we do. It will be sunny."
       },
       {
         "speaker": "Friend B",
         "role": "friend_b",
-        "text": "Yes, I can bring some fruit."
+        "text": "Do we need a wetsuit?"
+      },
+      {
+        "speaker": "Friend A",
+        "role": "friend_a",
+        "text": "No, we don't. The water will be warm."
+      },
+      {
+        "speaker": "Friend B",
+        "role": "friend_b",
+        "text": "Great. What time are we leaving?"
+      },
+      {
+        "speaker": "Friend A",
+        "role": "friend_a",
+        "text": "At nine o'clock."
+      },
+      {
+        "speaker": "Friend B",
+        "role": "friend_b",
+        "text": "Perfect. I'm ready."
       }
+    ],
+    "conversationVariants": [
+      [
+        {
+          "speaker": "Friend A",
+          "role": "friend_a",
+          "text": "We're going to a water park this weekend."
+        },
+        {
+          "speaker": "Friend B",
+          "role": "friend_b",
+          "text": "Do we need swimsuits?"
+        },
+        {
+          "speaker": "Friend A",
+          "role": "friend_a",
+          "text": "Yes, we do. And we need towels."
+        },
+        {
+          "speaker": "Friend B",
+          "role": "friend_b",
+          "text": "How about flip flops?"
+        },
+        {
+          "speaker": "Friend A",
+          "role": "friend_a",
+          "text": "Good idea. Put them in the suitcase."
+        },
+        {
+          "speaker": "Friend B",
+          "role": "friend_b",
+          "text": "Do we need a sun hat?"
+        },
+        {
+          "speaker": "Friend A",
+          "role": "friend_a",
+          "text": "Yes, we do. It will be sunny."
+        },
+        {
+          "speaker": "Friend B",
+          "role": "friend_b",
+          "text": "Do we need a wetsuit?"
+        },
+        {
+          "speaker": "Friend A",
+          "role": "friend_a",
+          "text": "No, we don't. The water will be warm."
+        },
+        {
+          "speaker": "Friend B",
+          "role": "friend_b",
+          "text": "Great. What time are we leaving?"
+        },
+        {
+          "speaker": "Friend A",
+          "role": "friend_a",
+          "text": "At nine o'clock."
+        },
+        {
+          "speaker": "Friend B",
+          "role": "friend_b",
+          "text": "Perfect. I'm ready."
+        }
+      ],
+      [
+        {
+          "speaker": "Friend A",
+          "role": "friend_a",
+          "text": "We're going to stay in a hotel this weekend."
+        },
+        {
+          "speaker": "Friend B",
+          "role": "friend_b",
+          "text": "Great. Are we going to visit a castle?"
+        },
+        {
+          "speaker": "Friend A",
+          "role": "friend_a",
+          "text": "Yes, we are. And we can go to a museum."
+        },
+        {
+          "speaker": "Friend B",
+          "role": "friend_b",
+          "text": "Do we need our cameras?"
+        },
+        {
+          "speaker": "Friend A",
+          "role": "friend_a",
+          "text": "Yes, we do."
+        },
+        {
+          "speaker": "Friend B",
+          "role": "friend_b",
+          "text": "How about visiting the aquarium?"
+        },
+        {
+          "speaker": "Friend A",
+          "role": "friend_a",
+          "text": "Good idea. We can go after lunch."
+        },
+        {
+          "speaker": "Friend B",
+          "role": "friend_b",
+          "text": "Can we have a barbecue in the evening?"
+        },
+        {
+          "speaker": "Friend A",
+          "role": "friend_a",
+          "text": "Maybe. Let's ask at tourist information."
+        },
+        {
+          "speaker": "Friend B",
+          "role": "friend_b",
+          "text": "OK. What should I pack?"
+        },
+        {
+          "speaker": "Friend A",
+          "role": "friend_a",
+          "text": "Pack comfortable shoes and a jacket."
+        },
+        {
+          "speaker": "Friend B",
+          "role": "friend_b",
+          "text": "OK. I'll pack them now."
+        }
+      ],
+      [
+        {
+          "speaker": "Friend A",
+          "role": "friend_a",
+          "text": "We're going to the beach this weekend."
+        },
+        {
+          "speaker": "Friend B",
+          "role": "friend_b",
+          "text": "Are we going to learn to surf?"
+        },
+        {
+          "speaker": "Friend A",
+          "role": "friend_a",
+          "text": "Yes, we are. We need wetsuits."
+        },
+        {
+          "speaker": "Friend B",
+          "role": "friend_b",
+          "text": "Do we need towels too?"
+        },
+        {
+          "speaker": "Friend A",
+          "role": "friend_a",
+          "text": "Yes, we do. And don't forget your swimsuit."
+        },
+        {
+          "speaker": "Friend B",
+          "role": "friend_b",
+          "text": "How about going bowling in the evening?"
+        },
+        {
+          "speaker": "Friend A",
+          "role": "friend_a",
+          "text": "Good idea."
+        },
+        {
+          "speaker": "Friend B",
+          "role": "friend_b",
+          "text": "Can we play crazy golf too?"
+        },
+        {
+          "speaker": "Friend A",
+          "role": "friend_a",
+          "text": "Maybe on Sunday morning."
+        },
+        {
+          "speaker": "Friend B",
+          "role": "friend_b",
+          "text": "This holiday sounds fun."
+        },
+        {
+          "speaker": "Friend A",
+          "role": "friend_a",
+          "text": "Yes. Let's have fun in the sun."
+        },
+        {
+          "speaker": "Friend B",
+          "role": "friend_b",
+          "text": "Great. I can't wait."
+        }
+      ]
     ],
     "fixedExpressions": [
       {
-        "id": "are-free",
-        "left": "Are you free",
-        "right": "on Saturday?"
+        "id": "going-water",
+        "left": "We're going to",
+        "right": "a water park."
       },
       {
-        "id": "yes-am",
+        "id": "do-need",
+        "left": "Do we",
+        "right": "need swimsuits?"
+      },
+      {
+        "id": "yes-do",
         "left": "Yes,",
-        "right": "I am."
+        "right": "we do."
       },
       {
-        "id": "want-do",
-        "left": "What do you",
-        "right": "want to do?"
+        "id": "no-dont",
+        "left": "No,",
+        "right": "we don't."
       },
       {
-        "id": "lets-go",
-        "left": "Let's go",
-        "right": "to the park."
-      },
-      {
-        "id": "play-football",
-        "left": "Play",
-        "right": "football."
+        "id": "how-about",
+        "left": "How about",
+        "right": "flip flops?"
       },
       {
         "id": "good-idea",
@@ -1898,301 +5001,403 @@ const situations = [
         "right": "idea."
       },
       {
-        "id": "what-time",
-        "left": "What time shall",
-        "right": "we meet?"
+        "id": "in-suitcase",
+        "left": "Put them in",
+        "right": "the suitcase."
       },
       {
-        "id": "lets-meet",
-        "left": "Let's meet",
-        "right": "at four o'clock."
+        "id": "sunny",
+        "left": "It will",
+        "right": "be sunny."
       },
       {
-        "id": "see-then",
-        "left": "See you",
-        "right": "then."
+        "id": "stay-hotel",
+        "left": "Stay in",
+        "right": "a hotel."
       },
       {
-        "id": "sorry-cant",
-        "left": "Sorry,",
-        "right": "I can't."
+        "id": "tourist-info",
+        "left": "Tourist",
+        "right": "information."
       },
       {
-        "id": "bring-snack",
-        "left": "Do you want to",
-        "right": "bring a snack?"
+        "id": "learn-surf",
+        "left": "Learn to",
+        "right": "surf."
       },
       {
-        "id": "bring-fruit",
-        "left": "I can bring",
-        "right": "some fruit."
+        "id": "cant-wait",
+        "left": "I can't",
+        "right": "wait."
       }
     ],
     "missingScenarios": [
       {
-        "id": "park-football",
+        "id": "water-park",
         "conversation": [
           {
             "speaker": "Friend A",
             "role": "friend_a",
-            "text": "Are you free on Saturday?"
+            "text": "We're going to a water park this weekend."
           },
           {
             "speaker": "Friend B",
             "role": "friend_b",
-            "text": "Yes, I am. What do you want to do?"
+            "text": "Do we need swimsuits?"
           },
           {
             "speaker": "Friend A",
             "role": "friend_a",
-            "text": "Let's go to the park and play football."
+            "text": "Yes, we do. And we need towels."
           },
           {
             "speaker": "Friend B",
             "role": "friend_b",
-            "text": "Good idea. What time shall we meet?"
+            "text": "How about flip flops?"
           },
           {
             "speaker": "Friend A",
             "role": "friend_a",
-            "text": "Let's meet at four o'clock."
+            "text": "Good idea. Put them in the suitcase."
           },
           {
             "speaker": "Friend B",
             "role": "friend_b",
-            "text": "Great. See you then."
+            "text": "Do we need a sun hat?"
           },
           {
             "speaker": "Friend A",
             "role": "friend_a",
-            "text": "Do you want to bring a snack?"
+            "text": "Yes, we do. It will be sunny."
           },
           {
             "speaker": "Friend B",
             "role": "friend_b",
-            "text": "Yes, I can bring some fruit."
+            "text": "Do we need a wetsuit?"
+          },
+          {
+            "speaker": "Friend A",
+            "role": "friend_a",
+            "text": "No, we don't. The water will be warm."
+          },
+          {
+            "speaker": "Friend B",
+            "role": "friend_b",
+            "text": "Great. What time are we leaving?"
+          },
+          {
+            "speaker": "Friend A",
+            "role": "friend_a",
+            "text": "At nine o'clock."
+          },
+          {
+            "speaker": "Friend B",
+            "role": "friend_b",
+            "text": "Perfect. I'm ready."
           }
         ],
         "gaps": [
           {
-            "id": "free",
+            "id": "water-park",
             "lineIndex": 0,
-            "before": "Are you",
-            "answer": "free",
-            "after": "on Saturday?"
+            "before": "We're going to a",
+            "answer": "water park",
+            "after": "this weekend."
           },
           {
-            "id": "saturday",
-            "lineIndex": 0,
-            "before": "Are you free on",
-            "answer": "Saturday",
+            "id": "swimsuits",
+            "lineIndex": 1,
+            "before": "Do we need",
+            "answer": "swimsuits",
             "after": "?"
           },
           {
-            "id": "park",
+            "id": "towels",
             "lineIndex": 2,
-            "before": "Let's go to the",
-            "answer": "park",
-            "after": "and play football."
-          },
-          {
-            "id": "football",
-            "lineIndex": 2,
-            "before": "Let's go to the park and play",
-            "answer": "football",
+            "before": "We need",
+            "answer": "towels",
             "after": "."
           },
           {
-            "id": "time",
+            "id": "flip-flops",
             "lineIndex": 3,
-            "before": "What",
-            "answer": "time",
-            "after": "shall we meet?"
+            "before": "How about",
+            "answer": "flip flops",
+            "after": "?"
           },
           {
-            "id": "four",
+            "id": "suitcase",
             "lineIndex": 4,
-            "before": "Let's meet at",
-            "answer": "four o'clock",
+            "before": "Put them in the",
+            "answer": "suitcase",
+            "after": "."
+          },
+          {
+            "id": "sun-hat",
+            "lineIndex": 5,
+            "before": "Do we need a",
+            "answer": "sun hat",
+            "after": "?"
+          },
+          {
+            "id": "wetsuit",
+            "lineIndex": 7,
+            "before": "Do we need a",
+            "answer": "wetsuit",
+            "after": "?"
+          },
+          {
+            "id": "warm",
+            "lineIndex": 8,
+            "before": "The water will be",
+            "answer": "warm",
             "after": "."
           }
         ]
       },
       {
-        "id": "cinema-five",
+        "id": "hotel",
         "conversation": [
           {
             "speaker": "Friend A",
             "role": "friend_a",
-            "text": "Are you free on Friday?"
+            "text": "We're going to stay in a hotel this weekend."
           },
           {
             "speaker": "Friend B",
             "role": "friend_b",
-            "text": "Yes, I am. What do you want to do?"
+            "text": "Great. Are we going to visit a castle?"
           },
           {
             "speaker": "Friend A",
             "role": "friend_a",
-            "text": "Let's go to the cinema."
+            "text": "Yes, we are. And we can go to a museum."
           },
           {
             "speaker": "Friend B",
             "role": "friend_b",
-            "text": "Good idea. What time shall we meet?"
+            "text": "Do we need our cameras?"
           },
           {
             "speaker": "Friend A",
             "role": "friend_a",
-            "text": "Let's meet at five o'clock."
+            "text": "Yes, we do."
           },
           {
             "speaker": "Friend B",
             "role": "friend_b",
-            "text": "Great. See you then."
+            "text": "How about visiting the aquarium?"
           },
           {
             "speaker": "Friend A",
             "role": "friend_a",
-            "text": "Do you want to bring a snack?"
+            "text": "Good idea. We can go after lunch."
           },
           {
             "speaker": "Friend B",
             "role": "friend_b",
-            "text": "Yes, I can bring some fruit."
+            "text": "Can we have a barbecue in the evening?"
+          },
+          {
+            "speaker": "Friend A",
+            "role": "friend_a",
+            "text": "Maybe. Let's ask at tourist information."
+          },
+          {
+            "speaker": "Friend B",
+            "role": "friend_b",
+            "text": "OK. What should I pack?"
+          },
+          {
+            "speaker": "Friend A",
+            "role": "friend_a",
+            "text": "Pack comfortable shoes and a jacket."
+          },
+          {
+            "speaker": "Friend B",
+            "role": "friend_b",
+            "text": "OK. I'll pack them now."
           }
         ],
         "gaps": [
           {
-            "id": "friday",
+            "id": "hotel",
             "lineIndex": 0,
-            "before": "Are you free on",
-            "answer": "Friday",
+            "before": "We're going to stay in a",
+            "answer": "hotel",
+            "after": "this weekend."
+          },
+          {
+            "id": "castle",
+            "lineIndex": 1,
+            "before": "Are we going to visit a",
+            "answer": "castle",
             "after": "?"
           },
           {
-            "id": "want",
-            "lineIndex": 1,
-            "before": "What do you",
-            "answer": "want",
-            "after": "to do?"
-          },
-          {
-            "id": "cinema",
+            "id": "museum",
             "lineIndex": 2,
-            "before": "Let's go to the",
-            "answer": "cinema",
+            "before": "We can go to a",
+            "answer": "museum",
             "after": "."
           },
           {
-            "id": "idea",
-            "lineIndex": 3,
-            "before": "Good",
-            "answer": "idea",
-            "after": "."
-          },
-          {
-            "id": "meet",
-            "lineIndex": 4,
-            "before": "Let's",
-            "answer": "meet",
-            "after": "at five o'clock."
-          },
-          {
-            "id": "then",
+            "id": "aquarium",
             "lineIndex": 5,
-            "before": "Great. See you",
-            "answer": "then",
+            "before": "How about visiting the",
+            "answer": "aquarium",
+            "after": "?"
+          },
+          {
+            "id": "barbecue",
+            "lineIndex": 7,
+            "before": "Can we have a",
+            "answer": "barbecue",
+            "after": "in the evening?"
+          },
+          {
+            "id": "tourist",
+            "lineIndex": 8,
+            "before": "Let's ask at",
+            "answer": "tourist information",
+            "after": "."
+          },
+          {
+            "id": "pack",
+            "lineIndex": 9,
+            "before": "What should I",
+            "answer": "pack",
+            "after": "?"
+          },
+          {
+            "id": "jacket",
+            "lineIndex": 10,
+            "before": "Pack comfortable shoes and a",
+            "answer": "jacket",
             "after": "."
           }
         ]
       },
       {
-        "id": "not-free",
+        "id": "beach",
         "conversation": [
           {
             "speaker": "Friend A",
             "role": "friend_a",
-            "text": "Are you free on Sunday?"
+            "text": "We're going to the beach this weekend."
           },
           {
             "speaker": "Friend B",
             "role": "friend_b",
-            "text": "Sorry, I can't."
+            "text": "Are we going to learn to surf?"
           },
           {
             "speaker": "Friend A",
             "role": "friend_a",
-            "text": "Are you free on Monday?"
+            "text": "Yes, we are. We need wetsuits."
           },
           {
             "speaker": "Friend B",
             "role": "friend_b",
-            "text": "Yes, I am."
+            "text": "Do we need towels too?"
           },
           {
             "speaker": "Friend A",
             "role": "friend_a",
-            "text": "Let's play football after school."
+            "text": "Yes, we do. And don't forget your swimsuit."
           },
           {
             "speaker": "Friend B",
             "role": "friend_b",
-            "text": "Good idea. See you then."
+            "text": "How about going bowling in the evening?"
           },
           {
             "speaker": "Friend A",
             "role": "friend_a",
-            "text": "Do you want to bring a snack?"
+            "text": "Good idea."
           },
           {
             "speaker": "Friend B",
             "role": "friend_b",
-            "text": "Yes, I can bring some fruit."
+            "text": "Can we play crazy golf too?"
+          },
+          {
+            "speaker": "Friend A",
+            "role": "friend_a",
+            "text": "Maybe on Sunday morning."
+          },
+          {
+            "speaker": "Friend B",
+            "role": "friend_b",
+            "text": "This holiday sounds fun."
+          },
+          {
+            "speaker": "Friend A",
+            "role": "friend_a",
+            "text": "Yes. Let's have fun in the sun."
+          },
+          {
+            "speaker": "Friend B",
+            "role": "friend_b",
+            "text": "Great. I can't wait."
           }
         ],
         "gaps": [
           {
-            "id": "sunday",
+            "id": "beach",
             "lineIndex": 0,
-            "before": "Are you free on",
-            "answer": "Sunday",
-            "after": "?"
+            "before": "We're going to the",
+            "answer": "beach",
+            "after": "this weekend."
           },
           {
-            "id": "sorry",
+            "id": "surf",
             "lineIndex": 1,
-            "before": "",
-            "answer": "Sorry",
-            "after": ", I can't."
-          },
-          {
-            "id": "monday",
-            "lineIndex": 2,
-            "before": "Are you free on",
-            "answer": "Monday",
+            "before": "Are we going to learn to",
+            "answer": "surf",
             "after": "?"
           },
           {
-            "id": "yes",
-            "lineIndex": 3,
-            "before": "",
-            "answer": "Yes",
-            "after": ", I am."
-          },
-          {
-            "id": "after-school",
-            "lineIndex": 4,
-            "before": "Let's play football",
-            "answer": "after school",
+            "id": "wetsuits",
+            "lineIndex": 2,
+            "before": "We need",
+            "answer": "wetsuits",
             "after": "."
           },
           {
-            "id": "see",
+            "id": "towels",
+            "lineIndex": 3,
+            "before": "Do we need",
+            "answer": "towels",
+            "after": "too?"
+          },
+          {
+            "id": "swimsuit",
+            "lineIndex": 4,
+            "before": "Don't forget your",
+            "answer": "swimsuit",
+            "after": "."
+          },
+          {
+            "id": "bowling",
             "lineIndex": 5,
-            "before": "Good idea.",
-            "answer": "See you",
-            "after": "then."
+            "before": "How about going",
+            "answer": "bowling",
+            "after": "in the evening?"
+          },
+          {
+            "id": "golf",
+            "lineIndex": 7,
+            "before": "Can we play",
+            "answer": "crazy golf",
+            "after": "too?"
+          },
+          {
+            "id": "sun",
+            "lineIndex": 10,
+            "before": "Let's have fun in the",
+            "answer": "sun",
+            "after": "."
           }
         ]
       }
@@ -2203,7 +5408,7 @@ const situations = [
     "title": "At school",
     "emoji": "🎒",
     "level": "Listening & Speaking",
-    "description": "Practise asking the teacher for help in class.",
+    "description": "Ask for help and use classroom English.",
     "voiceProfiles": {
       "teacher": {
         "pitch": 0.88,
@@ -2236,6 +5441,11 @@ const situations = [
         "imageKey": "page"
       },
       {
+        "id": "instructions",
+        "word": "instructions",
+        "imageKey": "instructions"
+      },
+      {
         "id": "repeat",
         "word": "repeat",
         "imageKey": "repeat"
@@ -2244,6 +5454,31 @@ const situations = [
         "id": "understand",
         "word": "understand",
         "imageKey": "understand"
+      },
+      {
+        "id": "spell",
+        "word": "spell",
+        "imageKey": "spell"
+      },
+      {
+        "id": "word",
+        "word": "word",
+        "imageKey": "word"
+      },
+      {
+        "id": "listen",
+        "word": "listen",
+        "imageKey": "listen"
+      },
+      {
+        "id": "help",
+        "word": "help",
+        "imageKey": "help"
+      },
+      {
+        "id": "example",
+        "word": "example",
+        "imageKey": "example"
       }
     ],
     "conversation": [
@@ -2260,49 +5495,247 @@ const situations = [
       {
         "speaker": "Student",
         "role": "student",
-        "text": "Can you repeat that, please?"
+        "text": "Can you repeat the instructions, please?"
       },
       {
         "speaker": "Teacher",
         "role": "teacher",
-        "text": "Of course. Open your book on page ten."
+        "text": "Of course. Listen carefully."
       },
       {
         "speaker": "Student",
         "role": "student",
-        "text": "Thank you. I understand now."
+        "text": "Thank you. What page are we on?"
       },
       {
         "speaker": "Teacher",
         "role": "teacher",
-        "text": "Great. Well done."
-      },
-      {
-        "speaker": "Teacher",
-        "role": "teacher",
-        "text": "Try the first example with me."
+        "text": "Open your book on page ten."
       },
       {
         "speaker": "Student",
         "role": "student",
-        "text": "Okay. I can try now."
+        "text": "Can you show me the first example?"
+      },
+      {
+        "speaker": "Teacher",
+        "role": "teacher",
+        "text": "Yes. Look at this sentence."
+      },
+      {
+        "speaker": "Student",
+        "role": "student",
+        "text": "I understand now."
+      },
+      {
+        "speaker": "Teacher",
+        "role": "teacher",
+        "text": "Great. Try the next one."
+      },
+      {
+        "speaker": "Student",
+        "role": "student",
+        "text": "OK. I can try it."
+      },
+      {
+        "speaker": "Teacher",
+        "role": "teacher",
+        "text": "Well done."
       }
     ],
+    "conversationVariants": [
+      [
+        {
+          "speaker": "Student",
+          "role": "student",
+          "text": "Excuse me. I don't understand."
+        },
+        {
+          "speaker": "Teacher",
+          "role": "teacher",
+          "text": "That's okay. Which part is difficult?"
+        },
+        {
+          "speaker": "Student",
+          "role": "student",
+          "text": "Can you repeat the instructions, please?"
+        },
+        {
+          "speaker": "Teacher",
+          "role": "teacher",
+          "text": "Of course. Listen carefully."
+        },
+        {
+          "speaker": "Student",
+          "role": "student",
+          "text": "Thank you. What page are we on?"
+        },
+        {
+          "speaker": "Teacher",
+          "role": "teacher",
+          "text": "Open your book on page ten."
+        },
+        {
+          "speaker": "Student",
+          "role": "student",
+          "text": "Can you show me the first example?"
+        },
+        {
+          "speaker": "Teacher",
+          "role": "teacher",
+          "text": "Yes. Look at this sentence."
+        },
+        {
+          "speaker": "Student",
+          "role": "student",
+          "text": "I understand now."
+        },
+        {
+          "speaker": "Teacher",
+          "role": "teacher",
+          "text": "Great. Try the next one."
+        },
+        {
+          "speaker": "Student",
+          "role": "student",
+          "text": "OK. I can try it."
+        },
+        {
+          "speaker": "Teacher",
+          "role": "teacher",
+          "text": "Well done."
+        }
+      ],
+      [
+        {
+          "speaker": "Student",
+          "role": "student",
+          "text": "Excuse me. I need some help."
+        },
+        {
+          "speaker": "Teacher",
+          "role": "teacher",
+          "text": "Of course. What do you need?"
+        },
+        {
+          "speaker": "Student",
+          "role": "student",
+          "text": "How do you spell this word?"
+        },
+        {
+          "speaker": "Teacher",
+          "role": "teacher",
+          "text": "Listen carefully. I can spell it."
+        },
+        {
+          "speaker": "Student",
+          "role": "student",
+          "text": "Can you repeat it, please?"
+        },
+        {
+          "speaker": "Teacher",
+          "role": "teacher",
+          "text": "Yes, I can repeat it."
+        },
+        {
+          "speaker": "Student",
+          "role": "student",
+          "text": "Thank you. Should I write it here?"
+        },
+        {
+          "speaker": "Teacher",
+          "role": "teacher",
+          "text": "Yes. Write it under the picture."
+        },
+        {
+          "speaker": "Student",
+          "role": "student",
+          "text": "Like this?"
+        },
+        {
+          "speaker": "Teacher",
+          "role": "teacher",
+          "text": "Yes, that's right."
+        },
+        {
+          "speaker": "Student",
+          "role": "student",
+          "text": "Great. I understand now."
+        },
+        {
+          "speaker": "Teacher",
+          "role": "teacher",
+          "text": "Well done. Keep going."
+        }
+      ],
+      [
+        {
+          "speaker": "Student",
+          "role": "student",
+          "text": "Excuse me. I can't find my book."
+        },
+        {
+          "speaker": "Teacher",
+          "role": "teacher",
+          "text": "Don't worry. Look in your bag."
+        },
+        {
+          "speaker": "Student",
+          "role": "student",
+          "text": "Here it is. Thank you."
+        },
+        {
+          "speaker": "Teacher",
+          "role": "teacher",
+          "text": "Good. Open it on page twelve."
+        },
+        {
+          "speaker": "Student",
+          "role": "student",
+          "text": "What do we have to do?"
+        },
+        {
+          "speaker": "Teacher",
+          "role": "teacher",
+          "text": "Read the first question and choose an answer."
+        },
+        {
+          "speaker": "Student",
+          "role": "student",
+          "text": "Can I work with a partner?"
+        },
+        {
+          "speaker": "Teacher",
+          "role": "teacher",
+          "text": "Yes, but speak quietly."
+        },
+        {
+          "speaker": "Student",
+          "role": "student",
+          "text": "OK. Can you check my answer later?"
+        },
+        {
+          "speaker": "Teacher",
+          "role": "teacher",
+          "text": "Yes, I can check it."
+        },
+        {
+          "speaker": "Student",
+          "role": "student",
+          "text": "Thank you for helping me."
+        },
+        {
+          "speaker": "Teacher",
+          "role": "teacher",
+          "text": "You're welcome."
+        }
+      ]
+    ],
     "fixedExpressions": [
-      {
-        "id": "excuse-me",
-        "left": "Excuse",
-        "right": "me."
-      },
       {
         "id": "dont-understand",
         "left": "I don't",
         "right": "understand."
-      },
-      {
-        "id": "thats-okay",
-        "left": "That's",
-        "right": "okay."
       },
       {
         "id": "which-part",
@@ -2310,19 +5743,29 @@ const situations = [
         "right": "is difficult?"
       },
       {
-        "id": "can-repeat",
+        "id": "repeat-instructions",
         "left": "Can you repeat",
-        "right": "that, please?"
+        "right": "the instructions?"
       },
       {
-        "id": "of-course",
-        "left": "Of",
-        "right": "course."
+        "id": "listen-carefully",
+        "left": "Listen",
+        "right": "carefully."
       },
       {
-        "id": "open-book",
+        "id": "what-page",
+        "left": "What page",
+        "right": "are we on?"
+      },
+      {
+        "id": "page-ten",
         "left": "Open your book",
         "right": "on page ten."
+      },
+      {
+        "id": "first-example",
+        "left": "The first",
+        "right": "example."
       },
       {
         "id": "understand-now",
@@ -2340,19 +5783,19 @@ const situations = [
         "right": "some help."
       },
       {
-        "id": "first-example",
-        "left": "Try the first example",
-        "right": "with me."
+        "id": "spell-word",
+        "left": "How do you spell",
+        "right": "this word?"
       },
       {
-        "id": "try-now",
-        "left": "I can",
-        "right": "try now."
+        "id": "keep-going",
+        "left": "Keep",
+        "right": "going."
       }
     ],
     "missingScenarios": [
       {
-        "id": "repeat-page-ten",
+        "id": "instructions",
         "conversation": [
           {
             "speaker": "Student",
@@ -2367,39 +5810,59 @@ const situations = [
           {
             "speaker": "Student",
             "role": "student",
-            "text": "Can you repeat that, please?"
+            "text": "Can you repeat the instructions, please?"
           },
           {
             "speaker": "Teacher",
             "role": "teacher",
-            "text": "Of course. Open your book on page ten."
+            "text": "Of course. Listen carefully."
           },
           {
             "speaker": "Student",
             "role": "student",
-            "text": "Thank you. I understand now."
+            "text": "Thank you. What page are we on?"
           },
           {
             "speaker": "Teacher",
             "role": "teacher",
-            "text": "Great. Well done."
-          },
-          {
-            "speaker": "Teacher",
-            "role": "teacher",
-            "text": "Try the first example with me."
+            "text": "Open your book on page ten."
           },
           {
             "speaker": "Student",
             "role": "student",
-            "text": "Okay. I can try now."
+            "text": "Can you show me the first example?"
+          },
+          {
+            "speaker": "Teacher",
+            "role": "teacher",
+            "text": "Yes. Look at this sentence."
+          },
+          {
+            "speaker": "Student",
+            "role": "student",
+            "text": "I understand now."
+          },
+          {
+            "speaker": "Teacher",
+            "role": "teacher",
+            "text": "Great. Try the next one."
+          },
+          {
+            "speaker": "Student",
+            "role": "student",
+            "text": "OK. I can try it."
+          },
+          {
+            "speaker": "Teacher",
+            "role": "teacher",
+            "text": "Well done."
           }
         ],
         "gaps": [
           {
             "id": "understand",
             "lineIndex": 0,
-            "before": "Excuse me. I don't",
+            "before": "I don't",
             "answer": "understand",
             "after": "."
           },
@@ -2415,89 +5878,7 @@ const situations = [
             "lineIndex": 2,
             "before": "Can you",
             "answer": "repeat",
-            "after": "that, please?"
-          },
-          {
-            "id": "book",
-            "lineIndex": 3,
-            "before": "Open your",
-            "answer": "book",
-            "after": "on page ten."
-          },
-          {
-            "id": "page-ten",
-            "lineIndex": 3,
-            "before": "Open your book on",
-            "answer": "page ten",
-            "after": "."
-          },
-          {
-            "id": "well-done",
-            "lineIndex": 5,
-            "before": "Great.",
-            "answer": "Well done",
-            "after": "."
-          }
-        ]
-      },
-      {
-        "id": "help-page-twelve",
-        "conversation": [
-          {
-            "speaker": "Student",
-            "role": "student",
-            "text": "Excuse me. I need some help."
-          },
-          {
-            "speaker": "Teacher",
-            "role": "teacher",
-            "text": "That's okay. Which part is difficult?"
-          },
-          {
-            "speaker": "Student",
-            "role": "student",
-            "text": "Can you repeat the instructions, please?"
-          },
-          {
-            "speaker": "Teacher",
-            "role": "teacher",
-            "text": "Of course. Look at page twelve."
-          },
-          {
-            "speaker": "Student",
-            "role": "student",
-            "text": "Thank you. I understand now."
-          },
-          {
-            "speaker": "Teacher",
-            "role": "teacher",
-            "text": "Great. Well done."
-          },
-          {
-            "speaker": "Teacher",
-            "role": "teacher",
-            "text": "Try the first example with me."
-          },
-          {
-            "speaker": "Student",
-            "role": "student",
-            "text": "Okay. I can try now."
-          }
-        ],
-        "gaps": [
-          {
-            "id": "need",
-            "lineIndex": 0,
-            "before": "Excuse me. I",
-            "answer": "need",
-            "after": "some help."
-          },
-          {
-            "id": "help",
-            "lineIndex": 0,
-            "before": "I need some",
-            "answer": "help",
-            "after": "."
+            "after": "the instructions, please?"
           },
           {
             "id": "instructions",
@@ -2507,24 +5888,31 @@ const situations = [
             "after": ", please?"
           },
           {
-            "id": "look",
+            "id": "listen",
             "lineIndex": 3,
-            "before": "Of course.",
-            "answer": "Look",
-            "after": "at page twelve."
+            "before": "",
+            "answer": "Listen",
+            "after": "carefully."
           },
           {
-            "id": "page-twelve",
-            "lineIndex": 3,
-            "before": "Look at",
-            "answer": "page twelve",
+            "id": "page-ten",
+            "lineIndex": 5,
+            "before": "Open your book on",
+            "answer": "page ten",
             "after": "."
           },
           {
-            "id": "now",
-            "lineIndex": 4,
-            "before": "I understand",
-            "answer": "now",
+            "id": "example",
+            "lineIndex": 6,
+            "before": "Show me the first",
+            "answer": "example",
+            "after": "?"
+          },
+          {
+            "id": "done",
+            "lineIndex": 11,
+            "before": "Well",
+            "answer": "done",
             "after": "."
           }
         ]
@@ -2535,12 +5923,22 @@ const situations = [
           {
             "speaker": "Student",
             "role": "student",
-            "text": "Excuse me. How do you spell this word?"
+            "text": "Excuse me. I need some help."
           },
           {
             "speaker": "Teacher",
             "role": "teacher",
-            "text": "Of course. Listen carefully."
+            "text": "Of course. What do you need?"
+          },
+          {
+            "speaker": "Student",
+            "role": "student",
+            "text": "How do you spell this word?"
+          },
+          {
+            "speaker": "Teacher",
+            "role": "teacher",
+            "text": "Listen carefully. I can spell it."
           },
           {
             "speaker": "Student",
@@ -2550,1039 +5948,217 @@ const situations = [
           {
             "speaker": "Teacher",
             "role": "teacher",
-            "text": "Yes. I can repeat it."
+            "text": "Yes, I can repeat it."
           },
           {
             "speaker": "Student",
             "role": "student",
-            "text": "Thank you. I understand now."
+            "text": "Thank you. Should I write it here?"
           },
           {
             "speaker": "Teacher",
             "role": "teacher",
-            "text": "Great. Well done."
-          },
-          {
-            "speaker": "Teacher",
-            "role": "teacher",
-            "text": "Try the first example with me."
+            "text": "Yes. Write it under the picture."
           },
           {
             "speaker": "Student",
             "role": "student",
-            "text": "Okay. I can try now."
+            "text": "Like this?"
+          },
+          {
+            "speaker": "Teacher",
+            "role": "teacher",
+            "text": "Yes, that's right."
+          },
+          {
+            "speaker": "Student",
+            "role": "student",
+            "text": "Great. I understand now."
+          },
+          {
+            "speaker": "Teacher",
+            "role": "teacher",
+            "text": "Well done. Keep going."
           }
         ],
         "gaps": [
           {
-            "id": "spell",
+            "id": "help",
             "lineIndex": 0,
+            "before": "I need some",
+            "answer": "help",
+            "after": "."
+          },
+          {
+            "id": "spell",
+            "lineIndex": 2,
             "before": "How do you",
             "answer": "spell",
             "after": "this word?"
           },
           {
             "id": "word",
-            "lineIndex": 0,
+            "lineIndex": 2,
             "before": "How do you spell this",
             "answer": "word",
             "after": "?"
           },
           {
-            "id": "listen",
-            "lineIndex": 1,
-            "before": "Of course.",
-            "answer": "Listen",
-            "after": "carefully."
-          },
-          {
             "id": "repeat",
-            "lineIndex": 2,
+            "lineIndex": 4,
             "before": "Can you",
             "answer": "repeat",
             "after": "it, please?"
           },
           {
-            "id": "yes",
-            "lineIndex": 3,
-            "before": "",
-            "answer": "Yes",
-            "after": ". I can repeat it."
+            "id": "write",
+            "lineIndex": 6,
+            "before": "Should I",
+            "answer": "write",
+            "after": "it here?"
           },
           {
-            "id": "done",
+            "id": "picture",
+            "lineIndex": 7,
+            "before": "Write it under the",
+            "answer": "picture",
+            "after": "."
+          },
+          {
+            "id": "right",
+            "lineIndex": 9,
+            "before": "That's",
+            "answer": "right",
+            "after": "."
+          },
+          {
+            "id": "going",
+            "lineIndex": 11,
+            "before": "Keep",
+            "answer": "going",
+            "after": "."
+          }
+        ]
+      },
+      {
+        "id": "book",
+        "conversation": [
+          {
+            "speaker": "Student",
+            "role": "student",
+            "text": "Excuse me. I can't find my book."
+          },
+          {
+            "speaker": "Teacher",
+            "role": "teacher",
+            "text": "Don't worry. Look in your bag."
+          },
+          {
+            "speaker": "Student",
+            "role": "student",
+            "text": "Here it is. Thank you."
+          },
+          {
+            "speaker": "Teacher",
+            "role": "teacher",
+            "text": "Good. Open it on page twelve."
+          },
+          {
+            "speaker": "Student",
+            "role": "student",
+            "text": "What do we have to do?"
+          },
+          {
+            "speaker": "Teacher",
+            "role": "teacher",
+            "text": "Read the first question and choose an answer."
+          },
+          {
+            "speaker": "Student",
+            "role": "student",
+            "text": "Can I work with a partner?"
+          },
+          {
+            "speaker": "Teacher",
+            "role": "teacher",
+            "text": "Yes, but speak quietly."
+          },
+          {
+            "speaker": "Student",
+            "role": "student",
+            "text": "OK. Can you check my answer later?"
+          },
+          {
+            "speaker": "Teacher",
+            "role": "teacher",
+            "text": "Yes, I can check it."
+          },
+          {
+            "speaker": "Student",
+            "role": "student",
+            "text": "Thank you for helping me."
+          },
+          {
+            "speaker": "Teacher",
+            "role": "teacher",
+            "text": "You're welcome."
+          }
+        ],
+        "gaps": [
+          {
+            "id": "book",
+            "lineIndex": 0,
+            "before": "I can't find my",
+            "answer": "book",
+            "after": "."
+          },
+          {
+            "id": "bag",
+            "lineIndex": 1,
+            "before": "Look in your",
+            "answer": "bag",
+            "after": "."
+          },
+          {
+            "id": "page-twelve",
+            "lineIndex": 3,
+            "before": "Open it on",
+            "answer": "page twelve",
+            "after": "."
+          },
+          {
+            "id": "question",
             "lineIndex": 5,
-            "before": "Great. Well",
-            "answer": "done",
-            "after": "."
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": "playground",
-    "title": "At the playground",
-    "emoji": "🛝",
-    "level": "Listening & Speaking",
-    "description": "Practise joining a game, taking turns, and playing fairly.",
-    "voiceProfiles": {
-      "child_a": {
-        "pitch": 1.12,
-        "rate": 0.88
-      },
-      "child_b": {
-        "pitch": 1.25,
-        "rate": 0.9
-      }
-    },
-    "wordBank": [
-      {
-        "id": "playground",
-        "word": "playground",
-        "imageKey": "playground"
-      },
-      {
-        "id": "slide",
-        "word": "slide",
-        "imageKey": "slide"
-      },
-      {
-        "id": "swing",
-        "word": "swing",
-        "imageKey": "swing"
-      },
-      {
-        "id": "ball",
-        "word": "ball",
-        "imageKey": "ball"
-      },
-      {
-        "id": "turn",
-        "word": "turn",
-        "imageKey": "turn"
-      },
-      {
-        "id": "play",
-        "word": "play",
-        "imageKey": "play"
-      }
-    ],
-    "conversation": [
-      {
-        "speaker": "Child A",
-        "role": "child_a",
-        "text": "Hi. Can I play with you?"
-      },
-      {
-        "speaker": "Child B",
-        "role": "child_b",
-        "text": "Yes, of course. We are playing with the ball."
-      },
-      {
-        "speaker": "Child A",
-        "role": "child_a",
-        "text": "Great. What are the rules?"
-      },
-      {
-        "speaker": "Child B",
-        "role": "child_b",
-        "text": "You catch the ball and then pass it."
-      },
-      {
-        "speaker": "Child A",
-        "role": "child_a",
-        "text": "Okay. Is it my turn now?"
-      },
-      {
-        "speaker": "Child B",
-        "role": "child_b",
-        "text": "Yes, it is your turn."
-      },
-      {
-        "speaker": "Child A",
-        "role": "child_a",
-        "text": "Thanks. I will pass it to you."
-      },
-      {
-        "speaker": "Child B",
-        "role": "child_b",
-        "text": "Good job. Let's keep playing."
-      }
-    ],
-    "fixedExpressions": [
-      {
-        "id": "can-play",
-        "left": "Can I play",
-        "right": "with you?"
-      },
-      {
-        "id": "of-course",
-        "left": "Yes, of",
-        "right": "course."
-      },
-      {
-        "id": "playing-ball",
-        "left": "We are playing",
-        "right": "with the ball."
-      },
-      {
-        "id": "what-rules",
-        "left": "What are",
-        "right": "the rules?"
-      },
-      {
-        "id": "catch-ball",
-        "left": "Catch",
-        "right": "the ball."
-      },
-      {
-        "id": "pass-it",
-        "left": "Pass",
-        "right": "it."
-      },
-      {
-        "id": "my-turn",
-        "left": "Is it",
-        "right": "my turn now?"
-      },
-      {
-        "id": "your-turn",
-        "left": "It is",
-        "right": "your turn."
-      },
-      {
-        "id": "good-job",
-        "left": "Good",
-        "right": "job."
-      },
-      {
-        "id": "keep-playing",
-        "left": "Let's keep",
-        "right": "playing."
-      }
-    ],
-    "missingScenarios": [
-      {
-        "id": "ball-game",
-        "conversation": [
-          {
-            "speaker": "Child A",
-            "role": "child_a",
-            "text": "Hi. Can I play with you?"
+            "before": "Read the first",
+            "answer": "question",
+            "after": "and choose an answer."
           },
           {
-            "speaker": "Child B",
-            "role": "child_b",
-            "text": "Yes, of course. We are playing with the ball."
-          },
-          {
-            "speaker": "Child A",
-            "role": "child_a",
-            "text": "Great. What are the rules?"
-          },
-          {
-            "speaker": "Child B",
-            "role": "child_b",
-            "text": "You catch the ball and then pass it."
-          },
-          {
-            "speaker": "Child A",
-            "role": "child_a",
-            "text": "Okay. Is it my turn now?"
-          },
-          {
-            "speaker": "Child B",
-            "role": "child_b",
-            "text": "Yes, it is your turn."
-          },
-          {
-            "speaker": "Child A",
-            "role": "child_a",
-            "text": "Thanks. I will pass it to you."
-          },
-          {
-            "speaker": "Child B",
-            "role": "child_b",
-            "text": "Good job. Let's keep playing."
-          }
-        ],
-        "gaps": [
-          {
-            "id": "play",
-            "lineIndex": 0,
-            "before": "Hi. Can I",
-            "answer": "play",
-            "after": "with you?"
-          },
-          {
-            "id": "ball",
-            "lineIndex": 1,
-            "before": "We are playing with the",
-            "answer": "ball",
-            "after": "."
-          },
-          {
-            "id": "rules",
-            "lineIndex": 2,
-            "before": "What are the",
-            "answer": "rules",
-            "after": "?"
-          },
-          {
-            "id": "catch",
-            "lineIndex": 3,
-            "before": "You",
-            "answer": "catch",
-            "after": "the ball and then pass it."
-          },
-          {
-            "id": "turn",
-            "lineIndex": 4,
-            "before": "Is it my",
-            "answer": "turn",
-            "after": "now?"
-          },
-          {
-            "id": "playing",
-            "lineIndex": 7,
-            "before": "Let's keep",
-            "answer": "playing",
-            "after": "."
-          }
-        ]
-      },
-      {
-        "id": "swing-turn",
-        "conversation": [
-          {
-            "speaker": "Child A",
-            "role": "child_a",
-            "text": "Hi. Can I use the swing?"
-          },
-          {
-            "speaker": "Child B",
-            "role": "child_b",
-            "text": "Yes, of course. I am nearly finished."
-          },
-          {
-            "speaker": "Child A",
-            "role": "child_a",
-            "text": "Thank you. I can wait."
-          },
-          {
-            "speaker": "Child B",
-            "role": "child_b",
-            "text": "Okay. It is your turn now."
-          },
-          {
-            "speaker": "Child A",
-            "role": "child_a",
-            "text": "Great. Do you want to use the slide?"
-          },
-          {
-            "speaker": "Child B",
-            "role": "child_b",
-            "text": "Yes, let's go to the slide."
-          },
-          {
-            "speaker": "Child A",
-            "role": "child_a",
-            "text": "Good idea. Let's play together."
-          },
-          {
-            "speaker": "Child B",
-            "role": "child_b",
-            "text": "Yes. That's more fun."
-          }
-        ],
-        "gaps": [
-          {
-            "id": "swing",
-            "lineIndex": 0,
-            "before": "Can I use the",
-            "answer": "swing",
-            "after": "?"
-          },
-          {
-            "id": "finished",
-            "lineIndex": 1,
-            "before": "I am nearly",
-            "answer": "finished",
-            "after": "."
-          },
-          {
-            "id": "wait",
-            "lineIndex": 2,
-            "before": "I can",
-            "answer": "wait",
-            "after": "."
-          },
-          {
-            "id": "turn",
-            "lineIndex": 3,
-            "before": "It is your",
-            "answer": "turn",
-            "after": "now."
-          },
-          {
-            "id": "slide",
-            "lineIndex": 4,
-            "before": "Do you want to use the",
-            "answer": "slide",
-            "after": "?"
-          },
-          {
-            "id": "together",
+            "id": "partner",
             "lineIndex": 6,
-            "before": "Let's play",
-            "answer": "together",
-            "after": "."
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": "lost-property",
-    "title": "Lost property",
-    "emoji": "🔎",
-    "level": "Listening & Speaking",
-    "description": "Practise describing a lost object and asking for help.",
-    "voiceProfiles": {
-      "student": {
-        "pitch": 1.18,
-        "rate": 0.88
-      },
-      "teacher": {
-        "pitch": 0.88,
-        "rate": 0.82
-      }
-    },
-    "wordBank": [
-      {
-        "id": "lost",
-        "word": "lost",
-        "imageKey": "lost"
-      },
-      {
-        "id": "pencil-case",
-        "word": "pencil case",
-        "imageKey": "pencilCase"
-      },
-      {
-        "id": "jacket",
-        "word": "jacket",
-        "imageKey": "jacket"
-      },
-      {
-        "id": "red",
-        "word": "red",
-        "imageKey": "red"
-      },
-      {
-        "id": "blue",
-        "word": "blue",
-        "imageKey": "blue"
-      },
-      {
-        "id": "classroom",
-        "word": "classroom",
-        "imageKey": "classroom"
-      }
-    ],
-    "conversation": [
-      {
-        "speaker": "Student",
-        "role": "student",
-        "text": "Excuse me. I have lost my pencil case."
-      },
-      {
-        "speaker": "Teacher",
-        "role": "teacher",
-        "text": "Don't worry. What colour is it?"
-      },
-      {
-        "speaker": "Student",
-        "role": "student",
-        "text": "It is red and blue."
-      },
-      {
-        "speaker": "Teacher",
-        "role": "teacher",
-        "text": "Where did you last see it?"
-      },
-      {
-        "speaker": "Student",
-        "role": "student",
-        "text": "I think it was in the classroom."
-      },
-      {
-        "speaker": "Teacher",
-        "role": "teacher",
-        "text": "Let's check the lost property box."
-      },
-      {
-        "speaker": "Student",
-        "role": "student",
-        "text": "Here it is! Thank you for helping me."
-      },
-      {
-        "speaker": "Teacher",
-        "role": "teacher",
-        "text": "You're welcome. Try to put your name on it."
-      }
-    ],
-    "fixedExpressions": [
-      {
-        "id": "lost-pencil",
-        "left": "I have lost",
-        "right": "my pencil case."
-      },
-      {
-        "id": "dont-worry",
-        "left": "Don't",
-        "right": "worry."
-      },
-      {
-        "id": "what-colour",
-        "left": "What colour",
-        "right": "is it?"
-      },
-      {
-        "id": "red-blue",
-        "left": "It is",
-        "right": "red and blue."
-      },
-      {
-        "id": "last-see",
-        "left": "Where did you",
-        "right": "last see it?"
-      },
-      {
-        "id": "i-think",
-        "left": "I think it was",
-        "right": "in the classroom."
-      },
-      {
-        "id": "lost-box",
-        "left": "Lost property",
-        "right": "box."
-      },
-      {
-        "id": "here-it-is",
-        "left": "Here",
-        "right": "it is!"
-      },
-      {
-        "id": "helping-me",
-        "left": "Thank you for",
-        "right": "helping me."
-      },
-      {
-        "id": "your-name",
-        "left": "Put your name",
-        "right": "on it."
-      }
-    ],
-    "missingScenarios": [
-      {
-        "id": "pencil-case-red-blue",
-        "conversation": [
-          {
-            "speaker": "Student",
-            "role": "student",
-            "text": "Excuse me. I have lost my pencil case."
-          },
-          {
-            "speaker": "Teacher",
-            "role": "teacher",
-            "text": "Don't worry. What colour is it?"
-          },
-          {
-            "speaker": "Student",
-            "role": "student",
-            "text": "It is red and blue."
-          },
-          {
-            "speaker": "Teacher",
-            "role": "teacher",
-            "text": "Where did you last see it?"
-          },
-          {
-            "speaker": "Student",
-            "role": "student",
-            "text": "I think it was in the classroom."
-          },
-          {
-            "speaker": "Teacher",
-            "role": "teacher",
-            "text": "Let's check the lost property box."
-          },
-          {
-            "speaker": "Student",
-            "role": "student",
-            "text": "Here it is! Thank you for helping me."
-          },
-          {
-            "speaker": "Teacher",
-            "role": "teacher",
-            "text": "You're welcome. Try to put your name on it."
-          }
-        ],
-        "gaps": [
-          {
-            "id": "lost",
-            "lineIndex": 0,
-            "before": "I have",
-            "answer": "lost",
-            "after": "my pencil case."
-          },
-          {
-            "id": "pencil-case",
-            "lineIndex": 0,
-            "before": "I have lost my",
-            "answer": "pencil case",
-            "after": "."
-          },
-          {
-            "id": "colour",
-            "lineIndex": 1,
-            "before": "What",
-            "answer": "colour",
-            "after": "is it?"
-          },
-          {
-            "id": "red-blue",
-            "lineIndex": 2,
-            "before": "It is",
-            "answer": "red and blue",
-            "after": "."
-          },
-          {
-            "id": "classroom",
-            "lineIndex": 4,
-            "before": "It was in the",
-            "answer": "classroom",
-            "after": "."
-          },
-          {
-            "id": "helping",
-            "lineIndex": 6,
-            "before": "Thank you for",
-            "answer": "helping me",
-            "after": "."
-          }
-        ]
-      },
-      {
-        "id": "jacket-blue",
-        "conversation": [
-          {
-            "speaker": "Student",
-            "role": "student",
-            "text": "Excuse me. I have lost my jacket."
-          },
-          {
-            "speaker": "Teacher",
-            "role": "teacher",
-            "text": "Don't worry. What colour is it?"
-          },
-          {
-            "speaker": "Student",
-            "role": "student",
-            "text": "It is blue."
-          },
-          {
-            "speaker": "Teacher",
-            "role": "teacher",
-            "text": "Where did you last see it?"
-          },
-          {
-            "speaker": "Student",
-            "role": "student",
-            "text": "I think it was in the playground."
-          },
-          {
-            "speaker": "Teacher",
-            "role": "teacher",
-            "text": "Let's check the lost property box."
-          },
-          {
-            "speaker": "Student",
-            "role": "student",
-            "text": "Here it is! Thank you for helping me."
-          },
-          {
-            "speaker": "Teacher",
-            "role": "teacher",
-            "text": "You're welcome. Try to put your name on it."
-          }
-        ],
-        "gaps": [
-          {
-            "id": "jacket",
-            "lineIndex": 0,
-            "before": "I have lost my",
-            "answer": "jacket",
-            "after": "."
-          },
-          {
-            "id": "worry",
-            "lineIndex": 1,
-            "before": "Don't",
-            "answer": "worry",
-            "after": "."
-          },
-          {
-            "id": "blue",
-            "lineIndex": 2,
-            "before": "It is",
-            "answer": "blue",
-            "after": "."
-          },
-          {
-            "id": "last",
-            "lineIndex": 3,
-            "before": "Where did you",
-            "answer": "last",
-            "after": "see it?"
-          },
-          {
-            "id": "playground",
-            "lineIndex": 4,
-            "before": "It was in the",
-            "answer": "playground",
-            "after": "."
-          },
-          {
-            "id": "name",
-            "lineIndex": 7,
-            "before": "Put your",
-            "answer": "name",
-            "after": "on it."
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": "weather-clothes",
-    "title": "Weather and clothes",
-    "emoji": "🌦️",
-    "level": "Listening & Speaking",
-    "description": "Practise talking about the weather and choosing clothes.",
-    "voiceProfiles": {
-      "adult": {
-        "pitch": 0.9,
-        "rate": 0.84
-      },
-      "child": {
-        "pitch": 1.18,
-        "rate": 0.88
-      }
-    },
-    "wordBank": [
-      {
-        "id": "weather",
-        "word": "weather",
-        "imageKey": "weather"
-      },
-      {
-        "id": "sunny",
-        "word": "sunny",
-        "imageKey": "sunny"
-      },
-      {
-        "id": "rainy",
-        "word": "rainy",
-        "imageKey": "rainy"
-      },
-      {
-        "id": "coat",
-        "word": "coat",
-        "imageKey": "coat"
-      },
-      {
-        "id": "umbrella",
-        "word": "umbrella",
-        "imageKey": "umbrella"
-      },
-      {
-        "id": "hat",
-        "word": "hat",
-        "imageKey": "hat"
-      }
-    ],
-    "conversation": [
-      {
-        "speaker": "Adult",
-        "role": "adult",
-        "text": "What's the weather like today?"
-      },
-      {
-        "speaker": "Child",
-        "role": "child",
-        "text": "It is cloudy and a bit rainy."
-      },
-      {
-        "speaker": "Adult",
-        "role": "adult",
-        "text": "You should take your umbrella."
-      },
-      {
-        "speaker": "Child",
-        "role": "child",
-        "text": "Okay. Should I wear my coat too?"
-      },
-      {
-        "speaker": "Adult",
-        "role": "adult",
-        "text": "Yes, it is quite cold outside."
-      },
-      {
-        "speaker": "Child",
-        "role": "child",
-        "text": "Can I wear my red hat?"
-      },
-      {
-        "speaker": "Adult",
-        "role": "adult",
-        "text": "Yes, that's a good idea."
-      },
-      {
-        "speaker": "Child",
-        "role": "child",
-        "text": "Great. I am ready to go."
-      }
-    ],
-    "fixedExpressions": [
-      {
-        "id": "weather-like",
-        "left": "What's the weather",
-        "right": "like today?"
-      },
-      {
-        "id": "cloudy-rainy",
-        "left": "It is cloudy",
-        "right": "and a bit rainy."
-      },
-      {
-        "id": "take-umbrella",
-        "left": "Take your",
-        "right": "umbrella."
-      },
-      {
-        "id": "wear-coat",
-        "left": "Should I wear",
-        "right": "my coat?"
-      },
-      {
-        "id": "cold-outside",
-        "left": "It is quite",
-        "right": "cold outside."
-      },
-      {
-        "id": "red-hat",
-        "left": "My red",
-        "right": "hat."
-      },
-      {
-        "id": "good-idea",
-        "left": "That's a",
-        "right": "good idea."
-      },
-      {
-        "id": "ready-go",
-        "left": "I am ready",
-        "right": "to go."
-      },
-      {
-        "id": "sunny-today",
-        "left": "It is",
-        "right": "sunny today."
-      },
-      {
-        "id": "wear-sunglasses",
-        "left": "Wear your",
-        "right": "sunglasses."
-      }
-    ],
-    "missingScenarios": [
-      {
-        "id": "rainy-umbrella",
-        "conversation": [
-          {
-            "speaker": "Adult",
-            "role": "adult",
-            "text": "What's the weather like today?"
-          },
-          {
-            "speaker": "Child",
-            "role": "child",
-            "text": "It is cloudy and a bit rainy."
-          },
-          {
-            "speaker": "Adult",
-            "role": "adult",
-            "text": "You should take your umbrella."
-          },
-          {
-            "speaker": "Child",
-            "role": "child",
-            "text": "Okay. Should I wear my coat too?"
-          },
-          {
-            "speaker": "Adult",
-            "role": "adult",
-            "text": "Yes, it is quite cold outside."
-          },
-          {
-            "speaker": "Child",
-            "role": "child",
-            "text": "Can I wear my red hat?"
-          },
-          {
-            "speaker": "Adult",
-            "role": "adult",
-            "text": "Yes, that's a good idea."
-          },
-          {
-            "speaker": "Child",
-            "role": "child",
-            "text": "Great. I am ready to go."
-          }
-        ],
-        "gaps": [
-          {
-            "id": "weather",
-            "lineIndex": 0,
-            "before": "What's the",
-            "answer": "weather",
-            "after": "like today?"
-          },
-          {
-            "id": "rainy",
-            "lineIndex": 1,
-            "before": "It is cloudy and a bit",
-            "answer": "rainy",
-            "after": "."
-          },
-          {
-            "id": "umbrella",
-            "lineIndex": 2,
-            "before": "You should take your",
-            "answer": "umbrella",
-            "after": "."
-          },
-          {
-            "id": "coat",
-            "lineIndex": 3,
-            "before": "Should I wear my",
-            "answer": "coat",
-            "after": "too?"
-          },
-          {
-            "id": "cold",
-            "lineIndex": 4,
-            "before": "It is quite",
-            "answer": "cold",
-            "after": "outside."
-          },
-          {
-            "id": "ready",
-            "lineIndex": 7,
-            "before": "I am",
-            "answer": "ready",
-            "after": "to go."
-          }
-        ]
-      },
-      {
-        "id": "sunny-hat",
-        "conversation": [
-          {
-            "speaker": "Adult",
-            "role": "adult",
-            "text": "What's the weather like today?"
-          },
-          {
-            "speaker": "Child",
-            "role": "child",
-            "text": "It is sunny and warm."
-          },
-          {
-            "speaker": "Adult",
-            "role": "adult",
-            "text": "You should wear your hat."
-          },
-          {
-            "speaker": "Child",
-            "role": "child",
-            "text": "Okay. Should I take my coat too?"
-          },
-          {
-            "speaker": "Adult",
-            "role": "adult",
-            "text": "No, it is warm outside."
-          },
-          {
-            "speaker": "Child",
-            "role": "child",
-            "text": "Can I take some water?"
-          },
-          {
-            "speaker": "Adult",
-            "role": "adult",
-            "text": "Yes, that's a good idea."
-          },
-          {
-            "speaker": "Child",
-            "role": "child",
-            "text": "Great. I am ready to go."
-          }
-        ],
-        "gaps": [
-          {
-            "id": "sunny",
-            "lineIndex": 1,
-            "before": "It is",
-            "answer": "sunny",
-            "after": "and warm."
-          },
-          {
-            "id": "warm",
-            "lineIndex": 1,
-            "before": "It is sunny and",
-            "answer": "warm",
-            "after": "."
-          },
-          {
-            "id": "hat",
-            "lineIndex": 2,
-            "before": "You should wear your",
-            "answer": "hat",
-            "after": "."
-          },
-          {
-            "id": "coat",
-            "lineIndex": 3,
-            "before": "Should I take my",
-            "answer": "coat",
-            "after": "too?"
-          },
-          {
-            "id": "water",
-            "lineIndex": 5,
-            "before": "Can I take some",
-            "answer": "water",
+            "before": "Can I work with a",
+            "answer": "partner",
             "after": "?"
           },
           {
-            "id": "idea",
-            "lineIndex": 6,
-            "before": "That's a good",
-            "answer": "idea",
+            "id": "quietly",
+            "lineIndex": 7,
+            "before": "Speak",
+            "answer": "quietly",
+            "after": "."
+          },
+          {
+            "id": "answer",
+            "lineIndex": 8,
+            "before": "Can you check my",
+            "answer": "answer",
+            "after": "later?"
+          },
+          {
+            "id": "welcome",
+            "lineIndex": 11,
+            "before": "You're",
+            "answer": "welcome",
             "after": "."
           }
         ]

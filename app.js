@@ -161,6 +161,8 @@ let matchGame = null;
 let missingGame = null;
 let wordBankGame = null;
 let conversationState = {};
+let conversationVariantState = {};
+let lastRenderedRoute = null;
 let rolePlayState = {};
 let speechToken = 0;
 let petShopPage = 0;
@@ -400,8 +402,39 @@ function getRoute() {
 
 function getCurrentSituation() {
   const route = getRoute();
+  const routeChanged = route !== lastRenderedRoute;
+  lastRenderedRoute = route;
   const situationId = route.split("/").filter(Boolean)[0];
   return situations.find(item => item.id === situationId);
+}
+
+
+function conversationVariantKey(situationId, mode) {
+  return `${situationId}:${mode}`;
+}
+
+function resetConversationVariant(situationId, mode) {
+  delete conversationVariantState[conversationVariantKey(situationId, mode)];
+}
+
+function getConversationVariants(situation) {
+  return Array.isArray(situation.conversationVariants) && situation.conversationVariants.length
+    ? situation.conversationVariants
+    : [situation.conversation];
+}
+
+function getConversationLines(situation, mode = "conversation") {
+  const variants = getConversationVariants(situation);
+  const key = conversationVariantKey(situation.id, mode);
+
+  if (!conversationVariantState[key] || conversationVariantState[key].variantCount !== variants.length) {
+    conversationVariantState[key] = {
+      variantCount: variants.length,
+      index: Math.floor(Math.random() * variants.length)
+    };
+  }
+
+  return variants[conversationVariantState[key].index] || variants[0] || situation.conversation;
 }
 
 function lineSideClass(situation, line) {
@@ -712,6 +745,7 @@ function replayActivity(situationId, activity, route) {
 
   if (activity === "conversation") {
     conversationState[situationId] = false;
+    resetConversationVariant(situationId, "conversation");
   }
 
   if (activity === "match") {
@@ -753,7 +787,7 @@ function renderShell(content) {
           <div class="logo">🎙️</div>
           <div>
             <h1 class="brand-title">Speaking Friends</h1>
-            <p class="brand-subtitle">Listen, speak, and grow in English</p>
+            <p class="brand-subtitle">Listen and speak English</p>
           </div>
         </button>
 
@@ -806,7 +840,7 @@ function renderHome() {
       <p>Think about your favourite situations, your progress and what you can say now.</p>
 
       <div class="card-action">
-        ${finalUnlocked ? "Open reflection" : "Complete all missions"}
+        ${finalUnlocked ? "Open reflection" : "Complete all situations"}
         <span>→</span>
       </div>
     </button>
@@ -815,7 +849,7 @@ function renderHome() {
   renderShell(`
     <section class="screen">
       <div class="hero">
-        <h2>Choose a speaking mission.</h2>
+        <h2>Choose a speaking situation.</h2>
         <p>Practise conversations with listening and speaking activities.</p>
       </div>
 
@@ -1320,7 +1354,7 @@ function renderReflection(situation) {
         <div class="reflection-hero">
           <div>
             <span class="reflection-kicker">Think about your learning</span>
-            <h3>How did this mission go?</h3>
+            <h3>How did this situation go?</h3>
             <p>Answer these questions after practising the situation.</p>
           </div>
           <div class="reflection-emoji">${situation.emoji}</div>
@@ -1516,7 +1550,7 @@ function renderFinalReflection() {
             <div>
               <span class="reflection-kicker">Locked</span>
               <h3>Complete all situations first.</h3>
-              <p>The final reflection will unlock when all speaking missions and reflections are complete.</p>
+              <p>The final reflection will unlock when all speaking situations and reflections are complete.</p>
             </div>
             <div class="reflection-emoji">🔒</div>
           </div>
@@ -1908,8 +1942,9 @@ function hasListenedConversation(id) {
 function renderConversation(situation) {
   const listened = hasListenedConversation(situation.id);
   const listenText = listened ? "▶ Listen again" : "▶ Listen";
+  const conversationLines = getConversationLines(situation, "conversation");
 
-  const messages = situation.conversation.map(line => `
+  const messages = conversationLines.map(line => `
     <div class="message-row ${lineSideClass(situation, line)} ${line.role}">
       <div class="bubble-wrap">
         <p class="speaker">${escapeHtml(line.speaker)}</p>
@@ -1974,7 +2009,7 @@ function playConversation(id) {
   if (status) status.textContent = "Conversation ready ⭐";
   if (listenButton) listenButton.textContent = "▶ Listen again";
 
-  speakConversationLines(situation);
+  speakConversationLines(situation, null, getConversationLines(situation, "conversation"));
 }
 
 function createMatchGame(situation) {
@@ -2285,10 +2320,10 @@ function ensureRolePlayState(id) {
   return rolePlayState[id];
 }
 
-function getRoles(situation) {
+function getRoles(situation, lines = getConversationLines(situation, "role-play")) {
   const roles = [];
 
-  situation.conversation.forEach(line => {
+  lines.forEach(line => {
     if (!roles.some(item => item.role === line.role)) {
       roles.push({
         role: line.role,
@@ -2302,7 +2337,8 @@ function getRoles(situation) {
 
 function renderRolePlay(situation) {
   const state = ensureRolePlayState(situation.id);
-  const roles = getRoles(situation);
+  const conversationLines = getConversationLines(situation, "role-play");
+  const roles = getRoles(situation, conversationLines);
 
   const roleButtons = roles.map(item => {
     const active = state.selectedRole === item.role ? "selected-role" : "";
@@ -2314,7 +2350,7 @@ function renderRolePlay(situation) {
     `;
   }).join("");
 
-  const chatLines = situation.conversation.map((line, index) => {
+  const chatLines = conversationLines.map((line, index) => {
     const isStudentLine = state.selectedRole === line.role;
     const isActive = state.activeLineIndex === index;
     const badge = isStudentLine ? `<span class="your-line-badge">Your line</span>` : "";
@@ -2460,7 +2496,8 @@ function listenRoleLine(situationId, index) {
   const situation = situations.find(item => item.id === situationId);
   if (!situation) return;
 
-  const line = situation.conversation[index];
+  const lines = getConversationLines(situation, "role-play");
+  const line = lines[index];
   if (!line) return;
 
   const voice = roleVoice(situation, line.role);
@@ -2473,11 +2510,13 @@ function playPartnerOnly(situationId) {
 
   if (!situation || !state.selectedRole) return;
 
+  const lines = getConversationLines(situation, "role-play");
+
   state.playingPartner = true;
   state.activeLineIndex = null;
   renderRolePlay(situation);
 
-  speakConversationLines(situation, state.selectedRole, situation.conversation, {
+  speakConversationLines(situation, state.selectedRole, lines, {
     onLine: (index) => {
       state.activeLineIndex = index;
       renderRolePlay(situation);
@@ -2678,7 +2717,7 @@ async function shareRolePlayAudio(situationId) {
   if (!situation || !state.audioBlob) return;
 
   const student = getStudentInfo(situationId);
-  const roles = getRoles(situation);
+  const roles = getRoles(situation, getConversationLines(situation, "role-play"));
   const roleName = roles.find(item => item.role === state.selectedRole)?.speaker || "Not selected";
 
   const filename = rolePlayFileName(situationId);
@@ -2722,7 +2761,7 @@ function openGmailDraft(situationId) {
   if (!situation) return;
 
   const student = getStudentInfo(situationId);
-  const roles = getRoles(situation);
+  const roles = getRoles(situation, getConversationLines(situation, "role-play"));
   const roleName = roles.find(item => item.role === state.selectedRole)?.speaker || "Not selected";
 
   const subject = `Speaking Friends audio - ${student.name} - ${student.group} - ${situation.title}`;
@@ -2812,52 +2851,149 @@ function renderWordImage(key) {
   };
 
   const emojiImages = {
-    canteen: "🍽️",
-    menu: "📋",
-    sandwich: "🥪",
-    pasta: "🍝",
-    salad: "🥗",
-    juice: "🧃",
-    shop: "🛍️",
-    notebook: "📓",
-    pencil: "✏️",
-    bag: "🎒",
-    price: "🏷️",
-    money: "💰",
-    library: "📚",
-    park: "🌳",
-    school: "🏫",
-    straight: "⬆️",
-    left: "⬅️",
-    right: "➡️",
-    friend: "🤝",
-    football: "⚽",
-    cinema: "🎬",
-    saturday: "📅",
-    time: "🕓",
-    teacher: "👩‍🏫",
-    student: "🧒",
-    book: "📖",
-    page: "📄",
-    repeat: "🔁",
-    understand: "💡",
-    playground: "🛝",
-    slide: "🛝",
-    swing: "🌳",
-    turn: "🔁",
-    play: "▶️",
-    lost: "🔎",
-    pencilCase: "🖍️",
-    jacket: "🧥",
-    red: "🔴",
-    blue: "🔵",
-    classroom: "🏫",
-    weather: "🌦️",
-    sunny: "☀️",
-    rainy: "🌧️",
-    coat: "🧥",
-    umbrella: "☂️",
-    hat: "🧢",
+    "flu": "🤒",
+    "soreThroat": "🗣️",
+    "dizzy": "😵",
+    "temperature": "🌡️",
+    "sick": "🤢",
+    "stomachAche": "🤢",
+    "cold": "🥶",
+    "earache": "👂",
+    "cough": "😮‍💨",
+    "cut": "🩹",
+    "brokenArm": "🦴",
+    "pancakes": "🥞",
+    "tuna": "🐟",
+    "strawberries": "🍓",
+    "tomatoSauce": "🍅",
+    "chocolate": "🍫",
+    "sandwiches": "🥪",
+    "toast": "🍞",
+    "jam": "🍓",
+    "appleJuice": "🧃",
+    "cereal": "🥣",
+    "milk": "🥛",
+    "plate": "🍽️",
+    "glass": "🥛",
+    "pass": "🤲",
+    "full": "😌",
+    "enough": "✅",
+    "add": "➕",
+    "mix": "🥣",
+    "boil": "♨️",
+    "weigh": "⚖️",
+    "taste": "😋",
+    "fry": "🍳",
+    "peel": "🥕",
+    "chop": "🔪",
+    "burn": "🔥",
+    "stir": "🥄",
+    "pour": "💧",
+    "rollOut": "🍕",
+    "hippo": "🦛",
+    "whale": "🐳",
+    "kangaroo": "🦘",
+    "parrot": "🦜",
+    "dolphin": "🐬",
+    "jellyfish": "🪼",
+    "polarBear": "🐻‍❄️",
+    "dangerous": "⚠️",
+    "colourful": "🌈",
+    "intelligent": "🧠",
+    "frightening": "😱",
+    "pretty": "✨",
+    "ugly": "🪨",
+    "lighthouse": "🚨",
+    "road": "🛣️",
+    "bridge": "🌉",
+    "village": "🏘️",
+    "cave": "🕳️",
+    "cliffs": "⛰️",
+    "harbour": "⚓",
+    "building": "🏢",
+    "farm": "🚜",
+    "field": "🌾",
+    "hospital": "🏥",
+    "cafe": "☕",
+    "supermarket": "🏪",
+    "touristInformation": "ℹ️",
+    "waterPark": "💦",
+    "funfair": "🎡",
+    "museum": "🏛️",
+    "hotel": "🏨",
+    "surf": "🏄",
+    "bowling": "🎳",
+    "crazyGolf": "⛳",
+    "safariPark": "🦒",
+    "aquarium": "🐠",
+    "castle": "🏰",
+    "barbecue": "🔥",
+    "flipFlops": "🩴",
+    "suitcase": "🧳",
+    "towel": "🧺",
+    "swimsuit": "🩱",
+    "sunHat": "👒",
+    "wetsuit": "🤿",
+    "instructions": "📋",
+    "spell": "🔤",
+    "example": "📝",
+    "canteen": "🍽️",
+    "menu": "📋",
+    "sandwich": "🥪",
+    "pasta": "🍝",
+    "salad": "🥗",
+    "juice": "🧃",
+    "shop": "🛍️",
+    "notebook": "📓",
+    "pencil": "✏️",
+    "bag": "🎒",
+    "price": "🏷️",
+    "money": "💰",
+    "library": "📚",
+    "park": "🌳",
+    "school": "🏫",
+    "straight": "⬆️",
+    "left": "⬅️",
+    "right": "➡️",
+    "friend": "🤝",
+    "football": "⚽",
+    "cinema": "🎬",
+    "saturday": "📅",
+    "time": "🕓",
+    "teacher": "👩‍🏫",
+    "student": "🧒",
+    "book": "📘",
+    "page": "📄",
+    "repeat": "🔁",
+    "understand": "💡",
+    "playground": "🛝",
+    "slide": "🛝",
+    "swing": "🌳",
+    "turn": "🔁",
+    "play": "▶️",
+    "lost": "🔎",
+    "pencilCase": "🖍️",
+    "jacket": "🧥",
+    "red": "🔴",
+    "blue": "🔵",
+    "classroom": "🏫",
+    "weather": "🌦️",
+    "sunny": "☀️",
+    "rainy": "🌧️",
+    "coat": "🧥",
+    "umbrella": "☂️",
+    "hat": "🧢",
+    "rice": "🍚",
+    "mushrooms": "🍄",
+    "cheese": "🧀",
+    "bread": "🍞",
+    "water": "💧",
+    "rest": "🛏️",
+    "doctor": "🩺",
+    "patient": "🧍",
+    "help": "🤝",
+    "word": "💬",
+    "listen": "👂",
   };
 
   if (images[key]) {
@@ -2876,6 +3012,8 @@ function render() {
   stopActiveRecording();
 
   const route = getRoute();
+  const routeChanged = route !== lastRenderedRoute;
+  lastRenderedRoute = route;
 
   if (typeof situations === "undefined") {
     renderShell(`
@@ -2936,6 +3074,10 @@ function render() {
   }
 
   if (page === "conversation") {
+    if (routeChanged) {
+      resetConversationVariant(situation.id, "conversation");
+    }
+
     renderConversation(situation);
     return;
   }
@@ -2951,6 +3093,13 @@ function render() {
   }
 
   if (page === "role-play") {
+    if (routeChanged) {
+      resetConversationVariant(situation.id, "role-play");
+      const state = ensureRolePlayState(situation.id);
+      state.activeLineIndex = null;
+      state.playingPartner = false;
+    }
+
     renderRolePlay(situation);
     return;
   }
