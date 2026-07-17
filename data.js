@@ -334,19 +334,19 @@ const situations = [
         "right": "with you today?"
       },
       {
-        "id": "ive-got",
-        "left": "I've got",
-        "right": "a stomach ache."
+        "id": "got-stomach",
+        "left": "I've got a",
+        "right": "stomach ache."
       },
       {
         "id": "where-hurt",
-        "left": "Where does",
-        "right": "it hurt?"
+        "left": "Where does it",
+        "right": "hurt?"
       },
       {
         "id": "feel-sick",
-        "left": "Do you",
-        "right": "feel sick?"
+        "left": "Do you feel",
+        "right": "sick?"
       },
       {
         "id": "not-really",
@@ -354,19 +354,19 @@ const situations = [
         "right": "really."
       },
       {
-        "id": "temperature",
-        "left": "Have you got",
-        "right": "a temperature?"
+        "id": "got-temperature",
+        "left": "Have you got a",
+        "right": "temperature?"
       },
       {
         "id": "plenty-rest",
-        "left": "Get plenty",
-        "right": "of rest."
+        "left": "Get plenty of",
+        "right": "rest."
       },
       {
         "id": "drink-water",
-        "left": "Drink a lot",
-        "right": "of water."
+        "left": "Drink a lot of",
+        "right": "water."
       },
       {
         "id": "stay-home",
@@ -374,19 +374,19 @@ const situations = [
         "right": "at home."
       },
       {
-        "id": "thank-doctor",
-        "left": "Thank you",
-        "right": "very much."
-      },
-      {
-        "id": "should-do",
+        "id": "what-should",
         "left": "What should",
         "right": "I do?"
       },
       {
-        "id": "shouldnt-play",
-        "left": "You shouldn't",
-        "right": "play today."
+        "id": "take-medicine",
+        "left": "Should I take",
+        "right": "any medicine?"
+      },
+      {
+        "id": "thank-doctor",
+        "left": "Thank you,",
+        "right": "doctor."
       }
     ],
     "missingScenarios": [
@@ -837,6 +837,11 @@ const situations = [
         "id": "bread",
         "word": "bread",
         "imageKey": "bread"
+      },
+      {
+        "id": "lettuce",
+        "word": "lettuce",
+        "imageKey": "lettuce"
       }
     ],
     "conversation": [
@@ -978,7 +983,7 @@ const situations = [
         {
           "speaker": "Canteen assistant",
           "role": "assistant",
-          "text": "Of course. Would you like salad in it?"
+          "text": "Of course. Would you like lettuce in it?"
         },
         {
           "speaker": "Student",
@@ -1092,13 +1097,13 @@ const situations = [
     "fixedExpressions": [
       {
         "id": "what-like",
-        "left": "What would",
-        "right": "you like?"
+        "left": "What would you",
+        "right": "like?"
       },
       {
-        "id": "could-have",
-        "left": "Could I have",
-        "right": "pasta, please?"
+        "id": "pasta-sauce",
+        "left": "Could I have pasta",
+        "right": "with tomato sauce, please?"
       },
       {
         "id": "here-you-are",
@@ -1106,44 +1111,44 @@ const situations = [
         "right": "you are."
       },
       {
-        "id": "would-cheese",
-        "left": "Would you like",
-        "right": "some cheese?"
+        "id": "cheese-on-it",
+        "left": "Would you like cheese",
+        "right": "on it?"
       },
       {
-        "id": "yes-please",
-        "left": "Yes,",
+        "id": "id-like-water",
+        "left": "I'd like some",
+        "right": "water, please."
+      },
+      {
+        "id": "some-strawberries",
+        "left": "Can I have some",
+        "right": "strawberries, please?"
+      },
+      {
+        "id": "tuna-sandwich",
+        "left": "Could I have a tuna",
+        "right": "sandwich, please?"
+      },
+      {
+        "id": "lettuce-in-it",
+        "left": "Would you like lettuce",
+        "right": "in it?"
+      },
+      {
+        "id": "no-mushrooms",
+        "left": "No mushrooms,",
         "right": "please."
       },
       {
-        "id": "id-like",
-        "left": "I'd like",
-        "right": "some water, please."
+        "id": "two-pounds",
+        "left": "It is",
+        "right": "two pounds."
       },
       {
-        "id": "anything-else",
-        "left": "Anything",
-        "right": "else?"
-      },
-      {
-        "id": "of-course",
-        "left": "Yes, of",
-        "right": "course."
-      },
-      {
-        "id": "no-problem",
-        "left": "No",
-        "right": "problem."
-      },
-      {
-        "id": "enjoy-lunch",
+        "id": "enjoy-food",
         "left": "Enjoy your",
-        "right": "lunch."
-      },
-      {
-        "id": "how-much",
-        "left": "How much",
-        "right": "is it?"
+        "right": "food."
       },
       {
         "id": "not-hungry",
@@ -1291,7 +1296,7 @@ const situations = [
           {
             "speaker": "Canteen assistant",
             "role": "assistant",
-            "text": "Of course. Would you like salad in it?"
+            "text": "Of course. Would you like lettuce in it?"
           },
           {
             "speaker": "Student",
@@ -1355,10 +1360,10 @@ const situations = [
             "after": ", please?"
           },
           {
-            "id": "salad",
+            "id": "lettuce",
             "lineIndex": 2,
             "before": "Would you like",
-            "answer": "salad",
+            "answer": "lettuce",
             "after": "in it?"
           },
           {
@@ -1556,19 +1561,9 @@ const situations = [
         "imageKey": "appleJuice"
       },
       {
-        "id": "cereal",
-        "word": "cereal",
-        "imageKey": "cereal"
-      },
-      {
         "id": "milk",
         "word": "milk",
         "imageKey": "milk"
-      },
-      {
-        "id": "rice",
-        "word": "rice",
-        "imageKey": "rice"
       },
       {
         "id": "water",
@@ -1581,9 +1576,9 @@ const situations = [
         "imageKey": "plate"
       },
       {
-        "id": "glass",
-        "word": "glass",
-        "imageKey": "glass"
+        "id": "cup",
+        "word": "cup",
+        "imageKey": "cup"
       },
       {
         "id": "pass",
@@ -1596,9 +1591,19 @@ const situations = [
         "imageKey": "full"
       },
       {
-        "id": "enough",
-        "word": "enough",
-        "imageKey": "enough"
+        "id": "butter",
+        "word": "butter",
+        "imageKey": "butter"
+      },
+      {
+        "id": "spoon",
+        "word": "spoon",
+        "imageKey": "spoon"
+      },
+      {
+        "id": "potatoes",
+        "word": "potatoes",
+        "imageKey": "potatoes"
       }
     ],
     "conversation": [
@@ -1640,7 +1645,7 @@ const situations = [
       {
         "speaker": "Person B",
         "role": "person_b",
-        "text": "Would you like some cereal?"
+        "text": "Would you like some potatoes?"
       },
       {
         "speaker": "Person A",
@@ -1703,7 +1708,7 @@ const situations = [
         {
           "speaker": "Person B",
           "role": "person_b",
-          "text": "Would you like some cereal?"
+          "text": "Would you like some potatoes?"
         },
         {
           "speaker": "Person A",
@@ -1730,7 +1735,7 @@ const situations = [
         {
           "speaker": "Person A",
           "role": "person_a",
-          "text": "Can you pass the rice, please?"
+          "text": "Can you pass the potatoes, please?"
         },
         {
           "speaker": "Person B",
@@ -1740,7 +1745,7 @@ const situations = [
         {
           "speaker": "Person A",
           "role": "person_a",
-          "text": "Thank you. Would you like some more rice?"
+          "text": "Thank you. Would you like some more potatoes?"
         },
         {
           "speaker": "Person B",
@@ -1760,7 +1765,7 @@ const situations = [
         {
           "speaker": "Person A",
           "role": "person_a",
-          "text": "Where is my glass?"
+          "text": "Where is my cup?"
         },
         {
           "speaker": "Person B",
@@ -1792,7 +1797,7 @@ const situations = [
         {
           "speaker": "Person A",
           "role": "person_a",
-          "text": "Would you like some more cereal?"
+          "text": "Would you like some more potatoes?"
         },
         {
           "speaker": "Person B",
@@ -1854,8 +1859,8 @@ const situations = [
     "fixedExpressions": [
       {
         "id": "more-toast",
-        "left": "Would you like",
-        "right": "some more toast?"
+        "left": "Would you like some more",
+        "right": "toast?"
       },
       {
         "id": "yes-please",
@@ -1864,18 +1869,18 @@ const situations = [
       },
       {
         "id": "pass-jam",
-        "left": "Can you pass",
-        "right": "the jam, please?"
+        "left": "Pass the jam,",
+        "right": "please."
       },
       {
         "id": "more-juice",
-        "left": "Can I have",
-        "right": "some more apple juice?"
+        "left": "Can I have some more",
+        "right": "apple juice, please?"
       },
       {
-        "id": "of-course",
-        "left": "Yes, of",
-        "right": "course."
+        "id": "some-potatoes",
+        "left": "Would you like some",
+        "right": "potatoes?"
       },
       {
         "id": "no-thank",
@@ -1883,19 +1888,24 @@ const situations = [
         "right": "thank you."
       },
       {
-        "id": "had-enough",
-        "left": "I've had",
-        "right": "enough."
-      },
-      {
         "id": "im-full",
         "left": "I'm",
         "right": "full."
       },
       {
-        "id": "here-you",
-        "left": "Here",
-        "right": "you are."
+        "id": "cup-place",
+        "left": "The cup is next to",
+        "right": "your plate."
+      },
+      {
+        "id": "just-little",
+        "left": "Just a",
+        "right": "little."
+      },
+      {
+        "id": "dont-like-jam",
+        "left": "I don't like",
+        "right": "jam."
       },
       {
         "id": "clear-table",
@@ -1903,14 +1913,9 @@ const situations = [
         "right": "the table."
       },
       {
-        "id": "next-plate",
-        "left": "It's next to",
-        "right": "your plate."
-      },
-      {
-        "id": "just-little",
-        "left": "Just a",
-        "right": "little."
+        "id": "thank-you",
+        "left": "Thank you",
+        "right": "very much."
       }
     ],
     "missingScenarios": [
@@ -1955,7 +1960,7 @@ const situations = [
           {
             "speaker": "Person B",
             "role": "person_b",
-            "text": "Would you like some cereal?"
+            "text": "Would you like some potatoes?"
           },
           {
             "speaker": "Person A",
@@ -2015,10 +2020,10 @@ const situations = [
             "after": "."
           },
           {
-            "id": "cereal",
+            "id": "potatoes",
             "lineIndex": 7,
             "before": "Would you like some",
-            "answer": "cereal",
+            "answer": "potatoes",
             "after": "?"
           },
           {
@@ -2038,12 +2043,12 @@ const situations = [
         ]
       },
       {
-        "id": "rice-water",
+        "id": "potatoes-water",
         "conversation": [
           {
             "speaker": "Person A",
             "role": "person_a",
-            "text": "Can you pass the rice, please?"
+            "text": "Can you pass the potatoes, please?"
           },
           {
             "speaker": "Person B",
@@ -2053,7 +2058,7 @@ const situations = [
           {
             "speaker": "Person A",
             "role": "person_a",
-            "text": "Thank you. Would you like some more rice?"
+            "text": "Thank you. Would you like some more potatoes?"
           },
           {
             "speaker": "Person B",
@@ -2073,7 +2078,7 @@ const situations = [
           {
             "speaker": "Person A",
             "role": "person_a",
-            "text": "Where is my glass?"
+            "text": "Where is my cup?"
           },
           {
             "speaker": "Person B",
@@ -2103,10 +2108,10 @@ const situations = [
         ],
         "gaps": [
           {
-            "id": "rice",
+            "id": "potatoes",
             "lineIndex": 0,
             "before": "Can you pass the",
-            "answer": "rice",
+            "answer": "potatoes",
             "after": ", please?"
           },
           {
@@ -2124,10 +2129,10 @@ const situations = [
             "after": ", please?"
           },
           {
-            "id": "glass",
+            "id": "cup",
             "lineIndex": 6,
             "before": "Where is my",
-            "answer": "glass",
+            "answer": "cup",
             "after": "?"
           },
           {
@@ -2161,12 +2166,12 @@ const situations = [
         ]
       },
       {
-        "id": "cereal-milk",
+        "id": "potatoes-milk",
         "conversation": [
           {
             "speaker": "Person A",
             "role": "person_a",
-            "text": "Would you like some more cereal?"
+            "text": "Would you like some more potatoes?"
           },
           {
             "speaker": "Person B",
@@ -2226,10 +2231,10 @@ const situations = [
         ],
         "gaps": [
           {
-            "id": "cereal",
+            "id": "potatoes",
             "lineIndex": 0,
             "before": "Would you like some more",
-            "answer": "cereal",
+            "answer": "potatoes",
             "after": "?"
           },
           {
@@ -2356,11 +2361,6 @@ const situations = [
         "id": "pour",
         "word": "pour",
         "imageKey": "pour"
-      },
-      {
-        "id": "roll-out",
-        "word": "roll out",
-        "imageKey": "rollOut"
       }
     ],
     "conversation": [
@@ -2564,7 +2564,7 @@ const situations = [
         {
           "speaker": "Teacher",
           "role": "teacher",
-          "text": "First, roll out the dough."
+          "text": "First, chop the mushrooms carefully."
         },
         {
           "speaker": "Student",
@@ -2646,8 +2646,8 @@ const situations = [
       },
       {
         "id": "dont-burn",
-        "left": "Don't let",
-        "right": "it burn."
+        "left": "Don't let it",
+        "right": "burn."
       },
       {
         "id": "taste-carefully",
@@ -2665,9 +2665,9 @@ const situations = [
         "right": "slowly."
       },
       {
-        "id": "roll-out",
-        "left": "Roll out",
-        "right": "the dough."
+        "id": "chop-dough",
+        "left": "Chop the mushrooms",
+        "right": "on the tray."
       },
       {
         "id": "tastes-good",
@@ -2938,7 +2938,7 @@ const situations = [
           {
             "speaker": "Teacher",
             "role": "teacher",
-            "text": "First, roll out the dough."
+            "text": "First, chop the mushrooms carefully."
           },
           {
             "speaker": "Student",
@@ -2995,11 +2995,11 @@ const situations = [
             "after": "."
           },
           {
-            "id": "roll-out",
+            "id": "chop",
             "lineIndex": 2,
             "before": "First,",
-            "answer": "roll out",
-            "after": "the dough."
+            "answer": "chop",
+            "after": "the mushrooms carefully."
           },
           {
             "id": "add",
@@ -3407,7 +3407,7 @@ const situations = [
     ],
     "fixedExpressions": [
       {
-        "id": "i-love",
+        "id": "love-penguins",
         "left": "I love",
         "right": "penguins."
       },
@@ -3417,52 +3417,52 @@ const situations = [
         "right": "?"
       },
       {
-        "id": "because",
+        "id": "funny-pretty",
         "left": "Because they are",
         "right": "funny and pretty."
       },
       {
-        "id": "bigger-than",
+        "id": "bigger-lions",
         "left": "Are they bigger",
         "right": "than lions?"
       },
       {
-        "id": "no-arent",
-        "left": "No, they",
-        "right": "aren't."
-      },
-      {
-        "id": "live-cold",
+        "id": "cold-places",
         "left": "They live in",
         "right": "cold places."
       },
       {
-        "id": "did-know",
+        "id": "birds",
         "left": "Did you know",
         "right": "they are birds?"
       },
       {
-        "id": "really-cool",
-        "left": "Really? That's",
-        "right": "cool."
+        "id": "like-dolphins",
+        "left": "I like",
+        "right": "dolphins."
       },
       {
-        "id": "more-dangerous",
-        "left": "Sharks are more",
-        "right": "dangerous."
+        "id": "whales-bigger",
+        "left": "Are whales bigger",
+        "right": "than dolphins?"
       },
       {
-        "id": "more-colourful",
-        "left": "Parrots are more",
-        "right": "colourful."
+        "id": "water",
+        "left": "Dolphins live",
+        "right": "in the water."
       },
       {
-        "id": "what-about",
+        "id": "about-kangaroos",
         "left": "What about",
         "right": "kangaroos?"
       },
       {
-        "id": "amazing",
+        "id": "hippos-dangerous",
+        "left": "Did you know hippos",
+        "right": "are dangerous?"
+      },
+      {
+        "id": "animals-amazing",
         "left": "Animals are",
         "right": "amazing."
       }
@@ -3857,11 +3857,6 @@ const situations = [
     },
     "wordBank": [
       {
-        "id": "lighthouse",
-        "word": "lighthouse",
-        "imageKey": "lighthouse"
-      },
-      {
         "id": "road",
         "word": "road",
         "imageKey": "road"
@@ -3877,14 +3872,9 @@ const situations = [
         "imageKey": "village"
       },
       {
-        "id": "cave",
-        "word": "cave",
-        "imageKey": "cave"
-      },
-      {
-        "id": "cliffs",
-        "word": "cliffs",
-        "imageKey": "cliffs"
+        "id": "mountain",
+        "word": "mountain",
+        "imageKey": "mountain"
       },
       {
         "id": "harbour",
@@ -3925,6 +3915,36 @@ const situations = [
         "id": "supermarket",
         "word": "supermarket",
         "imageKey": "supermarket"
+      },
+      {
+        "id": "go-straight-on",
+        "word": "go straight on",
+        "imageKey": "goStraightOn"
+      },
+      {
+        "id": "turn-left",
+        "word": "turn left",
+        "imageKey": "turnLeft"
+      },
+      {
+        "id": "turn-right",
+        "word": "turn right",
+        "imageKey": "turnRight"
+      },
+      {
+        "id": "go-past",
+        "word": "go past",
+        "imageKey": "goPast"
+      },
+      {
+        "id": "near",
+        "word": "near",
+        "imageKey": "near"
+      },
+      {
+        "id": "far",
+        "word": "far",
+        "imageKey": "far"
       }
     ],
     "conversation": [
@@ -4096,7 +4116,7 @@ const situations = [
         {
           "speaker": "Visitor",
           "role": "visitor",
-          "text": "Can I see the lighthouse from there?"
+          "text": "Can I see the harbour from there?"
         },
         {
           "speaker": "Helper",
@@ -4153,17 +4173,17 @@ const situations = [
         {
           "speaker": "Helper",
           "role": "helper",
-          "text": "No. Go along the road by the cliffs."
+          "text": "No. Go along the road by the mountain."
         },
         {
           "speaker": "Visitor",
           "role": "visitor",
-          "text": "Is the cave near the farm?"
+          "text": "Is the mountain near the farm?"
         },
         {
           "speaker": "Helper",
           "role": "helper",
-          "text": "Yes, the cave is behind the farm."
+          "text": "Yes, the mountain is near the farm."
         },
         {
           "speaker": "Visitor",
@@ -4194,24 +4214,14 @@ const situations = [
         "right": "get there?"
       },
       {
-        "id": "straight-on",
-        "left": "Go straight",
-        "right": "on."
+        "id": "straight-right",
+        "left": "Go straight on,",
+        "right": "then turn right."
       },
       {
-        "id": "turn-right",
-        "left": "Turn",
-        "right": "right."
-      },
-      {
-        "id": "turn-left",
-        "left": "Turn",
-        "right": "left."
-      },
-      {
-        "id": "go-past",
-        "left": "Go past",
-        "right": "the cinema."
+        "id": "past-cinema",
+        "left": "Go past the cinema,",
+        "right": "then turn left."
       },
       {
         "id": "next-school",
@@ -4224,11 +4234,6 @@ const situations = [
         "right": "far away?"
       },
       {
-        "id": "welcome",
-        "left": "You're",
-        "right": "welcome."
-      },
-      {
         "id": "cross-bridge",
         "left": "Cross",
         "right": "the bridge."
@@ -4237,6 +4242,21 @@ const situations = [
         "id": "main-road",
         "left": "It's on",
         "right": "the main road."
+      },
+      {
+        "id": "near-field",
+        "left": "It's near",
+        "right": "the field."
+      },
+      {
+        "id": "by-mountain",
+        "left": "Go along the road",
+        "right": "by the mountain."
+      },
+      {
+        "id": "welcome",
+        "left": "You're",
+        "right": "welcome."
       }
     ],
     "missingScenarios": [
@@ -4409,7 +4429,7 @@ const situations = [
           {
             "speaker": "Visitor",
             "role": "visitor",
-            "text": "Can I see the lighthouse from there?"
+            "text": "Can I see the harbour from there?"
           },
           {
             "speaker": "Helper",
@@ -4464,10 +4484,10 @@ const situations = [
             "after": "."
           },
           {
-            "id": "lighthouse",
+            "id": "harbour",
             "lineIndex": 8,
             "before": "Can I see the",
-            "answer": "lighthouse",
+            "answer": "harbour",
             "after": "from there?"
           },
           {
@@ -4527,17 +4547,17 @@ const situations = [
           {
             "speaker": "Helper",
             "role": "helper",
-            "text": "No. Go along the road by the cliffs."
+            "text": "No. Go along the road by the mountain."
           },
           {
             "speaker": "Visitor",
             "role": "visitor",
-            "text": "Is the cave near the farm?"
+            "text": "Is the mountain near the farm?"
           },
           {
             "speaker": "Helper",
             "role": "helper",
-            "text": "Yes, the cave is behind the farm."
+            "text": "Yes, the mountain is near the farm."
           },
           {
             "speaker": "Visitor",
@@ -4587,24 +4607,24 @@ const situations = [
             "after": "?"
           },
           {
-            "id": "cliffs",
+            "id": "mountain",
             "lineIndex": 7,
             "before": "Go along the road by the",
-            "answer": "cliffs",
+            "answer": "mountain",
             "after": "."
           },
           {
-            "id": "cave",
+            "id": "mountain",
             "lineIndex": 8,
             "before": "Is the",
-            "answer": "cave",
+            "answer": "mountain",
             "after": "near the farm?"
           },
           {
-            "id": "behind",
+            "id": "near",
             "lineIndex": 9,
-            "before": "The cave is",
-            "answer": "behind",
+            "before": "The mountain is",
+            "answer": "near",
             "after": "the farm."
           }
         ]
@@ -4664,9 +4684,9 @@ const situations = [
         "imageKey": "bowling"
       },
       {
-        "id": "crazy-golf",
-        "word": "play crazy golf",
-        "imageKey": "crazyGolf"
+        "id": "golf",
+        "word": "play golf",
+        "imageKey": "golf"
       },
       {
         "id": "safari-park",
@@ -4699,11 +4719,6 @@ const situations = [
         "imageKey": "suitcase"
       },
       {
-        "id": "towel",
-        "word": "towel",
-        "imageKey": "towel"
-      },
-      {
         "id": "swimsuit",
         "word": "swimsuit",
         "imageKey": "swimsuit"
@@ -4712,11 +4727,6 @@ const situations = [
         "id": "sun-hat",
         "word": "sun hat",
         "imageKey": "sunHat"
-      },
-      {
-        "id": "wetsuit",
-        "word": "wetsuit",
-        "imageKey": "wetsuit"
       }
     ],
     "conversation": [
@@ -4733,7 +4743,7 @@ const situations = [
       {
         "speaker": "Friend A",
         "role": "friend_a",
-        "text": "Yes, we do. And we need towels."
+        "text": "Yes, we do. And we need sun hats."
       },
       {
         "speaker": "Friend B",
@@ -4743,7 +4753,7 @@ const situations = [
       {
         "speaker": "Friend A",
         "role": "friend_a",
-        "text": "Good idea. Put them in the suitcase."
+        "text": "Good idea. They go in the suitcase."
       },
       {
         "speaker": "Friend B",
@@ -4758,7 +4768,7 @@ const situations = [
       {
         "speaker": "Friend B",
         "role": "friend_b",
-        "text": "Do we need a wetsuit?"
+        "text": "Do we need flip flops?"
       },
       {
         "speaker": "Friend A",
@@ -4796,7 +4806,7 @@ const situations = [
         {
           "speaker": "Friend A",
           "role": "friend_a",
-          "text": "Yes, we do. And we need towels."
+          "text": "Yes, we do. And we need sun hats."
         },
         {
           "speaker": "Friend B",
@@ -4806,7 +4816,7 @@ const situations = [
         {
           "speaker": "Friend A",
           "role": "friend_a",
-          "text": "Good idea. Put them in the suitcase."
+          "text": "Good idea. They go in the suitcase."
         },
         {
           "speaker": "Friend B",
@@ -4821,7 +4831,7 @@ const situations = [
         {
           "speaker": "Friend B",
           "role": "friend_b",
-          "text": "Do we need a wetsuit?"
+          "text": "Do we need flip flops?"
         },
         {
           "speaker": "Friend A",
@@ -4920,12 +4930,12 @@ const situations = [
         {
           "speaker": "Friend A",
           "role": "friend_a",
-          "text": "Yes, we are. We need wetsuits."
+          "text": "Yes, we are. We need flip flops."
         },
         {
           "speaker": "Friend B",
           "role": "friend_b",
-          "text": "Do we need towels too?"
+          "text": "Do we need sun hats too?"
         },
         {
           "speaker": "Friend A",
@@ -4945,7 +4955,7 @@ const situations = [
         {
           "speaker": "Friend B",
           "role": "friend_b",
-          "text": "Can we play crazy golf too?"
+          "text": "Can we play golf too?"
         },
         {
           "speaker": "Friend A",
@@ -4971,14 +4981,14 @@ const situations = [
     ],
     "fixedExpressions": [
       {
-        "id": "going-water",
+        "id": "water-park",
         "left": "We're going to",
         "right": "a water park."
       },
       {
-        "id": "do-need",
-        "left": "Do we",
-        "right": "need swimsuits?"
+        "id": "need-swimsuits",
+        "left": "Do we need",
+        "right": "swimsuits?"
       },
       {
         "id": "yes-do",
@@ -4991,7 +5001,7 @@ const situations = [
         "right": "we don't."
       },
       {
-        "id": "how-about",
+        "id": "flip-flops",
         "left": "How about",
         "right": "flip flops?"
       },
@@ -5002,7 +5012,7 @@ const situations = [
       },
       {
         "id": "in-suitcase",
-        "left": "Put them in",
+        "left": "They go in",
         "right": "the suitcase."
       },
       {
@@ -5048,7 +5058,7 @@ const situations = [
           {
             "speaker": "Friend A",
             "role": "friend_a",
-            "text": "Yes, we do. And we need towels."
+            "text": "Yes, we do. And we need sun hats."
           },
           {
             "speaker": "Friend B",
@@ -5058,7 +5068,7 @@ const situations = [
           {
             "speaker": "Friend A",
             "role": "friend_a",
-            "text": "Good idea. Put them in the suitcase."
+            "text": "Good idea. They go in the suitcase."
           },
           {
             "speaker": "Friend B",
@@ -5073,7 +5083,7 @@ const situations = [
           {
             "speaker": "Friend B",
             "role": "friend_b",
-            "text": "Do we need a wetsuit?"
+            "text": "Do we need flip flops?"
           },
           {
             "speaker": "Friend A",
@@ -5112,10 +5122,10 @@ const situations = [
             "after": "?"
           },
           {
-            "id": "towels",
+            "id": "sun-hat",
             "lineIndex": 2,
             "before": "We need",
-            "answer": "towels",
+            "answer": "sun hats",
             "after": "."
           },
           {
@@ -5128,7 +5138,7 @@ const situations = [
           {
             "id": "suitcase",
             "lineIndex": 4,
-            "before": "Put them in the",
+            "before": "They go in the",
             "answer": "suitcase",
             "after": "."
           },
@@ -5140,10 +5150,10 @@ const situations = [
             "after": "?"
           },
           {
-            "id": "wetsuit",
+            "id": "flip flops",
             "lineIndex": 7,
-            "before": "Do we need a",
-            "answer": "wetsuit",
+            "before": "Do we need",
+            "answer": "flip flops",
             "after": "?"
           },
           {
@@ -5294,12 +5304,12 @@ const situations = [
           {
             "speaker": "Friend A",
             "role": "friend_a",
-            "text": "Yes, we are. We need wetsuits."
+            "text": "Yes, we are. We need flip flops."
           },
           {
             "speaker": "Friend B",
             "role": "friend_b",
-            "text": "Do we need towels too?"
+            "text": "Do we need sun hats too?"
           },
           {
             "speaker": "Friend A",
@@ -5319,7 +5329,7 @@ const situations = [
           {
             "speaker": "Friend B",
             "role": "friend_b",
-            "text": "Can we play crazy golf too?"
+            "text": "Can we play golf too?"
           },
           {
             "speaker": "Friend A",
@@ -5358,17 +5368,17 @@ const situations = [
             "after": "?"
           },
           {
-            "id": "wetsuits",
+            "id": "flip flops",
             "lineIndex": 2,
             "before": "We need",
-            "answer": "wetsuits",
+            "answer": "flip flops",
             "after": "."
           },
           {
-            "id": "towels",
+            "id": "sun-hat",
             "lineIndex": 3,
             "before": "Do we need",
-            "answer": "towels",
+            "answer": "sun hats",
             "after": "too?"
           },
           {
@@ -5389,7 +5399,7 @@ const situations = [
             "id": "golf",
             "lineIndex": 7,
             "before": "Can we play",
-            "answer": "crazy golf",
+            "answer": "golf",
             "after": "too?"
           },
           {
@@ -5479,6 +5489,16 @@ const situations = [
         "id": "example",
         "word": "example",
         "imageKey": "example"
+      },
+      {
+        "id": "write",
+        "word": "write",
+        "imageKey": "write"
+      },
+      {
+        "id": "answer",
+        "word": "answer",
+        "imageKey": "answer"
       }
     ],
     "conversation": [
@@ -5625,7 +5645,7 @@ const situations = [
         {
           "speaker": "Teacher",
           "role": "teacher",
-          "text": "Listen carefully. I can spell it."
+          "text": "Listen carefully. Page is P-A-G-E."
         },
         {
           "speaker": "Student",
@@ -5635,7 +5655,7 @@ const situations = [
         {
           "speaker": "Teacher",
           "role": "teacher",
-          "text": "Yes, I can repeat it."
+          "text": "Yes. P-A-G-E. Page."
         },
         {
           "speaker": "Student",
@@ -5764,18 +5784,13 @@ const situations = [
       },
       {
         "id": "first-example",
-        "left": "The first",
+        "left": "Show me the first",
         "right": "example."
       },
       {
         "id": "understand-now",
         "left": "I understand",
         "right": "now."
-      },
-      {
-        "id": "well-done",
-        "left": "Well",
-        "right": "done."
       },
       {
         "id": "need-help",
@@ -5786,6 +5801,11 @@ const situations = [
         "id": "spell-word",
         "left": "How do you spell",
         "right": "this word?"
+      },
+      {
+        "id": "write-picture",
+        "left": "Write it under",
+        "right": "the picture."
       },
       {
         "id": "keep-going",
@@ -5938,7 +5958,7 @@ const situations = [
           {
             "speaker": "Teacher",
             "role": "teacher",
-            "text": "Listen carefully. I can spell it."
+            "text": "Listen carefully. Page is P-A-G-E."
           },
           {
             "speaker": "Student",
@@ -5948,7 +5968,7 @@ const situations = [
           {
             "speaker": "Teacher",
             "role": "teacher",
-            "text": "Yes, I can repeat it."
+            "text": "Yes. P-A-G-E. Page."
           },
           {
             "speaker": "Student",
@@ -6004,6 +6024,13 @@ const situations = [
             "after": "?"
           },
           {
+            "id": "page",
+            "lineIndex": 3,
+            "before": "Listen carefully.",
+            "answer": "Page",
+            "after": "is P-A-G-E."
+          },
+          {
             "id": "repeat",
             "lineIndex": 4,
             "before": "Can you",
@@ -6022,13 +6049,6 @@ const situations = [
             "lineIndex": 7,
             "before": "Write it under the",
             "answer": "picture",
-            "after": "."
-          },
-          {
-            "id": "right",
-            "lineIndex": 9,
-            "before": "That's",
-            "answer": "right",
             "after": "."
           },
           {

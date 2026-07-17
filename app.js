@@ -688,6 +688,21 @@ function finishActivity(situationId, activity, nextRoute, replayRoute) {
   });
 }
 
+
+function finishRolePlayAndGoReflection(situationId) {
+  stopSpeech();
+  stopActiveRecording();
+
+  const situation = situations.find(item => item.id === situationId);
+  if (!situation) return;
+
+  completeActivity(situationId, "role-play");
+  saveProgress();
+  updateStarPill();
+
+  goTo(`/${situationId}/reflection`);
+}
+
 function showStarPopup({ situation, activity, earned, nextRoute, replayRoute }) {
   document.querySelectorAll(".star-overlay").forEach(item => item.remove());
 
@@ -1328,11 +1343,11 @@ function reflectionRadio(name, situationId, field, value, label, currentValue) {
 function activityOptions(selectedValue) {
   const options = [
     ["", "Choose one"],
-    ["Word Bank", "Word Bank"],
-    ["Conversation", "Conversation"],
-    ["Match expressions", "Match expressions"],
-    ["Missing words", "Missing words"],
-    ["Role-play", "Role-play"]
+    ["Word Bank", "🖼️ Word Bank"],
+    ["Conversation", "💬 Conversation"],
+    ["Match expressions", "🧩 Match expressions"],
+    ["Missing words", "✏️ Missing words"],
+    ["Role-play", "🎭 Role-play"]
   ];
 
   return options.map(([value, label]) => `
@@ -1466,7 +1481,7 @@ function situationOptions(selectedValue) {
     `<option value="" ${selectedValue ? "" : "selected"}>Choose one</option>`,
     ...situations.map(situation => `
       <option value="${escapeHtml(situation.title)}" ${selectedValue === situation.title ? "selected" : ""}>
-        ${escapeHtml(situation.title)}
+        ${escapeHtml(`${situation.emoji} ${situation.title}`)}
       </option>
     `)
   ];
@@ -1507,8 +1522,8 @@ Most difficult situation: ${data.mostDifficultSituation || "-"}
 Favourite activity: ${data.favouriteActivity || "-"}
 Words I remember: ${data.wordsRemember || "-"}
 One sentence I can say now: ${data.sentenceCanSay || "-"}
-My opinion: ${data.opinion || "-"}
-How the app helped me: ${data.helped || "-"}
+My opinion about my English practice: ${data.opinion || "-"}
+How Speaking Friends helped me: ${data.helped || "-"}
 
 SITUATION REFLECTIONS
 
@@ -1634,12 +1649,12 @@ function renderFinalReflection() {
           </label>
 
           <label class="reflection-field">
-            <span>My opinion about the app...</span>
-            <textarea rows="3" placeholder="What did you like? What would you change?" oninput="updateFinalReflectionField('opinion', this.value)">${escapeHtml(data.opinion)}</textarea>
+            <span>My opinion about my English practice...</span>
+            <textarea rows="3" placeholder="What did you learn? What was useful?" oninput="updateFinalReflectionField('opinion', this.value)">${escapeHtml(data.opinion)}</textarea>
           </label>
 
           <label class="reflection-field">
-            <span>How did the app help you practise English?</span>
+            <span>How did Speaking Friends help you practise English?</span>
             <textarea rows="3" placeholder="Write your answer" oninput="updateFinalReflectionField('helped', this.value)">${escapeHtml(data.helped)}</textarea>
           </label>
         </div>
@@ -1966,6 +1981,7 @@ function renderConversation(situation) {
           <button id="listenConversationBtn" class="primary-btn" onclick="playConversation('${situation.id}')">
             ${listenText}
           </button>
+          <button class="secondary-btn" onclick="stopSpeech()">■ Stop</button>
         </div>
 
         <div class="chat">
@@ -2013,7 +2029,27 @@ function playConversation(id) {
 }
 
 function createMatchGame(situation) {
-  const selected = shuffle(situation.fixedExpressions).slice(0, 5);
+  const shuffled = shuffle(situation.fixedExpressions);
+  const selected = [];
+  const usedLeft = new Set();
+  const usedRight = new Set();
+
+  shuffled.forEach(item => {
+    const leftKey = normaliseMatchText(item.left);
+    const rightKey = normaliseMatchText(item.right);
+
+    if (selected.length < 5 && !usedLeft.has(leftKey) && !usedRight.has(rightKey)) {
+      selected.push(item);
+      usedLeft.add(leftKey);
+      usedRight.add(rightKey);
+    }
+  });
+
+  shuffled.forEach(item => {
+    if (selected.length < 5 && !selected.some(selectedItem => selectedItem.id === item.id)) {
+      selected.push(item);
+    }
+  });
 
   return {
     situationId: situation.id,
@@ -2021,25 +2057,50 @@ function createMatchGame(situation) {
     leftParts: shuffle(selected),
     rightParts: shuffle(selected),
     selectedLeft: null,
-    matched: [],
+    matchedLeft: [],
+    matchedRight: [],
     wrongLeft: null,
     wrongRight: null
   };
 }
 
+function normaliseMatchText(text) {
+  return String(text)
+    .toLowerCase()
+    .replace(/[.,!?;:]/g, "")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+function isAlternativeMatch(leftItem, rightItem) {
+  if (!leftItem || !rightItem) return false;
+
+  if (leftItem.id === rightItem.id) return true;
+
+  if (Array.isArray(leftItem.acceptedRightIds) && leftItem.acceptedRightIds.includes(rightItem.id)) {
+    return true;
+  }
+
+  if (Array.isArray(rightItem.acceptedLeftIds) && rightItem.acceptedLeftIds.includes(leftItem.id)) {
+    return true;
+  }
+
+  return normaliseMatchText(leftItem.left) === normaliseMatchText(rightItem.left);
+}
+
 function renderMatch(situation) {
-  if (!matchGame || matchGame.situationId !== situation.id || matchGame.matched.length === matchGame.items.length) {
+  if (!matchGame || matchGame.situationId !== situation.id || (matchGame.matchedLeft || []).length === matchGame.items.length) {
     matchGame = createMatchGame(situation);
   }
 
-  const progressText = `${matchGame.matched.length}/${matchGame.items.length}`;
-  const progressWidth = (matchGame.matched.length / matchGame.items.length) * 100;
+  const progressText = `${(matchGame.matchedLeft || []).length}/${matchGame.items.length}`;
+  const progressWidth = ((matchGame.matchedLeft || []).length / matchGame.items.length) * 100;
 
   const leftCards = matchGame.leftParts.map(item => {
     const selected = matchGame.selectedLeft === item.id ? "selected-piece" : "";
-    const matched = matchGame.matched.includes(item.id) ? "matched-piece" : "";
+    const matched = (matchGame.matchedLeft || []).includes(item.id) ? "matched-piece" : "";
     const wrong = matchGame.wrongLeft === item.id ? "wrong-piece" : "";
-    const disabled = matchGame.matched.includes(item.id) ? "disabled" : "";
+    const disabled = (matchGame.matchedLeft || []).includes(item.id) ? "disabled" : "";
 
     return `
       <button class="piece-card ${selected} ${matched} ${wrong}" onclick="selectLeftPiece('${item.id}')" ${disabled}>
@@ -2049,9 +2110,9 @@ function renderMatch(situation) {
   }).join("");
 
   const rightCards = matchGame.rightParts.map(item => {
-    const matched = matchGame.matched.includes(item.id) ? "matched-piece" : "";
+    const matched = (matchGame.matchedRight || []).includes(item.id) ? "matched-piece" : "";
     const wrong = matchGame.wrongRight === item.id ? "wrong-piece" : "";
-    const disabled = matchGame.matched.includes(item.id) ? "disabled" : "";
+    const disabled = (matchGame.matchedRight || []).includes(item.id) ? "disabled" : "";
 
     return `
       <button class="piece-card ${matched} ${wrong}" onclick="selectRightPiece('${item.id}')" ${disabled}>
@@ -2094,7 +2155,7 @@ function renderMatch(situation) {
 }
 
 function selectLeftPiece(id) {
-  if (!matchGame || matchGame.matched.includes(id)) return;
+  if (!matchGame || (matchGame.matchedLeft || []).includes(id)) return;
 
   matchGame.selectedLeft = id;
   matchGame.wrongLeft = null;
@@ -2104,17 +2165,24 @@ function selectLeftPiece(id) {
 }
 
 function selectRightPiece(id) {
-  if (!matchGame || !matchGame.selectedLeft || matchGame.matched.includes(id)) return;
+  if (!matchGame || !matchGame.selectedLeft || (matchGame.matchedRight || []).includes(id)) return;
 
   const situation = getCurrentSituation();
+  const leftItem = matchGame.items.find(item => item.id === matchGame.selectedLeft);
+  const rightItem = matchGame.items.find(item => item.id === id);
+  const correct = isAlternativeMatch(leftItem, rightItem);
 
-  if (matchGame.selectedLeft === id) {
-    matchGame.matched.push(id);
+  if (correct) {
+    if (!matchGame.matchedLeft) matchGame.matchedLeft = [];
+    if (!matchGame.matchedRight) matchGame.matchedRight = [];
+
+    matchGame.matchedLeft.push(matchGame.selectedLeft);
+    matchGame.matchedRight.push(id);
     matchGame.selectedLeft = null;
     matchGame.wrongLeft = null;
     matchGame.wrongRight = null;
 
-    if (matchGame.matched.length === matchGame.items.length) {
+    if (matchGame.matchedLeft.length === matchGame.items.length) {
       const nextRoute = situationProgress(situation.id).count === ACTIVITY_KEYS.length
         ? `/${situation.id}/menu`
         : `/${situation.id}/missing`;
@@ -2141,9 +2209,23 @@ function selectRightPiece(id) {
 
 function createMissingGame(situation) {
   const scenario = shuffle(situation.missingScenarios)[0];
-  const selectedGaps = shuffle(scenario.gaps)
-    .slice(0, 5)
-    .sort((a, b) => a.lineIndex - b.lineIndex);
+
+  const selectedGaps = [];
+  const usedLineIndexes = new Set();
+
+  shuffle(scenario.gaps).forEach(gap => {
+    if (selectedGaps.length >= 5) return;
+
+    // Only one gap per sentence. This prevents hidden answers:
+    // e.g. if one line had both "headache" and "earache", one could be expected
+    // without appearing as a blank on screen.
+    if (!usedLineIndexes.has(gap.lineIndex)) {
+      selectedGaps.push(gap);
+      usedLineIndexes.add(gap.lineIndex);
+    }
+  });
+
+  selectedGaps.sort((a, b) => a.lineIndex - b.lineIndex);
 
   const selectedByLine = new Map(
     selectedGaps.map(item => [item.lineIndex, item])
@@ -2248,9 +2330,10 @@ function renderMissing(situation) {
         </div>
 
         <div class="listen-bar">
-          <button class="secondary-btn" onclick="speakConversationLines(getCurrentSituation(), null, missingGame.scenario.conversation)">
+          <button class="secondary-btn" onclick="listenMissingWords('${situation.id}')">
             ▶ Listen again
           </button>
+          <button class="secondary-btn" onclick="stopSpeech()">■ Stop</button>
         </div>
 
         <div class="missing-bank">
@@ -2265,6 +2348,38 @@ function renderMissing(situation) {
       </div>
     </section>
   `);
+}
+
+function missingAudioLines() {
+  if (!missingGame) return [];
+
+  return missingGame.lines.map(item => {
+    if (!item.hasGap) {
+      return {
+        speaker: item.speaker,
+        role: item.role,
+        text: item.text
+      };
+    }
+
+    const text = `${item.before} ${item.answer} ${item.after}`
+      .replace(/\s+([.,!?;:])/g, "$1")
+      .replace(/\s+/g, " ")
+      .trim();
+
+    return {
+      speaker: item.speaker,
+      role: item.role,
+      text
+    };
+  });
+}
+
+function listenMissingWords(situationId) {
+  const situation = situations.find(item => item.id === situationId);
+  if (!situation || !missingGame) return;
+
+  speakConversationLines(situation, null, missingAudioLines());
 }
 
 function chooseMissingWord(id) {
@@ -2471,7 +2586,7 @@ function renderRolePlay(situation) {
           ${state.message ? `<p class="small-note">${escapeHtml(state.message)}</p>` : ""}
 
           <div class="actions">
-            <button class="primary-btn" onclick="finishActivity('${situation.id}', 'role-play', '/${situation.id}/reflection', '/${situation.id}/role-play')" ${hasAudio ? "" : "disabled"}>
+            <button class="primary-btn" onclick="finishRolePlayAndGoReflection(\'${situation.id}\')" ${hasAudio ? "" : "disabled"}>
               Finish role-play
             </button>
           </div>
@@ -2851,92 +2966,6 @@ function renderWordImage(key) {
   };
 
   const emojiImages = {
-    "flu": "🤒",
-    "soreThroat": "🗣️",
-    "dizzy": "😵",
-    "temperature": "🌡️",
-    "sick": "🤢",
-    "stomachAche": "🤢",
-    "cold": "🥶",
-    "earache": "👂",
-    "cough": "😮‍💨",
-    "cut": "🩹",
-    "brokenArm": "🦴",
-    "pancakes": "🥞",
-    "tuna": "🐟",
-    "strawberries": "🍓",
-    "tomatoSauce": "🍅",
-    "chocolate": "🍫",
-    "sandwiches": "🥪",
-    "toast": "🍞",
-    "jam": "🍓",
-    "appleJuice": "🧃",
-    "cereal": "🥣",
-    "milk": "🥛",
-    "plate": "🍽️",
-    "glass": "🥛",
-    "pass": "🤲",
-    "full": "😌",
-    "enough": "✅",
-    "add": "➕",
-    "mix": "🥣",
-    "boil": "♨️",
-    "weigh": "⚖️",
-    "taste": "😋",
-    "fry": "🍳",
-    "peel": "🥕",
-    "chop": "🔪",
-    "burn": "🔥",
-    "stir": "🥄",
-    "pour": "💧",
-    "rollOut": "🍕",
-    "hippo": "🦛",
-    "whale": "🐳",
-    "kangaroo": "🦘",
-    "parrot": "🦜",
-    "dolphin": "🐬",
-    "jellyfish": "🪼",
-    "polarBear": "🐻‍❄️",
-    "dangerous": "⚠️",
-    "colourful": "🌈",
-    "intelligent": "🧠",
-    "frightening": "😱",
-    "pretty": "✨",
-    "ugly": "🪨",
-    "lighthouse": "🚨",
-    "road": "🛣️",
-    "bridge": "🌉",
-    "village": "🏘️",
-    "cave": "🕳️",
-    "cliffs": "⛰️",
-    "harbour": "⚓",
-    "building": "🏢",
-    "farm": "🚜",
-    "field": "🌾",
-    "hospital": "🏥",
-    "cafe": "☕",
-    "supermarket": "🏪",
-    "touristInformation": "ℹ️",
-    "waterPark": "💦",
-    "funfair": "🎡",
-    "museum": "🏛️",
-    "hotel": "🏨",
-    "surf": "🏄",
-    "bowling": "🎳",
-    "crazyGolf": "⛳",
-    "safariPark": "🦒",
-    "aquarium": "🐠",
-    "castle": "🏰",
-    "barbecue": "🔥",
-    "flipFlops": "🩴",
-    "suitcase": "🧳",
-    "towel": "🧺",
-    "swimsuit": "🩱",
-    "sunHat": "👒",
-    "wetsuit": "🤿",
-    "instructions": "📋",
-    "spell": "🔤",
-    "example": "📝",
     "canteen": "🍽️",
     "menu": "📋",
     "sandwich": "🥪",
@@ -2950,22 +2979,7 @@ function renderWordImage(key) {
     "price": "🏷️",
     "money": "💰",
     "library": "📚",
-    "park": "🌳",
-    "school": "🏫",
-    "straight": "⬆️",
-    "left": "⬅️",
-    "right": "➡️",
-    "friend": "🤝",
-    "football": "⚽",
-    "cinema": "🎬",
-    "saturday": "📅",
-    "time": "🕓",
-    "teacher": "👩‍🏫",
-    "student": "🧒",
     "book": "📘",
-    "page": "📄",
-    "repeat": "🔁",
-    "understand": "💡",
     "playground": "🛝",
     "slide": "🛝",
     "swing": "🌳",
@@ -2977,24 +2991,130 @@ function renderWordImage(key) {
     "red": "🔴",
     "blue": "🔵",
     "classroom": "🏫",
-    "weather": "🌦️",
-    "sunny": "☀️",
-    "rainy": "🌧️",
-    "coat": "🧥",
-    "umbrella": "☂️",
-    "hat": "🧢",
-    "rice": "🍚",
-    "mushrooms": "🍄",
-    "cheese": "🧀",
-    "bread": "🍞",
-    "water": "💧",
-    "rest": "🛏️",
+    "teacher": "👩‍🏫",
+    "student": "🧒",
+    "flu": "🤒",
+    "headache": "🤕",
+    "soreThroat": "🗣️",
+    "dizzy": "😵‍💫",
+    "temperature": "🌡️",
+    "sick": "🤢",
+    "stomachAche": "😖",
+    "cold": "🤧",
+    "earache": "👂",
+    "cough": "😷",
+    "cut": "🩹",
+    "brokenArm": "🦴",
     "doctor": "🩺",
     "patient": "🧍",
+    "water": "💧",
+    "rest": "🛏️",
     "help": "🤝",
+    "pancakes": "🥞",
+    "tuna": "🐟",
+    "strawberries": "🍓",
+    "rice": "🍚",
+    "mushrooms": "🍄",
+    "tomatoSauce": "🍅",
+    "chocolate": "🍫",
+    "cheese": "🧀",
+    "sandwiches": "🥪",
+    "bread": "🍞",
+    "lettuce": "🥬",
+    "toast": "🍞",
+    "jam": "🫙",
+    "appleJuice": "🧃",
+    "cereal": "🥣",
+    "milk": "🥛",
+    "plate": "🍽️",
+    "pass": "🤲",
+    "full": "😌",
+    "butter": "🧈",
+    "spoon": "🥄",
+    "potatoes": "🥔",
+    "add": "➕",
+    "mix": "🥣",
+    "boil": "♨️",
+    "weigh": "⚖️",
+    "taste": "😋",
+    "fry": "🍳",
+    "peel": "🥕",
+    "chop": "🔪",
+    "burn": "🔥",
+    "stir": "🥄",
+    "pour": "🫗",
+    "rollOut": "🍕",
+    "hippo": "🦛",
+    "whale": "🐳",
+    "kangaroo": "🦘",
+    "parrot": "🦜",
+    "lion": "🦁",
+    "dolphin": "🐬",
+    "shark": "🦈",
+    "jellyfish": "🪼",
+    "tiger": "🐯",
+    "panda": "🐼",
+    "polarBear": "🐻‍❄️",
+    "penguin": "🐧",
+    "dangerous": "⚠️",
+    "colourful": "🌈",
+    "intelligent": "🧠",
+    "frightening": "😱",
+    "pretty": "✨",
+    "ugly": "🙈",
+    "road": "🛣️",
+    "bridge": "🌉",
+    "village": "🏘️",
+    "harbour": "⚓",
+    "building": "🏢",
+    "farm": "🚜",
+    "field": "🌾",
+    "hospital": "🏥",
+    "cafe": "☕",
+    "cinema": "🎬",
+    "supermarket": "🛒",
+    "goStraightOn": "⬆️",
+    "turnLeft": "↩️",
+    "turnRight": "↪️",
+    "goPast": "➡️",
+    "near": "📍",
+    "far": "🗺️",
+    "nextTo": "↔️",
+    "touristInformation": "ℹ️",
+    "waterPark": "🌊",
+    "funfair": "🎡",
+    "museum": "🏛️",
+    "hotel": "🏨",
+    "surf": "🏄",
+    "bowling": "🎳",
+    "golf": "⛳",
+    "safariPark": "🦒",
+    "aquarium": "🐠",
+    "castle": "🏰",
+    "barbecue": "🍖",
+    "flipFlops": "🩴",
+    "suitcase": "🧳",
+    "swimsuit": "🩱",
+    "sunHat": "👒",
+    "page": "📄",
+    "instructions": "📋",
+    "repeat": "🔁",
+    "understand": "💡",
+    "spell": "🔤",
     "word": "💬",
     "listen": "👂",
+    "example": "📝",
+    "write": "✏️",
+    "answer": "✅",
+    "cup": "☕",
+    "mountain": "⛰️",
   };
+
+  const preferredEmojiKeys = new Set(["soreThroat", "dizzy", "stomachAche", "cough", "rice", "mushrooms", "cheese", "bread", "lettuce", "toast", "jam", "cereal", "milk", "pass", "mix", "peel", "chop", "stir", "pour", "rollOut", "burn", "lion", "shark", "tiger", "panda", "penguin", "farm", "field", "cafe", "supermarket", "goStraightOn", "turnLeft", "turnRight", "goPast", "near", "far", "nextTo", "touristInformation", "waterPark", "barbecue", "golf", "page", "word", "help", "example", "write", "cup", "mountain"]);
+
+  if (preferredEmojiKeys.has(key) && emojiImages[key]) {
+    return `<span class="word-illustration word-emoji-illustration"><span>${emojiImages[key]}</span></span>`;
+  }
 
   if (images[key]) {
     return `<span class="word-illustration">${images[key]}</span>`;
@@ -3004,7 +3124,7 @@ function renderWordImage(key) {
     return `<span class="word-illustration word-emoji-illustration"><span>${emojiImages[key]}</span></span>`;
   }
 
-  return `<span class="word-illustration">${images.help}</span>`;
+  return `<span class="word-illustration">${images.help || ""}</span>`;
 }
 
 function render() {

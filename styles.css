@@ -2165,3 +2165,14 @@ button {
   }
 }
 
+/* Clearer vocabulary icon cards */
+.word-emoji-illustration span {
+  letter-spacing: -0.12em;
+  white-space: nowrap;
+}
+
+.listen-bar {
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
