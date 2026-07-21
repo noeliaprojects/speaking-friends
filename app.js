@@ -1816,12 +1816,28 @@ function renderActivityMenu(situation) {
 }
 
 function renderPageHead(title, subtitle, backRoute) {
+  const titleSituation = typeof situations !== "undefined"
+    ? situations.find(item => item.title === title)
+    : null;
+
+  const titleContent = titleSituation
+    ? `
+      <button
+        class="page-title-link"
+        onclick="goTo('/${titleSituation.id}/menu')"
+        aria-label="Go to ${escapeHtml(title)} activities"
+      >
+        <h2>${escapeHtml(title)}</h2>
+      </button>
+    `
+    : `<h2>${escapeHtml(title)}</h2>`;
+
   return `
     <div class="page-head">
       <button class="back-btn" onclick="goTo('${backRoute}')" aria-label="Go back">←</button>
 
       <div class="page-title">
-        <h2>${escapeHtml(title)}</h2>
+        ${titleContent}
         <p>${escapeHtml(subtitle)}</p>
       </div>
 
