@@ -4,6 +4,6 @@
   "description": "Listening and speaking practice for young English learners.",
   "start_url": "./index.html",
   "display": "standalone",
-  "background_color": "#F7F8FC",
-  "theme_color": "#7C8CF8"
+  "background_color": "#FBF9F3",
+  "theme_color": "#E8543F"
 }
