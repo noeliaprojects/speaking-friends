@@ -299,6 +299,7 @@ const situations = [
           "answer": "a sore throat and a cough",
           "after": ".",
           "options": [
+            "a sore throat and a cough",
             "a headache",
             "a stomach ache",
             "a cold",
@@ -313,9 +314,9 @@ const situations = [
           "answer": "very tired",
           "after": ".",
           "options": [
+            "very tired",
             "sick",
             "dizzy",
-            "very tired",
             "cold"
           ]
         },
@@ -326,6 +327,7 @@ const situations = [
           "answer": "rest and drink water",
           "after": ".",
           "options": [
+            "rest and drink water",
             "rest",
             "drink water",
             "stay at home",
