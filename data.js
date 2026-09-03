@@ -17,11 +17,6 @@ const situations = [
     },
     "wordBank": [
       {
-        "id": "flu",
-        "word": "flu",
-        "imageKey": "flu"
-      },
-      {
         "id": "headache",
         "word": "headache",
         "imageKey": "headache"
@@ -65,16 +60,6 @@ const situations = [
         "id": "cough",
         "word": "cough",
         "imageKey": "cough"
-      },
-      {
-        "id": "cut",
-        "word": "cut",
-        "imageKey": "cut"
-      },
-      {
-        "id": "broken-arm",
-        "word": "broken arm",
-        "imageKey": "brokenArm"
       }
     ],
     "conversation": [
@@ -380,11 +365,6 @@ const situations = [
         "imageKey": "rice"
       },
       {
-        "id": "mushrooms",
-        "word": "mushrooms",
-        "imageKey": "mushrooms"
-      },
-      {
         "id": "tomato-sauce",
         "word": "tomato sauce",
         "imageKey": "tomatoSauce"
@@ -395,19 +375,9 @@ const situations = [
         "imageKey": "chocolate"
       },
       {
-        "id": "salad",
-        "word": "salad",
-        "imageKey": "salad"
-      },
-      {
         "id": "cheese",
         "word": "cheese",
         "imageKey": "cheese"
-      },
-      {
-        "id": "sandwiches",
-        "word": "sandwiches",
-        "imageKey": "sandwiches"
       },
       {
         "id": "lettuce",
@@ -715,16 +685,6 @@ const situations = [
         "imageKey": "water"
       },
       {
-        "id": "plate",
-        "word": "plate",
-        "imageKey": "plate"
-      },
-      {
-        "id": "cup",
-        "word": "cup",
-        "imageKey": "cup"
-      },
-      {
         "id": "pass",
         "word": "pass",
         "imageKey": "pass"
@@ -1028,11 +988,6 @@ const situations = [
         "imageKey": "mix"
       },
       {
-        "id": "boil",
-        "word": "boil",
-        "imageKey": "boil"
-      },
-      {
         "id": "weigh",
         "word": "weigh",
         "imageKey": "weigh"
@@ -1046,21 +1001,6 @@ const situations = [
         "id": "fry",
         "word": "fry",
         "imageKey": "fry"
-      },
-      {
-        "id": "peel",
-        "word": "peel",
-        "imageKey": "peel"
-      },
-      {
-        "id": "chop",
-        "word": "chop",
-        "imageKey": "chop"
-      },
-      {
-        "id": "burn",
-        "word": "burn",
-        "imageKey": "burn"
       },
       {
         "id": "stir",
@@ -1486,11 +1426,6 @@ const situations = [
         "imageKey": "shark"
       },
       {
-        "id": "jellyfish",
-        "word": "jellyfish",
-        "imageKey": "jellyfish"
-      },
-      {
         "id": "tiger",
         "word": "tiger",
         "imageKey": "tiger"
@@ -1499,11 +1434,6 @@ const situations = [
         "id": "panda",
         "word": "panda",
         "imageKey": "panda"
-      },
-      {
-        "id": "polar-bear",
-        "word": "polar bear",
-        "imageKey": "polarBear"
       },
       {
         "id": "penguin",
@@ -1526,19 +1456,9 @@ const situations = [
         "imageKey": "intelligent"
       },
       {
-        "id": "frightening",
-        "word": "frightening",
-        "imageKey": "frightening"
-      },
-      {
         "id": "pretty",
         "word": "pretty",
         "imageKey": "pretty"
-      },
-      {
-        "id": "ugly",
-        "word": "ugly",
-        "imageKey": "ugly"
       }
     ],
     "conversation": [
@@ -1874,26 +1794,6 @@ const situations = [
         "id": "bridge",
         "word": "bridge",
         "imageKey": "bridge"
-      },
-      {
-        "id": "village",
-        "word": "village",
-        "imageKey": "village"
-      },
-      {
-        "id": "mountain",
-        "word": "mountain",
-        "imageKey": "mountain"
-      },
-      {
-        "id": "harbour",
-        "word": "harbour",
-        "imageKey": "harbour"
-      },
-      {
-        "id": "building",
-        "word": "building",
-        "imageKey": "building"
       },
       {
         "id": "farm",
@@ -2273,11 +2173,6 @@ const situations = [
     },
     "wordBank": [
       {
-        "id": "tourist-information",
-        "word": "tourist information",
-        "imageKey": "touristInformation"
-      },
-      {
         "id": "water-park",
         "word": "go to a water park",
         "imageKey": "waterPark"
@@ -2293,26 +2188,6 @@ const situations = [
         "imageKey": "museum"
       },
       {
-        "id": "hotel",
-        "word": "stay in a hotel",
-        "imageKey": "hotel"
-      },
-      {
-        "id": "surf",
-        "word": "learn to surf",
-        "imageKey": "surf"
-      },
-      {
-        "id": "bowling",
-        "word": "go bowling",
-        "imageKey": "bowling"
-      },
-      {
-        "id": "golf",
-        "word": "play golf",
-        "imageKey": "golf"
-      },
-      {
         "id": "safari-park",
         "word": "visit a safari park",
         "imageKey": "safariPark"
@@ -2326,11 +2201,6 @@ const situations = [
         "id": "castle",
         "word": "visit a castle",
         "imageKey": "castle"
-      },
-      {
-        "id": "barbecue",
-        "word": "have a barbecue",
-        "imageKey": "barbecue"
       },
       {
         "id": "flip-flops",
@@ -2668,16 +2538,6 @@ const situations = [
         "imageKey": "teacher"
       },
       {
-        "id": "student",
-        "word": "student",
-        "imageKey": "student"
-      },
-      {
-        "id": "book",
-        "word": "book",
-        "imageKey": "book"
-      },
-      {
         "id": "page",
         "word": "page",
         "imageKey": "page"
@@ -2698,34 +2558,14 @@ const situations = [
         "imageKey": "understand"
       },
       {
-        "id": "spell",
-        "word": "spell",
-        "imageKey": "spell"
-      },
-      {
         "id": "word",
         "word": "word",
         "imageKey": "word"
       },
       {
-        "id": "listen",
-        "word": "listen",
-        "imageKey": "listen"
-      },
-      {
-        "id": "help",
-        "word": "help",
-        "imageKey": "help"
-      },
-      {
         "id": "example",
         "word": "example",
         "imageKey": "example"
-      },
-      {
-        "id": "write",
-        "word": "write",
-        "imageKey": "write"
       },
       {
         "id": "answer",
