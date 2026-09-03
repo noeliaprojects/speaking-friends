@@ -44,6 +44,17 @@ button {
   font: inherit;
 }
 
+/* Default sizing for inline status icons (star/check/lock) that sit next to
+   text, e.g. inside .card-progress or .ready-pill. More specific icon
+   containers (.card-icon, .activity-menu-icon, .reflection-emoji) override
+   this with their own larger size below. */
+svg {
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.15em;
+  flex-shrink: 0;
+}
+
 .app-shell {
   width: min(100%, 980px);
   min-height: 100vh;
@@ -237,6 +248,12 @@ button {
   background: var(--primary-soft);
   border: 2px solid var(--text);
   font-size: 32px;
+  color: var(--primary);
+}
+
+.card-icon svg {
+  width: 30px;
+  height: 30px;
 }
 
 .card-progress {
@@ -247,6 +264,9 @@ button {
   color: #6F5200;
   font-weight: 700;
   font-size: 0.86rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
 }
 
 .situation-card h3 {
@@ -357,8 +377,17 @@ button {
   box-shadow: 1px 1px 0 rgba(33, 38, 58, 0.16);
 }
 
-.activity-menu-card span {
-  font-size: 34px;
+.activity-menu-icon {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  color: var(--primary);
+}
+
+.activity-menu-icon svg {
+  width: 32px;
+  height: 32px;
 }
 
 .activity-menu-card strong {
@@ -799,6 +828,12 @@ button {
   font-size: 82px;
   line-height: 1;
   margin-bottom: 10px;
+  color: #F5A623;
+}
+
+.big-star svg {
+  width: 72px;
+  height: 72px;
 }
 
 .star-pop h2 {
@@ -2084,6 +2119,12 @@ button {
   border: 1px solid var(--line);
   box-shadow: 0 12px 26px rgba(37, 42, 65, 0.08);
   font-size: 3rem;
+  color: var(--primary);
+}
+
+.reflection-emoji svg {
+  width: 44px;
+  height: 44px;
 }
 
 .reflection-form {
@@ -2185,6 +2226,11 @@ button {
 
 .reflection-locked-pop .big-star {
   font-size: 3.4rem;
+}
+
+.reflection-locked-pop .big-star svg {
+  width: 48px;
+  height: 48px;
 }
 
 @media (max-width: 700px) {
@@ -2352,6 +2398,7 @@ button {
 .ready-pill {
   display: inline-flex;
   align-items: center;
+  gap: 6px;
   min-height: 42px;
   padding: 0 14px;
   border-radius: 999px;

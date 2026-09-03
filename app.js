@@ -164,6 +164,39 @@ const SIMON_ACTIONS = [
 
 const SIMON_TARGET_SCORE = 5;
 
+// Custom line-icon set used for navigation chrome (situation cards, activity
+// menu). These replace native emoji glyphs, which render as a different
+// picture on every OS/browser and read as a placeholder rather than a
+// designed icon. Vocabulary illustrations in Word Bank keep using emoji/SVG
+// from renderWordImage — that's a separate, content-driven system.
+const UI_ICONS = {
+  doctor: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3v6a4 4 0 0 0 8 0V3"/><path d="M7 3H5.5M15 3h1.5"/><path d="M15 9v2a6 6 0 0 1-12 0V9"/><circle cx="19" cy="15" r="2.4"/><path d="M19 17.4V19"/></svg>`,
+  canteen: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2v7a2 2 0 0 0 4 0V2M8 9v13M6 2v3M10 2v3"/><path d="M17 2c-1.7 0-3 2-3 5s1.3 5 3 5v10"/></svg>`,
+  table: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12c0-4 3.5-8 8-8s8 4 8 8"/><path d="M4 12h16v3a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3v-3Z"/></svg>`,
+  cooking: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11h16l-1.4 6.2A3 3 0 0 1 15.7 20H8.3a3 3 0 0 1-2.9-2.8L4 11Z"/><path d="M8 11c0-3 1.8-5.5 4-7 2.2 1.5 4 4 4 7"/></svg>`,
+  animals: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="15.5" r="4"/><circle cx="6" cy="9" r="1.8"/><circle cx="18" cy="9" r="1.8"/><circle cx="9.3" cy="5.5" r="1.8"/><circle cx="14.7" cy="5.5" r="1.8"/></svg>`,
+  directions: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M15 9l-2 6-6 2 2-6 6-2Z"/></svg>`,
+  holiday: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="9" r="3.6"/><path d="M12 2.6v1.6M12 12.8v1.6M5.6 9h1.6M16.8 9h1.6M7.5 4.5l1.1 1.1M15.4 5.6l1.1-1.1"/><path d="M2.5 19c1.6-1.4 3.2-1.4 4.8 0s3.2 1.4 4.8 0 3.2-1.4 4.8 0 3.2 1.4 4.8 0"/></svg>`,
+  "school-help": `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 8V6a3 3 0 0 1 6 0v2"/><rect x="5" y="8" width="14" height="13" rx="3"/><path d="M9 12v3M12 12v5M15 12v3"/></svg>`,
+
+  "word-bank": `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="4.5" width="17" height="15" rx="3"/><circle cx="9" cy="10" r="1.7"/><path d="M4 17l5-4.5 3.5 3L16 12l4.5 5.5"/></svg>`,
+  conversation: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h13a3 3 0 0 1 3 3v6a3 3 0 0 1-3 3H10l-5 3.5V17H6a3 3 0 0 1-3-3V8a3 3 0 0 1 3-3Z"/><path d="M8 10h8M8 13h5"/></svg>`,
+  match: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3.5a2.2 2.2 0 0 1 3.9 1.5c-.1.7-.5 1.2-1 1.7h2.6a1.5 1.5 0 0 1 1.5 1.5v2.6c.5-.5 1-.9 1.7-1a2.2 2.2 0 1 1 0 4.4c-.7-.1-1.2-.5-1.7-1v2.6a1.5 1.5 0 0 1-1.5 1.5h-2.6c.5.5.9 1 1 1.7A2.2 2.2 0 1 1 9 20.5c.1-.7.5-1.2 1-1.7H7.4A1.5 1.5 0 0 1 5.9 17.3v-2.6c-.5.5-1 .9-1.7 1a2.2 2.2 0 1 1 0-4.4c.7.1 1.2.5 1.7 1V8.7A1.5 1.5 0 0 1 7.4 7.2H10c-.5-.5-.9-1-1-1.7Z"/></svg>`,
+  missing: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20l1-4.2L15.8 5a2 2 0 0 1 2.8 0l.4.4a2 2 0 0 1 0 2.8L8.2 19 4 20Z"/><path d="M4 20h6M13.5 6.5l3 3"/></svg>`,
+  "role-play": `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 8h12M17 8l-3.2-3.2M17 8l-3.2 3.2"/><path d="M19 16H7M7 16l3.2-3.2M7 16l3.2 3.2"/></svg>`,
+  "optional-challenge": `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5l2.6 5.3 5.9.9-4.3 4.1 1 5.9L12 16.9 6.8 19.7l1-5.9-4.3-4.1 5.9-.9L12 3.5Z"/></svg>`,
+  reflection: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3.5h9l4 4V19a1.5 1.5 0 0 1-1.5 1.5H6A1.5 1.5 0 0 1 4.5 19V5A1.5 1.5 0 0 1 6 3.5Z"/><path d="M15 3.5V7h4"/><path d="M8 12h8M8 15.5h5"/></svg>`,
+
+  logo: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 4.5h6a3 3 0 0 1 3 3v8a3 3 0 0 1-3 3H9a3 3 0 0 1-3-3v-8a3 3 0 0 1 3-3Z"/><path d="M12 14v1.5M9 8.5h6M9 11.5h4"/></svg>`,
+  star: `<svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M12 3.5l2.6 5.3 5.9.9-4.3 4.1 1 5.9L12 16.9 6.8 19.7l1-5.9-4.3-4.1 5.9-.9L12 3.5Z"/></svg>`,
+  check: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7"/></svg>`,
+  lock: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="10.5" width="14" height="9.5" rx="2.2"/><path d="M8 10.5V8a4 4 0 0 1 8 0v2.5"/></svg>`
+};
+
+function uiIcon(key, fallbackEmoji) {
+  return UI_ICONS[key] || fallbackEmoji || "";
+}
+
 const app = document.querySelector("#app");
 
 let progress = loadProgress();
@@ -304,7 +337,7 @@ function situationProgress(id) {
 
 function updateStarPill() {
   const pill = document.querySelector("#starPill");
-  if (pill) pill.textContent = `⭐ ${availableStars()}`;
+  if (pill) pill.innerHTML = `${uiIcon("star")} ${availableStars()}`;
 }
 
 function shuffle(items) {
@@ -933,7 +966,7 @@ function showStarPopup({ situation, activity, earned, nextRoute, replayRoute }) 
 
   overlay.innerHTML = `
     <div class="star-pop">
-      <div class="big-star">⭐</div>
+      <div class="big-star">${uiIcon("star")}</div>
 
       <h2>${earned ? "Congratulations!" : "Great practice!"}</h2>
 
@@ -1020,7 +1053,7 @@ function renderShell(content) {
     <main class="app-shell">
       <header class="topbar">
         <button class="brand brand-button" onclick="goTo('/')" aria-label="Go to situations">
-          <div class="logo">🎙️</div>
+          <div class="logo">${uiIcon("logo")}</div>
           <div>
             <h1 class="brand-title">Speaking Friends</h1>
             <p class="brand-subtitle">Listen and speak English</p>
@@ -1028,7 +1061,7 @@ function renderShell(content) {
         </button>
 
         <button class="star-pet-pill" onclick="goTo('/pets')" aria-label="Open Pet Shop">
-          <span id="starPill" class="star-pet-stars">⭐ ${availableStars()}</span>
+          <span id="starPill" class="star-pet-stars">${uiIcon("star")} ${availableStars()}</span>
           <span class="star-pet-divider"></span>
           <span class="star-pet-pets">🐾 Pets</span>
         </button>
@@ -1047,8 +1080,8 @@ function renderHome() {
     return `
       <button class="situation-card" onclick="openSituation('${situation.id}')">
         <div class="card-top">
-          <div class="card-icon">${situation.emoji}</div>
-          <div class="card-progress">${done ? "⭐ Done" : `⭐ ${status.count}/${status.total}`}</div>
+          <div class="card-icon">${uiIcon(situation.id, situation.emoji)}</div>
+          <div class="card-progress">${done ? `${uiIcon("star")} Done` : `${uiIcon("star")} ${status.count}/${status.total}`}</div>
         </div>
 
         <h3>${escapeHtml(situation.title)}</h3>
@@ -1068,8 +1101,8 @@ function renderHome() {
   const finalCard = `
     <button class="situation-card final-reflection-card ${finalUnlocked ? "" : "locked-card"}" onclick="${finalUnlocked ? "goTo('/final-reflection')" : "showFinalLockedNotice()"}">
       <div class="card-top">
-        <div class="card-icon">📝</div>
-        <div class="card-progress">${finalUnlocked ? (finalSent ? "✅ Sent" : "Unlocked") : "🔒 Locked"}</div>
+        <div class="card-icon">${uiIcon("reflection", "📝")}</div>
+      <div class="card-progress">${finalUnlocked ? (finalSent ? `${uiIcon("check")} Sent` : "Unlocked") : `${uiIcon("lock")} Locked`}</div>
       </div>
 
       <h3>Final Reflection</h3>
@@ -1513,7 +1546,7 @@ function showFinalLockedNotice() {
 
   overlay.innerHTML = `
     <div class="star-pop reflection-locked-pop">
-      <div class="big-star">🔒</div>
+      <div class="big-star">${uiIcon("lock")}</div>
       <h2>Final Reflection is locked</h2>
       <p class="star-popup-main">Complete all situations and their reflections first.</p>
       <div class="star-popup-actions">
@@ -1564,11 +1597,11 @@ function reflectionRadio(name, situationId, field, value, label, currentValue) {
 function activityOptions(selectedValue) {
   const options = [
     ["", "Choose one"],
-    ["Word Bank", "🖼️ Word Bank"],
-    ["Conversation", "💬 Conversation"],
-    ["Match expressions", "🧩 Match expressions"],
-    ["Missing words", "✏️ Missing words"],
-    ["Role-play", "🎭 Role-play"]
+    ["Word Bank", "Word Bank"],
+    ["Conversation", "Conversation"],
+    ["Match expressions", "Match expressions"],
+    ["Missing words", "Missing words"],
+    ["Role-play", "Role-play"]
   ];
 
   return options.map(([value, label]) => `
@@ -1593,7 +1626,7 @@ function renderReflection(situation) {
             <h3>How did this situation go?</h3>
             <p>Answer these questions after practising the situation.</p>
           </div>
-          <div class="reflection-emoji">${situation.emoji}</div>
+          <div class="reflection-emoji">${uiIcon(situation.id, situation.emoji)}</div>
         </div>
 
         <div class="reflection-form">
@@ -1702,7 +1735,7 @@ function situationOptions(selectedValue) {
     `<option value="" ${selectedValue ? "" : "selected"}>Choose one</option>`,
     ...situations.map(situation => `
       <option value="${escapeHtml(situation.title)}" ${selectedValue === situation.title ? "selected" : ""}>
-        ${escapeHtml(`${situation.emoji} ${situation.title}`)}
+        ${escapeHtml(situation.title)}
       </option>
     `)
   ];
@@ -1788,7 +1821,7 @@ function renderFinalReflection() {
               <h3>Complete all situations first.</h3>
               <p>The final reflection will unlock when all speaking situations and reflections are complete.</p>
             </div>
-            <div class="reflection-emoji">🔒</div>
+            <div class="reflection-emoji">${uiIcon("lock")}</div>
           </div>
 
           <div class="actions">
@@ -1811,10 +1844,10 @@ function renderFinalReflection() {
             <h3>What did you learn with Speaking Friends?</h3>
             <p>Your answers will be prepared as a Gmail draft. Add your teacher's email before sending.</p>
           </div>
-          <div class="reflection-emoji">📝</div>
+          <div class="reflection-emoji">${uiIcon("reflection")}</div>
         </div>
 
-        ${data.sentAt ? `<p class="reflection-sent-note">✅ Gmail draft opened. You can open it again if you need to.</p>` : ""}
+        ${data.sentAt ? `<p class="reflection-sent-note">Gmail draft opened. You can open it again if you need to.</p>` : ""}
 
         <div class="reflection-form">
           <div class="reflection-grid-2">
@@ -1929,7 +1962,7 @@ function renderPetShop() {
           <p class="pet-subtitle">${escapeHtml(pet.name)}</p>
 
           <div class="pet-chip-row">
-            <span class="pet-cost-chip">${pet.cost === 0 ? "Free" : `⭐ ${pet.cost}`}</span>
+            <span class="pet-cost-chip">${pet.cost === 0 ? "Free" : `${uiIcon("star")} ${pet.cost}`}</span>
             ${owned ? `<span class="pet-state-chip">${isActive ? "Active" : "Owned"}</span>` : ``}
           </div>
 
@@ -1976,7 +2009,7 @@ function renderPetShop() {
 
           <div class="pet-shop-stars-card">
             <span>Available stars</span>
-            <strong>⭐ ${availableStars()}</strong>
+            <strong>${uiIcon("star")} ${availableStars()}</strong>
             <p>Complete activities to earn more stars.</p>
           </div>
         </div>
@@ -2003,23 +2036,23 @@ function renderPetShop() {
 
 function renderActivityMenu(situation) {
   const items = [
-    { key: "word-bank", title: "Word Bank", icon: "🖼️" },
-    { key: "conversation", title: "Conversation", icon: "💬" },
-    { key: "match", title: "Match expressions", icon: "🧩" },
-    { key: "missing", title: "Missing words", icon: "✏️" },
-    { key: "role-play", title: "Role-play", icon: "🎭" },
-    { key: "optional-challenge", title: "Optional Challenge", icon: "⭐", optional: true, note: "Create your dialogue" },
-    { key: "reflection", title: "Reflection", icon: "📝" }
+    { key: "word-bank", title: "Word Bank" },
+    { key: "conversation", title: "Conversation" },
+    { key: "match", title: "Match expressions" },
+    { key: "missing", title: "Missing words" },
+    { key: "role-play", title: "Role-play" },
+    { key: "optional-challenge", title: "Optional Challenge", optional: true, note: "Create your dialogue" },
+    { key: "reflection", title: "Reflection" }
   ];
 
   const cards = items.map(item => {
     const done = !item.optional && isActivityCompleted(situation.id, item.key);
     const menuClass = item.optional ? "activity-menu-card optional-menu-card" : "activity-menu-card";
-    const note = item.optional ? item.note : (done ? "⭐ Completed" : "Practice");
+    const note = item.optional ? item.note : (done ? `${uiIcon("star")} Completed` : "Practice");
 
     return `
       <button class="${menuClass}" onclick="goTo('${activityRoute(item.key, situation.id)}')">
-        <span>${item.icon}</span>
+        <span class="activity-menu-icon">${uiIcon(item.key)}</span>
         <strong>${item.title}</strong>
         <small>${note}</small>
       </button>
@@ -2120,7 +2153,7 @@ function renderWordBank(situation) {
       <div class="panel">
         <div class="activity-progress">
           <span id="wordBankStatus">
-            ${ready ? "Word Bank ready ⭐" : `Words listened ${count}/${total}`}
+            ${ready ? `Word Bank ready ${uiIcon("star")}` : `Words listened ${count}/${total}`}
           </span>
 
           <div class="progress-track">
@@ -2179,7 +2212,7 @@ function updateWordBankUI(situation) {
   if (progressFill) progressFill.style.width = `${(count / total) * 100}%`;
 
   if (ready) {
-    if (status) status.textContent = "Word Bank ready ⭐";
+    if (status) status.innerHTML = `Word Bank ready ${uiIcon("star")}`;
     if (continueButton) continueButton.disabled = false;
   } else {
     if (status) status.textContent = `Words listened ${count}/${total}`;
@@ -2244,7 +2277,7 @@ function renderConversation(situation) {
         </div>
 
         <p id="conversationStatus" class="small-note">
-          ${listened ? "Conversation ready ⭐" : "Listen to the conversation first."}
+          ${listened ? `Conversation ready ${uiIcon("star")}` : "Listen to the conversation first."}
         </p>
       </div>
     </section>
@@ -2262,7 +2295,7 @@ function playConversation(id) {
   const listenButton = document.querySelector("#listenConversationBtn");
 
   if (continueButton) continueButton.disabled = false;
-  if (status) status.textContent = "Conversation ready ⭐";
+  if (status) status.innerHTML = `Conversation ready ${uiIcon("star")}`;
   if (listenButton) listenButton.textContent = "▶ Listen again";
 
   speakConversationLines(situation, null, getConversationLines(situation, "conversation"));
@@ -3279,7 +3312,7 @@ function renderOptionalChallenge(situation) {
         </div>
 
         <div class="actions">
-          ${complete ? `<span class="ready-pill">✅ Ready to record</span>` : ""}
+          ${complete ? `<span class="ready-pill">${uiIcon("check")} Ready to record</span>` : ""}
           <button class="secondary-btn" onclick="resetOptionalChallenge('${situation.id}')">Clear choices</button>
           <button class="secondary-btn" onclick="goTo('/${situation.id}/role-play')">Back to role-play</button>
         </div>
